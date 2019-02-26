@@ -1,0 +1,108 @@
+@import './variables.scss';
+
+body {
+  line-height: 22px;
+}
+
+// Font styles
+h2 {
+  margin-top: 0;
+}
+
+h4 {
+  margin-bottom: -5px;
+}
+//
+
+.btn {
+  background-color: orange;
+  padding: 5px 15px 5px 15px;
+  margin: 10px 0;
+  border-radius: 2px;
+  text-align: center;
+  cursor: pointer;
+}
+
+  .fit-content {
+    width: fit-content;
+  }
+
+.App-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.App-header {
+  background-color: $primary-color;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: $secondary-color;
+}
+
+.app-content {
+  text-align: left;
+  padding: 30px 30px 30px 100px;
+  width: 90%;
+  max-width: 800px;
+}
+
+.nav-container{
+  background-color: white;
+  box-shadow: 0 0 10px $primary-color;
+  height: fit-content;
+  padding: 15px;
+  width: 100%;
+  text-align: center; 
+}
+
+.link-nostyle {
+  color: inherit;
+  text-decoration: none;
+}
+
+// RecipePage
+.recipe {
+  margin: 20px 0;
+  max-width: 550px;
+}
+
+  .ingredients-actions {
+    margin-top: 20px;
+  }
+
+.recipe-header {
+  width: fit-content;
+}
+
+.meta-sidebar {
+  margin-left: 30px;
+  float: right;
+}
+
+.hero-img {
+  width: 600px;
+  height: 300px;
+  background-size: cover;
+  background-position: center;  
+  position: relative;
+  float: left;
+}
+
+.emoji{
+  font-size: 30px;
+}
+
+// Fontawesome
+svg {
+  padding-right: 5px;
+}
+//
