@@ -11,9 +11,11 @@
     "react": "^16.8.3",
     "react-dom": "^16.8.3",
     "react-markdown": "^4.0.6",
+    "react-redux": "^6.0.1",
     "react-router": "^4.3.1",
     "react-router-dom": "^4.4.0-beta.6",
-    "react-scripts": "2.1.5"
+    "react-scripts": "2.1.5",
+    "redux": "^4.0.1"
   },
   "scripts": {
     "now-build": "react-scripts build",
