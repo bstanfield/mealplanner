@@ -5,14 +5,18 @@ body {
 }
 
 // Font styles
+h1 {
+  line-height: 35px;
+}
 h2 {
   margin-top: 0;
+  line-height: 30px;
 }
 
 h4 {
   margin-bottom: -5px;
 }
-//
+// End Font styles
 
 .btn {
   background-color: orange;
@@ -50,7 +54,7 @@ h4 {
 
 .app-content {
   text-align: left;
-  padding: 30px 30px 30px 100px;
+  padding: 30px;
   width: 90%;
   max-width: 800px;
 }
@@ -96,6 +100,29 @@ h4 {
   position: relative;
   float: left;
 }
+
+// End RecipePage
+
+// Personas
+.persona {
+  text-align: center;
+  width: 250px;
+  border: 3px solid;
+  border-bottom: 8px solid;
+  margin: 20px;
+  padding: 20px 10px;
+  display: inline-block;
+}
+
+  .persona h2 {
+    text-transform: capitalize;
+  }
+
+  .persona ul {
+    text-align: left;
+  }
+
+// End Personas
 
 .emoji{
   font-size: 30px;

@@ -10,6 +10,7 @@ import Survey from './components/Survey';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducers from './reducers';
+import Personas from './components/Personas';
 
 
 const store = createStore(rootReducers);
@@ -21,6 +22,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/recipe-page" render={() => (<App content={(<RecipePage />)} />)} />
         <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
+        <Route exact path="/personas" render={() => (<App content={(<Personas />)} />)} />
         <Route exact path="/" render={() => (<App content={(<Home />)} />)} />
       </Switch>
     </Router>
