@@ -47,7 +47,7 @@ a:hover {
   color: $link-focus;
 }
 
-//
+// End Font styles
 
 .btn {
   background-color: $accent;
@@ -126,10 +126,37 @@ a:hover {
   float: left;
 }
 
-.number-input{
+.number-input {
   width: 35px;
   font-size: 10pt;
   padding: 5px;
+}
+
+// End RecipePage
+
+// Personas
+.persona {
+  text-align: center;
+  width: 250px;
+  border: 3px solid;
+  border-bottom: 8px solid;
+  margin: 20px;
+  padding: 20px 10px;
+  display: inline-block;
+}
+
+  .persona h2 {
+    text-transform: capitalize;
+  }
+
+  .persona ul {
+    text-align: left;
+  }
+
+// End Personas
+
+.emoji{
+  font-size: 30px;
 }
 
 .number-input:focus {
