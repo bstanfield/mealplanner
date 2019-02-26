@@ -25,6 +25,20 @@
   color: $secondary-color;
 }
 
+.app-body{
+  padding: 100px;
+}
+
+.nav-container{
+  background-color: white;
+  height: fit-content;
+  padding: 5px;
+}
+
+.emoji{
+  font-size: 30px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
