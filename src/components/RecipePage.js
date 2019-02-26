@@ -62,6 +62,7 @@ class RecipePage extends Component {
         <br style={{'clear': 'both'}} />
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
+          <div>Makes <input className="number-input" id="servings" type="number" placeholder="1" /> servings </div>
           {R.map(renderRecipeIngredients, recipeIngredients)}
 
           <div className="ingredients-actions">
