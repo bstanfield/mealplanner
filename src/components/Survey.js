@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Redirect } from 'react-router';
+import { Route, Switch, Redirect } from 'react-router-dom';
 
 class Survey extends Component {
   constructor(props) {
@@ -35,14 +35,22 @@ class Survey extends Component {
         <p>{question.desc}</p>
         { 
           (this.state.index + 1) === this.state.questions.length ? 
-          (<div className="btn fit-content">Submit!</div>) : 
-          (<div onClick={ this.updateIndex }className="btn fit-content">Next question</div>) 
+          (<div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">Submit!</div>) : 
+          (<div onClick={ this.updateIndex } className="btn fit-content">Next question</div>) 
         }
         
     </div>
   )
 
   render() {
+    const { isComplete } = this.state;
+
+    if (isComplete) {
+      return (
+        <Redirect exact to="/recipe-page" />
+      )
+    }
+
     return(
       <div>
         <h1>Please fill out this survey as best you can.</h1>
