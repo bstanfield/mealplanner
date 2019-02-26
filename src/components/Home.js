@@ -11,11 +11,13 @@ class Home extends Component {
     return(
       <div className="home-container">
         <h1>Welcome to Mealplanner!</h1>
-        <p>Take it away, Zakk</p>
+        <p>Take it away, y'all</p>
         <p>Love, Ben & Mimi 💖</p>
 
         <br/>
-        <a href="/recipe-page">Check out the recipe page</a>
+        <a href="/survey">Survey page</a><br />
+        <a href="/personas">Personas page</a><br />
+        <a href="/recipe-page">Check out the recipe details page</a>
       </div>
     )
   }
