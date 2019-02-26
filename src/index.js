@@ -7,16 +7,24 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import RecipePage from './components/RecipePage';
 import Home from './components/Home';
 import Survey from './components/Survey';
+import { Provider } from 'react-redux';
+import { createStore } from 'redux';
+import rootReducers from './reducers';
+
+
+const store = createStore(rootReducers);
 
 
 ReactDOM.render(
-  (<Router>
-    <Switch>
-      <Route exact path="/recipe-page" render={() => (<App content={(<RecipePage />)} />)} />
-      <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
-      <Route exact path="/" render={() => (<App content={(<Home />)} />)} />
-    </Switch>
-  </Router>)
+  (<Provider store={store}>
+    <Router>
+      <Switch>
+        <Route exact path="/recipe-page" render={() => (<App content={(<RecipePage />)} />)} />
+        <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
+        <Route exact path="/" render={() => (<App content={(<Home />)} />)} />
+      </Switch>
+    </Router>
+  </Provider>)
   , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
