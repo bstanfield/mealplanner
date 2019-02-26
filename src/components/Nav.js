@@ -9,10 +9,10 @@ class Nav extends Component {
 
   render() {
     return(
-      <div className="nav-container">
-        <span className="emoji" role="img" aria-label="broccoli emoji"> 🥦🍗 </span>
-        <div className="header">Mealplanner</div>
-      </div>
+      <a className="link-nostyle" href="/"><div className="nav-container">
+        <span className="emoji" role="img" aria-label="broccoli emoji"> 🍗 </span>
+        <div className="header"><strong>Mealplanner</strong></div>
+      </div></a>
     )
     // ...
   }

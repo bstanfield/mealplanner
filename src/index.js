@@ -5,13 +5,16 @@ import App from './App';
 import * as serviceWorker from './serviceWorker';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import RecipePage from './components/RecipePage';
-import Nav from './components/Nav';
+import Home from './components/Home';
+import Survey from './components/Survey';
 
 
 ReactDOM.render(
   (<Router>
     <Switch>
       <Route exact path="/recipe-page" render={() => (<App content={(<RecipePage />)} />)} />
+      <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
+      <Route exact path="/" render={() => (<App content={(<Home />)} />)} />
     </Switch>
   </Router>)
   , document.getElementById('root'));
