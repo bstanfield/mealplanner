@@ -17,6 +17,7 @@ class Home extends Component {
         <br/>
         <a href="/survey">Survey page</a><br />
         <a href="/personas">Personas page</a><br />
+        <a href="/surprise-customize">Customize Surprise Me</a><br />
         <a href="/recipe-page">Check out the recipe details page</a>
       </div>
     )
