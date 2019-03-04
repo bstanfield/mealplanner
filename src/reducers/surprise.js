@@ -1,11 +1,11 @@
 const initialState = {
-  imgURL: [
-    {name: budget, url: '../img/Bag of money.png'},
-    {name: time, url: '../img/Time.png'},
-    {name: expertise, url: '../img/Star.png'},
-    {name: ingredients, url: '../img/Folk and spoon.png'},
-    {name: dietary, url: '../img/Flag.png'},
-  ]
+  // imgURL: [
+  //   {name: budget, url: '../img/Bag of money.png'},
+  //   {name: time, url: '../img/Time.png'},
+  //   {name: expertise, url: '../img/Star.png'},
+  //   {name: ingredients, url: '../img/Folk and spoon.png'},
+  //   {name: dietary, url: '../img/Flag.png'},
+  // ]
 };
 
 export default function (state, action) {

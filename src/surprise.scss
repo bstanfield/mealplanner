@@ -23,6 +23,11 @@ h1 {
     .filter {
         display: inline-block;
         margin: 2%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
         .circle {
             background-color: white;
             width: 65px;
@@ -38,6 +43,28 @@ h1 {
         }
     }
 }
+
+button {
+    background-color: $header;
+    color: white;
+    box-shadow: $standard-shadow;
+    width: 150px;
+    height: 40px;
+    font-size: 12pt;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    display: block;
+    a {
+        color: white;
+    }
+    a:hover {
+        color: $secondary-header;
+    }
+}
+
+
+
 
 .carousel-container {
     background-color:$tertiary-header;
@@ -157,21 +184,3 @@ h1 {
     }
   }
 
-button {
-    background-color: $header;
-    color: white;
-    box-shadow: $standard-shadow;
-    width: 150px;
-    height: 40px;
-    font-size: 12pt;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    display: block;
-    a {
-        color: white;
-    }
-    a:hover {
-        color: $secondary-header;
-    }
-}
