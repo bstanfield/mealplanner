@@ -14,6 +14,7 @@ h1, h2, h3, h4 {
 h1 {
   font-weight: 900;
   color: $header;
+  line-height: 35px;
 }
 
 h2 {
@@ -47,6 +48,10 @@ a:hover {
   color: $link-focus;
 }
 
+p, ul {
+  color: $body-text;
+}
+
 // End Font styles
 
 .btn {
@@ -75,6 +80,7 @@ a:hover {
   }
 
 .app-content {
+  margin: auto;
   text-align: left;
   padding: 30px 150px 30px 150px;
   width: 90%;
@@ -98,10 +104,28 @@ a:hover {
   font-size: 25px;
 }
 
+// Survey
+.survey-header {
+  h1, h2 {
+    text-align: center;
+  }
+}
+
+.survey-text {
+  padding: 10px 60px;
+  border-radius: 2px;
+  background-color: $bg-color;
+  border: 2px solid $border-light;
+  margin-bottom: 20px;
+}
+
+// End Survey
+
 // RecipePage
 .recipe {
   margin: 20px 0;
   max-width: 550px;
+  color: $body-text;
 }
 
   .ingredients-actions {
@@ -115,13 +139,20 @@ a:hover {
 .meta-sidebar {
   margin-left: 30px;
   float: right;
+  p {
+    margin: 5px;
+  }
+  hr {
+    margin-top: 15px;
+    margin-bottom: 15px;
+  }
 }
 
 .hero-img {
   width: 600px;
   height: 300px;
   background-size: cover;
-  background-position: center;  
+  background-position: center;
   position: relative;
   float: left;
 }
@@ -132,25 +163,43 @@ a:hover {
   padding: 5px;
 }
 
+
 // End RecipePage
 
 // Personas
+.persona-page {
+  h1, h2 {
+    text-align: center;
+  }
+}
+
+.persona-container {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin: auto;
+}
+
 .persona {
   text-align: center;
   width: 250px;
-  border: 3px solid;
-  border-bottom: 8px solid;
+  height: 250px;
+  border: 0.5px solid $border-light;
   margin: 20px;
   padding: 20px 10px;
-  display: inline-block;
+  &:hover {
+    box-shadow: $standard-shadow;
+  }
 }
 
   .persona h2 {
     text-transform: capitalize;
+    color: $tertiary-header;
   }
 
   .persona ul {
     text-align: left;
+    color: $body-text;
   }
 
 // End Personas
