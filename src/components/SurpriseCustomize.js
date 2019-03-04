@@ -1,7 +1,16 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faPhone } from '@fortawesome/free-solid-svg-icons';
+import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
+import { faClock } from '@fortawesome/free-solid-svg-icons';
+import { faStar } from '@fortawesome/free-solid-svg-icons';
+import { faUtensils } from '@fortawesome/free-solid-svg-icons';
+import { faFlag } from '@fortawesome/free-solid-svg-icons';
+import { faEdit } from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
+import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {} from '../actions';
@@ -9,20 +18,22 @@ import '../surprise.scss'
 
 
 const renderFilter = (filter) => (
-    <div>
-    <div class="circle">
-        <FontAwesomeIcon icon={filter.icon} />
+    <div className="filterCombo">
+        <div className="circle">
+            <FontAwesomeIcon icon={filter.icon} />
+        </div>
+        <span className="filter-label">{filter.label}</span>
     </div>
-    <span class="filter-label">{filter.label}</span>
-  </div>
 )
 
 const renderSlide = (slide) => (
     <a className="link-nostyle" href="/recipe-page">
-    <div className="hero-img" style={{ 'background-image': `url(${slide.imageURL})`}}>
-      <p>{slide.recipeName}</p>
-      <p>{slide.recipeLink}</p>
-    </div>
+        <div className="img" style={{ 'background-image': `url(${slide.imageURL})`}}>
+            <p>  </p>
+            {/* <p>{slide.recipeName}</p> */}
+            {/* <p>{slide.recipeLink}</p> */}
+        </div>
+        <p className="recipe-name">{slide.recipeName}</p>
     </a>
   );
 
@@ -32,31 +43,31 @@ class SurpriseCustomize extends Component {
     this.state = {
         filters: [
             {
-                label: 'budget',
-                icon: faPhone,
+                label: 'Budget',
+                icon: faDollarSign,
             },
             {
-                label: 'other name',
-                icon: faPhone,
+                label: 'Time',
+                icon: faClock,
             },
             {
-                label: 'budget',
-                icon: faPhone,
+                label: 'Expertise',
+                icon: faStar,
             },
             {
-                label: 'other name',
-                icon: faPhone,
+                label: 'Ingredients',
+                icon: faUtensils,
             },
             {
-                label: 'budget',
-                icon: faPhone,
+                label: 'Restrictions',
+                icon: faFlag,
             },
         ],
         index: 0,
         slides: [
           {
             imageURL: 'https://cdn.apartmenttherapy.info/image/fetch/w_800,c_fit/https://s3.amazonaws.com/pixtruder/original_images/0e56ab38542c762f226df9866314520e2fac6f6a',
-            recipeName: 'alkfndj Quesadillas',
+            recipeName: 'Simple Chicken Quesadillas',
             recipeLink: 'simpleQuesadillas.com'
           },
           {
@@ -93,33 +104,35 @@ class SurpriseCustomize extends Component {
 
 
   render() {
-    // const {imgURL} = this.props.surprise;
     return(
         <div>
             <h1>Recipe for Your Choices</h1>
             <div id="all-filters">
-                <div id="edit">edit</div>
-                <div class="filter">
+                <div id="edit">
+                    <FontAwesomeIcon icon={faEdit} />
+                    <span>edit</span>
+                </div>
+                <div className="filter">
                     {R.map(renderFilter, this.state.filters)}
                 </div>
             </div>
             
             {/* carousel */}
-            <div class="carousel-container">
-            <div
-            onClick={() => this.goToPrevious()}
-            >
-            <FontAwesomeIcon icon={faPhone} />
-            </div>
-            {renderSlide(this.state.slides[this.state.index])}
-            <div
-            onClick={() => this.goToNext()}
-            >
-            <FontAwesomeIcon icon={faPhone} />
-            </div>
+            <div id="carousel-container">
+                <div className="prevBtn" onClick={() => this.goToPrevious()}>
+                    <FontAwesomeIcon icon={faArrowCircleLeft} />
+                </div>
+                <div className="carousel-img">
+                    {renderSlide(this.state.slides[this.state.index])} 
+                </div>
+                <div className="nextBtn" onClick={() => this.goToNext()}>
+                    <FontAwesomeIcon icon={faArrowCircleRight} />
+                </div>
             </div>
 
-            <button><a href="/recipes-all">View All Recipes</a></button>
+            <button>
+                <a href="/recipes-all">View All Recipes</a>
+            </button>
 
         </div>
     )

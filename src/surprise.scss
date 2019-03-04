@@ -17,17 +17,19 @@ h1 {
     #edit {
         color: $header;
         position: absolute;
-        left: 12%;
+        left: 8%;
         top: 32%;
     }
     .filter {
-        display: inline-block;
-        margin: 2%;
+        max-width: 100%;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
         justify-content: center;
         align-items: center;
+        .filterCombo {
+            margin: 2%;
+        }
         .circle {
             background-color: white;
             width: 65px;
@@ -36,6 +38,14 @@ h1 {
             border-color: $secondary-header;
             box-shadow: $standard-shadow;
             margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            svg {
+                color: $secondary-header;
+                font-size: 22pt;
+                padding-top: 17px;
+                padding-left: 5px;
+            }
         }
         .filter-label {
             color: $tertiary-header;
@@ -43,6 +53,49 @@ h1 {
         }
     }
 }
+
+#carousel-container {
+    color: $secondary-header;
+    max-width: 700px;
+    min-height: 300px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    .prevBtn {
+        font-size: 20pt;
+        position: absolute;
+        top: 40%;
+        left: 1%;
+    }
+    .nextBtn {
+        font-size: 20pt;
+        position: absolute;
+        top: 40%;
+        right: 1%;
+    }
+    .carousel-img {
+        max-width: 600px;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        .img {
+            background-position: center;
+            background-size: cover;
+            p {
+                min-height: 300px; 
+            }
+        }
+        .recipe-name { 
+            text-align: center; 
+        }
+        .recipe-name:hover {
+            text-decoration: underline;
+        }
+    }
+}
+
+
 
 button {
     background-color: $header;
@@ -63,124 +116,4 @@ button {
     }
 }
 
-
-
-
-.carousel-container {
-    background-color:$tertiary-header;
-    max-width: 700px;
-    // display: flex;
-    // flex-direction: column;
-    // justify-content: center;
-    min-height: 320px;
-    margin-top: 20px;
-    margin-left: auto;
-    margin-right: auto;
-    .carousel {
-        position: relative;
-      }
-      
-      // Carousel slides
-      .carousel__slide {
-        margin-right: auto;
-        margin-left: auto;
-        display: none;
-        // max-width: 800px;
-        list-style-type: none;
-        text-align: center;
-      
-        @media (max-width: 991px) {
-          padding-right: 60px;
-          padding-left: 60px;
-        }
-      
-        &--active {
-          display: block;
-        }
-      }
-      
-      // Content of slides
-      .carousel-slide__content {
-        margin-bottom: 19px;
-        // font-family: 'Open Sans', 'Trebuchet MS', sans-serif;
-        font-size: 16px;
-      }
-      
-    //   .carousel-slide__author,
-    //   .carousel-slide__source {
-    //     // font-family: 'Roboto', arial, sans-serif;
-    //     font-size: 14px;
-      
-    //     @media (min-width: $breakpoint-desktop) {
-    //       font-size: 16px;
-    //     }
-    //   }
-      
-    .carousel-slide__source {
-    font-style: italic;
-    color: #888;
-    }
-
-    // Carousel arrows
-    .carousel__arrow {
-        position: absolute;
-        top: 50%;
-        display: block;
-        color: #111;
-        cursor: pointer;
-        opacity: .75;
-        transform: translateY(-50%);
-        transition: opacity .15s cubic-bezier(.4, 0, 1, 1);
-
-        &:focus {
-            outline: 0;
-        }
-
-        &:hover {
-            opacity: .5;
-        }
-
-        &--left {
-            left: 32px;
-        }
-
-        &--right {
-            right: 32px;
-        }
-    }
-    
-    // Carousel indicators
-    .carousel__indicators {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        margin-top: 20px;
-    
-        li {
-            &:nth-of-type(n + 2) {
-                margin-left: 9px;
-            }
-        }
-    }
-    
-    .carousel__indicator {
-        display: block;
-        width: 24px;
-        height: 3px;
-        background-color: #111;
-        cursor: pointer;
-        opacity: .15;
-        transition: opacity .15s cubic-bezier(.4, 0, 1, 1);
-    
-        &:hover {
-            opacity: .5;
-        }
-    
-        &--active {
-            &, &:hover {
-                opacity: .75;
-            }
-        }
-    }
-  }
 
