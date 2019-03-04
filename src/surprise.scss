@@ -20,6 +20,11 @@ h1 {
         left: 8%;
         top: 32%;
     }
+    #edit:hover{
+        color: $secondary-header;
+        text-decoration: underline;
+        cursor: pointer;
+    }
     .filter {
         max-width: 100%;
         display: flex;
@@ -64,15 +69,21 @@ h1 {
     position: relative;
     .prevBtn {
         font-size: 20pt;
+        padding: 10px;
         position: absolute;
         top: 40%;
-        left: 1%;
+        left: 0;
     }
     .nextBtn {
         font-size: 20pt;
+        padding: 10px;
         position: absolute;
         top: 40%;
-        right: 1%;
+        right: 0;
+    }
+    .prevBtn:hover, .nextBtn:hover {
+        color: $header;
+        cursor: pointer;
     }
     .carousel-img {
         max-width: 600px;

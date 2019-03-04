@@ -12,6 +12,7 @@ import { createStore } from 'redux';
 import rootReducers from './reducers';
 import Personas from './components/Personas';
 import SurpriseCustomize from './components/SurpriseCustomize';
+import Filter from './components/Filter';
 import RecipesAll from './components/RecipesAll';
 
 const store = createStore(rootReducers);
@@ -24,6 +25,7 @@ ReactDOM.render(
         <Route exact path="/recipe-page" render={() => (<App content={(<RecipePage />)} />)} />
         <Route exact path="/recipes-all" render={() => (<App content={(<RecipesAll />)} />)} />
         <Route exact path="/surprise-customize" render={() => (<App content={(<SurpriseCustomize />)} />)} />
+        <Route exact path="/filter" render={() => (<App content={(<Filter />)} />)} />
         <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
         <Route exact path="/personas" render={() => (<App content={(<Personas />)} />)} />
         <Route exact path="/" render={() => (<App content={(<Home />)} />)} />
