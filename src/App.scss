@@ -132,6 +132,7 @@ a:hover {
   padding: 5px;
 }
 
+
 // End RecipePage
 
 // Personas
@@ -168,5 +169,17 @@ a:hover {
 // Fontawesome
 svg {
   padding-right: 5px;
+}
+//
+
+// Homepage
+.plans {
+  text-align: left;
+  width: 100%;
+  border: 3px solid;
+  border-bottom: 8px solid;
+  margin: 20px;
+  padding: 20px 10px;
+  display: inline-block;
 }
 //
