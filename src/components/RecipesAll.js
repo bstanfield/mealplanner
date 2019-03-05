@@ -7,9 +7,9 @@ import {} from '../actions';
 import '../recipesAll.scss'
 
 
-const renderRecipes = (recipe) => (
+const renderRecipe = (recipe) => (
   <div>
-      <div className="img" style={{ 'background-image': `url(${recipe.imageURL})`}}>
+      <div className="hero-img" style={{ 'background-image': `url(${recipe.imageURL})`}}>
         <p> </p>
       </div>
       <p className="recipe-name">{recipe.recipeName}</p>
@@ -29,8 +29,7 @@ class RecipesAll extends Component {
         <h1>All Recipes</h1>
 
         <div id="content">
-          {/* {R.map(renderRecipes, this.state.recipesMaster.imageURL)} */}
-          {renderRecipes(recipesMaster)}
+          {R.map(renderRecipe, recipesMaster)}
         </div>
 
         <div id="action">
@@ -46,7 +45,7 @@ class RecipesAll extends Component {
 
 function mapStatetoProps(state) {
   return {
-    recipeall: state.recipeall,
+    recipesMaster: state.recipesMaster,
   };
 }
 
