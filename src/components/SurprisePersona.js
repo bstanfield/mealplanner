@@ -41,23 +41,23 @@ class SurprisePersona extends Component {
     this.state = {
         filters: [
             {
-                label: 'Budget',
+                label: '$10/meal',
                 icon: faDollarSign,
             },
             {
-                label: 'Time',
+                label: '3hrs/week',
                 icon: faClock,
             },
             {
-                label: 'Expertise',
+                label: 'Basic Recipes',
                 icon: faStar,
             },
             {
-                label: 'Ingredients',
+                label: 'All Ingredients',
                 icon: faUtensils,
             },
             {
-                label: 'Restrictions',
+                label: 'No Restrictions',
                 icon: faFlag,
             },
         ],
@@ -84,7 +84,7 @@ class SurprisePersona extends Component {
     const { recipesMaster } = this.props
     return(
         <div>
-            <h1>Recipe for Your Choices</h1>
+            <h1>Recipe for 'Granolas'</h1>
             <div id="all-filters">
                 <div id="edit">
                     <FontAwesomeIcon icon={faEdit} />
