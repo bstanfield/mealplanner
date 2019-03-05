@@ -8,12 +8,12 @@ import '../recipesAll.scss'
 
 
 const renderRecipe = (recipe) => (
-  <div>
-      <div className="hero-img" style={{ 'background-image': `url(${recipe.imageURL})`}}>
-        <p> </p>
-      </div>
-      <p className="recipe-name">{recipe.recipeName}</p>
-  </div>
+  <a className="link-nostyle" href="/recipe-page">
+    <div className="item" style={{ 'background-image': `url(${recipe.imageURL})`}}>
+      <p>  </p>
+    </div>
+    <p className="recipe-name"> {recipe.recipeName} </p>
+  </a>
 )
 
 class RecipesAll extends Component {
@@ -25,10 +25,10 @@ class RecipesAll extends Component {
   render() {
     const { recipesMaster } = this.props
     return(
-      <div>
+      <div id="container">
         <h1>All Recipes</h1>
 
-        <div id="content">
+        <div id="content-outter">
           {R.map(renderRecipe, recipesMaster)}
         </div>
 
