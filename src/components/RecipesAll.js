@@ -6,6 +6,16 @@ import { bindActionCreators } from 'redux';
 import {} from '../actions';
 import '../recipesAll.scss'
 
+
+const renderRecipes = (recipe) => (
+  <div>
+      <div className="img" style={{ 'background-image': `url(${recipe.imageURL})`}}>
+        <p> </p>
+      </div>
+      <p className="recipe-name">{recipe.recipeName}</p>
+  </div>
+)
+
 class RecipesAll extends Component {
   constructor(props) {
     super(props);
@@ -13,22 +23,14 @@ class RecipesAll extends Component {
   }
 
   render() {
-    // const {imgURL} = this.props.surprise;
-
+    const { recipesMaster } = this.props
     return(
       <div>
         <h1>All Recipes</h1>
 
         <div id="content">
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
-          <div class="item"></div>
+          {/* {R.map(renderRecipes, this.state.recipesMaster.imageURL)} */}
+          {renderRecipes(recipesMaster)}
         </div>
 
         <div id="action">

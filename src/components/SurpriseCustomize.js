@@ -30,8 +30,6 @@ const renderSlide = (slide) => (
     <a className="link-nostyle" href="/recipe-page">
         <div className="img" style={{ 'background-image': `url(${slide.imageURL})`}}>
             <p>  </p>
-            <p>{slide.recipeName}</p>
-            <p>{slide.recipeLink}</p>
         </div>
         <p className="recipe-name">{slide.recipeName}</p>
     </a>
@@ -113,7 +111,6 @@ class SurpriseCustomize extends Component {
             <button>
                 <a href="/recipes-all">View All Recipes</a>
             </button>
-
         </div>
     )
   }
