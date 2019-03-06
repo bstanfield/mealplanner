@@ -62,7 +62,7 @@ class Survey extends Component {
 
     if (isComplete) {
       return (
-        <Redirect exact to="/recipe-page" />
+        <Redirect exact to="/surprise-customize" />
       )
     }
 
