@@ -1,0 +1,25 @@
+@import 'variables.scss';
+
+#filter-container {
+    background-color: white;
+    color: $tertiary-header;
+    max-width: 380px;
+    height: 350px;
+    border: 1px solid $secondary-header;
+    box-shadow: $standard-shadow;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    .label-div {
+        padding-left: 10%;
+        padding-top: 25px;
+        position: relative;
+        input {
+            color: $tertiary-header;
+            width: 180px;
+            padding: 1%;
+            position: absolute;
+            right: 12%;
+        }
+    }
+}

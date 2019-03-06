@@ -7,7 +7,7 @@ import {} from '../actions';
 
 const renderPersonas = (persona) => (
   <a className="link-nostyle" href="/recipe-page">
-    <div className="persona"> 
+    <div className="persona">
       <h2>{persona.name}</h2>
       <ul>
         {R.map(x => <li>{x}</li>, persona.descriptors)}
@@ -25,12 +25,14 @@ class Personas extends Component {
   render() {
     const { personas } = this.props;
     return(
-      <div>
-        <h1>Please fill out this survey as best you can.</h1>
-        <h2>We will recommend a recipe based on the preferences you enter.</h2>
+      <div className="persona-page">
+        <h1>Choose a foodie type</h1>
+        <h2>We will recommend a recipe based on the traits of the persona you choose!</h2>
         <br/>
         <br/>
-        {R.map(renderPersonas, personas)}
+        <div className="persona-container">
+          {R.map(renderPersonas, personas)}
+        </div>
       </div>
     )
   }

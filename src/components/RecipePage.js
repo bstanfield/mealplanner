@@ -9,7 +9,7 @@ import { faPhone } from '@fortawesome/free-solid-svg-icons';
 const ReactMarkdown = require('react-markdown/with-html');
 
 const renderRecipeInstructions = (instruction, index) => (
-  <div> 
+  <div>
     <h4>Step {index + 1}.</h4>
     <p>{instruction}</p>
   </div>
