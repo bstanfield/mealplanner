@@ -1,0 +1,134 @@
+@import 'variables.scss';
+
+body {
+    max-width: 100%;
+    overflow-x: hidden;
+    padding: 0;
+    margin: 0;
+}
+h1 {
+    text-align: center;
+}
+#all-filters {
+    max-width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    position: relative;
+    #edit {
+        color: $header;
+        position: absolute;
+        left: 8%;
+        top: 32%;
+    }
+    #edit:hover{
+        color: $secondary-header;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+    .filter {
+        max-width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        .filterCombo {
+            margin: 2%;
+        }
+        .circle {
+            background-color: white;
+            width: 65px;
+            height: 65px;
+            border-radius: 50%;
+            border-color: $secondary-header;
+            box-shadow: $standard-shadow;
+            margin-bottom: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            svg {
+                color: $secondary-header;
+                font-size: 22pt;
+                padding-top: 17px;
+                padding-left: 5px;
+            }
+        }
+        .filter-label {
+            color: $tertiary-header;
+            font-size: 11pt;
+        }
+    }
+}
+
+#carousel-container {
+    color: $secondary-header;
+    max-width: 700px;
+    min-height: 300px;
+    margin-top: 25px;
+    margin-left: auto;
+    margin-right: auto;
+    position: relative;
+    .prevBtn {
+        font-size: 20pt;
+        padding: 10px;
+        position: absolute;
+        top: 40%;
+        left: 0;
+    }
+    .nextBtn {
+        font-size: 20pt;
+        padding: 10px;
+        position: absolute;
+        top: 40%;
+        right: 0;
+    }
+    .prevBtn:hover, .nextBtn:hover {
+        color: $header;
+        cursor: pointer;
+    }
+    .carousel-img {
+        max-width: 600px;
+        height: 100%;
+        margin-left: auto;
+        margin-right: auto;
+        .img {
+            background-position: center;
+            background-size: cover;
+            p {
+                min-height: 300px; 
+            }
+        }
+        .recipe-name { 
+            text-align: center; 
+        }
+        .recipe-name:hover {
+            text-decoration: underline;
+        }
+    }
+    .img:hover {
+        box-shadow: $standard-shadow;
+    }
+}
+
+
+
+button {
+    background-color: $header;
+    color: white;
+    box-shadow: $standard-shadow;
+    width: 150px;
+    height: 40px;
+    font-size: 12pt;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 30px;
+    display: block;
+    a {
+        color: white;
+    }
+    a:hover {
+        color: $secondary-header;
+    }
+}
+
+

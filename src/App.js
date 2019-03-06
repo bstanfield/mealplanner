@@ -4,7 +4,6 @@ import Nav from './components/Nav';
 
 class App extends Component {
   render() {
-    console.log('this.props.content', this.props.content);
     return (
       <div className="App">
         <Nav />

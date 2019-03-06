@@ -1,0 +1,82 @@
+@import 'variables.scss';
+
+body {
+    padding-bottom: 40px;
+}
+
+#container {
+    max-width: 100%;
+
+    #content-outter {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+        a {
+            text-align: center;
+            width: 30%;
+            flex-basis: auto;
+            padding: 1%;
+            padding-top: 20px;
+            .item {
+                background-size: cover;
+                width: 100%;
+                height: 140px;
+                margin: 4%;
+            }
+            .item:hover {
+                cursor: pointer;
+                box-shadow: $standard-shadow;
+            }
+            .recipe-name {
+                color: $secondary-header;
+                font-weight: normal;
+            }
+            .recipe-name:hover {
+                color: $tertiary-header;
+                cursor: pointer;
+                text-decoration: underline;
+            }
+        }
+    }
+    
+    
+    #action{
+        position: relative;
+        #backBtn {
+            color: $tertiary-header;
+            position: absolute;
+            top: 10%;
+            left: 3%;    
+            padding: 1% 2%;
+        }
+        #backBtn:hover {
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        #moreBtn {
+            background-color: $header;
+            color: white;
+            box-shadow: $standard-shadow;
+            width: 150px;
+            height: 40px;
+            font-size: 12pt;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 30px;
+            display: block;
+            a {
+                color: white;
+            }
+            a:hover {
+                color: $secondary-header;
+            }
+        }
+        #moreBtn:hover {
+            cursor: pointer;
+        }
+    }
+}
+
+
