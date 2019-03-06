@@ -6,7 +6,7 @@ import { bindActionCreators } from 'redux';
 import {} from '../actions';
 
 const renderPersonas = (persona) => (
-  <a className="link-nostyle" href="/recipe-page">
+  <a className="link-nostyle" href="/surprise-persona">
     <div className="persona">
       <h2>{persona.name}</h2>
       <ul>
