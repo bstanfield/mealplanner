@@ -11,6 +11,7 @@ import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import rootReducers from './reducers';
 import Personas from './components/Personas';
+import Surprise from './components/Surprise';
 
 
 const store = createStore(rootReducers);
@@ -21,6 +22,7 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/recipe-page" render={() => (<App content={(<RecipePage />)} />)} />
+        <Route exact path="/surprise" render={() => (<App content={(<Surprise />)} />)} />
         <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
         <Route exact path="/personas" render={() => (<App content={(<Personas />)} />)} />
         <Route exact path="/" render={() => (<App content={(<Home />)} />)} />
