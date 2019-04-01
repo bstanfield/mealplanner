@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {} from '../actions';
 
+ReactGA.pageview("/personas");
+
 const renderPersonas = (persona) => (
   <a className="link-nostyle" href="/surprise-persona">
     <div className="persona">

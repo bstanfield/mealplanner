@@ -16,6 +16,7 @@ import { bindActionCreators } from 'redux';
 import {} from '../actions';
 import '../surprise.scss'
 
+ReactGA.pageview("/surprise-persona");
 
 const renderFilter = (filter) => (
     <div className="filterCombo">

@@ -6,6 +6,7 @@ import { bindActionCreators } from 'redux';
 import {} from '../actions';
 import '../recipesAll.scss'
 
+ReactGA.pageview("/recipes-all");
 
 const renderRecipe = (recipe) => (
   <a className="link-nostyle" href="/recipe-page">

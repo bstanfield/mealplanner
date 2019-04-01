@@ -3,6 +3,8 @@ import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+ReactGA.pageview("/survey");
+
 class Survey extends Component {
   constructor(props) {
     super(props);

@@ -8,6 +8,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 const ReactMarkdown = require('react-markdown/with-html');
 
+ReactGA.pageview("/recipe-page");
+
 const renderRecipeInstructions = (instruction, index) => (
   <div>
     <h4>Step {index + 1}.</h4>

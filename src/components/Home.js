@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 
+ReactGA.pageview("/");
+
 class Home extends Component {
   constructor(props) {
     super(props);

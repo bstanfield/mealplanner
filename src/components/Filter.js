@@ -17,6 +17,7 @@ import {} from '../actions';
 import '../surprise.scss'
 import '../filter.scss'
 
+ReactGA.pageview("/filter");
 
 const renderFilter = (filter) => (
     <div className="filterCombo">
