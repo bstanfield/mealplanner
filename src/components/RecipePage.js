@@ -8,7 +8,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 const ReactMarkdown = require('react-markdown/with-html');
 
-ReactGA.pageview("/recipe-page");
+import ReactGA from 'react-ga';
+export const initGA = () => {
+    console.log{'GA init'}
+    ReactGA.initialize('UA-137386963-1');
+}
+export const logPageView = () => {
+    ReactGA.set({ page: window.location.pathname })
+    ReactGA.pageview(window.location.pathname)
+}
 
 const renderRecipeInstructions = (instruction, index) => (
   <div>
