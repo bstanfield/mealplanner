@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as R from 'ramda';
 import {} from '../actions';
+import ReactGA from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 const ReactMarkdown = require('react-markdown/with-html');
 
-import ReactGA from 'react-ga';
 export const initGA = () => {
-    console.log{'GA init'}
+    console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
 }
 export const logPageView = () => {

@@ -5,7 +5,7 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import ReactGA from 'react-ga';
 export const initGA = () => {
-    console.log{'GA init'}
+    console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
 }
 export const logPageView = () => {
