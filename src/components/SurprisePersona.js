@@ -16,6 +16,15 @@ import { bindActionCreators } from 'redux';
 import {} from '../actions';
 import '../surprise.scss'
 
+import ReactGA from 'react-ga';
+export const initGA = () => {
+    console.log('GA init');
+    ReactGA.initialize('UA-137386963-1');
+}
+export const logPageView = () => {
+    ReactGA.set({ page: window.location.pathname })
+    ReactGA.pageview(window.location.pathname)
+}
 
 const renderFilter = (filter) => (
     <div className="filterCombo">

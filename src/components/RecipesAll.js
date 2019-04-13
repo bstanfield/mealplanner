@@ -5,7 +5,17 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import {} from '../actions';
 import '../recipesAll.scss'
+import ReactGA from 'react-ga';
 
+
+export const initGA = () => {
+    console.log('GA init');
+    ReactGA.initialize('UA-137386963-1');
+}
+export const logPageView = () => {
+    ReactGA.set({ page: window.location.pathname })
+    ReactGA.pageview(window.location.pathname)
+}
 
 const renderRecipe = (recipe) => (
   <a className="link-nostyle" href="/recipe-page">

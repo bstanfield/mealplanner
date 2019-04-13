@@ -3,6 +3,16 @@ import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Route, Switch, Redirect } from 'react-router-dom';
 
+import ReactGA from 'react-ga';
+export const initGA = () => {
+    console.log('GA init');
+    ReactGA.initialize('UA-137386963-1');
+}
+export const logPageView = () => {
+    ReactGA.set({ page: window.location.pathname })
+    ReactGA.pageview(window.location.pathname)
+}
+
 class Survey extends Component {
   constructor(props) {
     super(props);
