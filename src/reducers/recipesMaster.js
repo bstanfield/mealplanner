@@ -1,5 +1,4 @@
 const initialState = {
-  loading: false,
   recipes: [
   {
     image_url: 'https://cdn.apartmenttherapy.info/image/fetch/w_800,c_fit/https://s3.amazonaws.com/pixtruder/original_images/0e56ab38542c762f226df9866314520e2fac6f6a',
@@ -28,12 +27,8 @@ const initialState = {
 ]}
 
 const setAllRecipes = (state, action) => {
-  console.log('receiving action!!', action);
   const stateClone = Object.assign({}, state);
   stateClone.recipes = action.recipes;
-  // initialState.recipes = stateClone.recipes;
-  //   // mutating initial state so that undoable works on the first undo...
-  console.log('stateclone', stateClone);
   return stateClone;
 };
 
