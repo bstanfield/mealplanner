@@ -14,23 +14,22 @@ app.use(
   })
 )
 
-// console.log that your server is up and running
+// Confirms server is running in console
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
-// create a GET route
-
-app.get('/ingredients', db.getIngredients);
-
+// Use this endpoint to get all recipe names
 app.get('/recipenames', db.getRecipeNames);
 
+// This might not be useful
+app.get('/ingredients/:id', db.getRecipeIngredients);
+
+// Use this endpoint for primary recipe page
+app.get('/survey_results/:cost/:cookTime/:restriction', db.getSurveyResults);
+
+// Use this endpoint for primary recipe page
+app.get('/master_recipes/:name', db.getMasterRecipe)
+
+// Standard messages
 app.get('/', (req, res) => {
     res.json({ info: 'Node.js, Express, and Postgres API' })
-  })
-
-app.get('/express_backend', (req, res) => {
-  res.send({ express: '✅ Express server connected' });
-});
-
-// app.get('*', (req, res) => res.status(200).send({
-//   message: '✅ Welcome to Express!',
-// }));
+})
