@@ -17,6 +17,12 @@ app.use(
 // Confirms server is running in console
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
+// Use this endpoint to get all persona names and characteristics
+app.get('/personas', db.getPersonas);
+
+// Use this endpoint to get all persona-specific recipes
+app.get('/persona_recipes/:personaId', db.getPersonaSpecificRecipes);
+
 // Use this endpoint to get all recipe names
 app.get('/recipenames', db.getRecipeNames);
 
