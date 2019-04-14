@@ -11,7 +11,6 @@ console.log('page: ', window.location.pathname + window.location.search);
 
 
 class App extends Component {
-  
   render() {
     return (
       <div className="App">

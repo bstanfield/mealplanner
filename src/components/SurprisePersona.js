@@ -90,6 +90,7 @@ class SurprisePersona extends Component {
 
 
   render() {
+    // eslint-disable no-underscore-dangle
     const { recipesMaster } = this.props
     return(
         <div>
@@ -110,7 +111,7 @@ class SurprisePersona extends Component {
                     <FontAwesomeIcon icon={faArrowCircleLeft} />
                 </div>
                 <div className="carousel-img">
-                    {renderSlide(recipesMaster[this.state.index])} 
+                    {!R.isNil(recipesMaster) ? renderSlide(recipesMaster[this.state.index]) : ''} 
                 </div>
                 <div className="nextBtn" onClick={() => this.goToNext()}>
                     <FontAwesomeIcon icon={faArrowCircleRight} />
