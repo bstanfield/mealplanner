@@ -1,4 +1,5 @@
 const Pool = require('pg').Pool
+const httpBuildQuery = require('http-build-query');
 
 const pool = new Pool({
   user: 'postgres',
@@ -9,12 +10,17 @@ const pool = new Pool({
 })
 
 const getIngredients = (req, res) => {
-    pool.query('SELECT * FROM ingredients', (error, results) => {
-      if (error) {
-        throw error
-      }
-      res.status(200).json(results.rows)
-    })
+    const id = parseInt(req.params.id);
+    if (id) {
+      pool.query('SELECT * FROM ingredients WHERE id=$1',
+      [id],
+      (error, results) => {
+        if (error) {
+          throw error
+        }
+        res.status(200).json(results.rows);
+      })
+    }
   }
 
 module.exports = {

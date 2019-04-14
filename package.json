@@ -8,6 +8,7 @@
     "@fortawesome/react-fontawesome": "^0.1.4",
     "body-parser": "^1.18.3",
     "express": "^4.16.4",
+    "http-build-query": "^0.7.0",
     "morgan": "^1.9.1",
     "node-sass": "^4.11.0",
     "pg": "^7.9.0",

@@ -20,15 +20,16 @@ app.listen(port, () => console.log(`Listening on port ${port}`));
 // create a GET route
 
 app.get('/ingredients', db.getIngredients);
+app.get('/ingredients/:id', db.getIngredients);
 
 app.get('/', (req, res) => {
     res.json({ info: 'Node.js, Express, and Postgres API' })
   })
 
-app.get('*', (req, res) => res.status(200).send({
-    message: '✅ Welcome to Express!',
-  }));
-
 app.get('/express_backend', (req, res) => {
   res.send({ express: '✅ Express server connected' });
 });
+
+app.get('/allrecipes', (req, res) => {
+    res.send({ express: 'Here are all the recipes' });
+  });
