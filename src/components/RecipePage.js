@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as R from 'ramda';
-import {} from '../actions';
+import { SetRecipePage } from '../actions';
 import ReactGA from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -48,22 +48,36 @@ class RecipePage extends Component {
     };
   }
 
+  componentDidMount() {
+    fetch(
+      `http://localhost:3333/master_recipes/${this.props.params.location.state.recipe}`,
+      {
+        method: 'GET',
+      }, 
+    ).then(response => response.json())
+    .then(recipe => this.props.SetRecipePage(recipe))
+    .catch(error => this.setState({ error }));
+    // .then(recipe => console.log('response', recipe))
+  }
+
+
   render() {
-    const {recipeMeta, recipeIngredients, recipeInstructions, recipeTips} = this.props.recipePage;
+    const {recipe_name, preptime, cooktime, cost, instructions, image_url} = this.props.recipePage.recipePage;
     return(
       <div>
         <div className="recipe-header">
-          <h1>{recipeMeta.name}</h1>
-          <div className="hero-img" style={{ 'background-image': `url(${recipeMeta.heroImage})`}}>
+          <h1>{recipe_name}</h1>
+          <div className="hero-img" style={{ 'background-image': `url(${image_url})`}}>
           </div>
           <div className="meta-sidebar">
             <h2>Meta</h2>
-            <p>Total: {recipeMeta.times.total}</p>
-            <p>Prep: {recipeMeta.times.prep}</p>
-            <p>Cook: {recipeMeta.times.cook}</p>
+            {/* <p>Total: {recipeMeta.times.total}</p> */}
+            <p>Prep: {preptime}</p>
+            <p>Cook: {cooktime}</p>
             <hr/>
-            <p>Cost: {recipeMeta.cost}</p>
-            <p>Level: {recipeMeta.level}</p>
+            <p>Cost: {cost}</p>
+            {/* <p>Level: {recipeMeta.level}</p> */}
+            {/* Need to do leftjoin in backend query so that we get level instead of levelid */}
 
             <div className="btn favorite">♥ Favorite</div>
             <div className="btn calendar">Calendar</div>
@@ -73,7 +87,7 @@ class RecipePage extends Component {
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
           <div>Makes <input className="number-input" id="servings" type="number" placeholder="1" /> servings </div>
-          {R.map(renderRecipeIngredients, recipeIngredients)}
+          {/* {R.map(renderRecipeIngredients, recipeIngredients)} */}
 
           <div className="ingredients-actions">
             <FontAwesomeIcon icon={faPhone} />
@@ -85,12 +99,12 @@ class RecipePage extends Component {
         <div className="recipe instructions">
           <h2>Instructions</h2>
           <form>
-            {R.addIndex(R.map)(renderRecipeInstructions, recipeInstructions)}
+            {/* {R.addIndex(R.map)(renderRecipeInstructions, instructions)} */}
           </form>
         </div>
         <div className="recipe tips">
           <h2>Meal Prep Tips</h2>
-          {R.map(renderRecipeTips, recipeTips)}
+          {/* {R.map(renderRecipeTips, recipeTips)} */}
 
         </div>
       </div>
@@ -105,7 +119,7 @@ function mapStatetoProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({ SetRecipePage }, dispatch);
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(RecipePage);

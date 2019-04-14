@@ -27,7 +27,7 @@ app.get('/ingredients/:id', db.getRecipeIngredients);
 app.get('/survey_results/:cost/:cookTime/:restriction', db.getSurveyResults);
 
 // Use this endpoint for primary recipe page
-app.get('/master_recipes/:name', db.getMasterRecipe)
+app.get('/master_recipes/:name', db.getMasterRecipe);
 
 // Standard messages
 app.get('/', (req, res) => {

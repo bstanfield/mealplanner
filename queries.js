@@ -10,7 +10,7 @@ const pool = new Pool({
 });
 
 const getRecipeNames = (req, res) => {
-  pool.query('SELECT recipe_name, image_url FROM recipe_master', (error, results) => {
+  pool.query('SELECT id, recipe_name, image_url FROM recipe_master', (error, results) => {
     if (error) {
       throw error
     }

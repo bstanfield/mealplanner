@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
@@ -17,23 +18,29 @@ export const logPageView = () => {
     ReactGA.pageview(window.location.pathname)
 }
 
-const renderRecipe = (recipe) => (
-  <a className="link-nostyle" href="/recipe-page">
-    <div className="item" style={{ 'background-image': `url(${recipe.image_url})`}}>
-      <p>  </p>
-    </div>
-    <p className="recipe-name"> {recipe.recipe_name} </p>
-  </a>
-)
-
 class RecipesAll extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipenames: [],
       error: '',
+      redirect: false,
+      selectedRecipe: '',
     };
   }
+
+  setRedirect(recipe){
+    this.setState({ selectedRecipe: recipe, redirect: true });
+  }
+
+  renderRecipe = (recipe) => (
+    <a className="link-nostyle">
+      <div onClick={() => this.setRedirect(recipe)}>
+        <div className="item" style={{ 'background-image': `url(${recipe.image_url})`}}>
+        </div>
+        <p className="recipe-name"> {recipe.recipe_name} </p>
+      </div>
+    </a>
+  )
 
   componentDidMount() {
     fetch(
@@ -49,15 +56,25 @@ class RecipesAll extends Component {
   render() {
     const { recipesMaster } = this.props
 
+    if (this.state.redirect === true) {
+      // can send recipe id over instead
+      return (
+        <Redirect to={{
+          pathname: '/recipe-page',
+          state: { recipe: this.state.selectedRecipe.recipe_name }
+        }} />
+      );
+    }
+
     if (this.state.error) {
       return <p>{this.state.error.message}</p>;
     }
-    console.log('recipesMaster', recipesMaster);
+
     return(
       <div id="container">
         <h1>All Recipes</h1>
         <div id="content-outter">
-          {(R.isNil(recipesMaster)) ? '' : R.map(renderRecipe, recipesMaster.recipes) }
+          {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipesMaster.recipes) }
         </div>
 
         <div id="action">
