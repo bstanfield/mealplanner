@@ -35,11 +35,6 @@ class RecipesAll extends Component {
     };
   }
 
-  // handleSetRecipes(recipes) {
-  //   console.log('handling set recipes');
-  //   SetAllRecipes(recipes);
-  // }
-
   componentDidMount() {
     fetch(
       `http://localhost:3333/recipenames`,
@@ -61,7 +56,6 @@ class RecipesAll extends Component {
     return(
       <div id="container">
         <h1>All Recipes</h1>
-        {/* {this.state.recipenames.map(recipe=>(<h2>{recipe.recipe_name}</h2>))} */}
         <div id="content-outter">
           {(R.isNil(recipesMaster)) ? '' : R.map(renderRecipe, recipesMaster.recipes) }
         </div>
