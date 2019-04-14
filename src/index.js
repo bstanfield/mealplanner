@@ -8,7 +8,8 @@ import RecipePage from './components/RecipePage';
 import Home from './components/Home';
 import Survey from './components/Survey';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 import rootReducers from './reducers';
 import Personas from './components/Personas';
 import SurpriseCustomize from './components/SurpriseCustomize';
@@ -16,7 +17,10 @@ import SurprisePersona from './components/SurprisePersona';
 import Filter from './components/Filter';
 import RecipesAll from './components/RecipesAll';
 
-const store = createStore(rootReducers);
+const store = createStore(
+  rootReducers,
+  applyMiddleware(thunk)
+  );
 
 
 ReactDOM.render(
