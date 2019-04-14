@@ -29,15 +29,34 @@ const renderRecipe = (recipe) => (
 class RecipesAll extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      recipenames: [],
+      error: '',
+    };
+  }
+
+  componentDidMount() {
+    fetch(
+      `http://localhost:3333/recipenames`,
+      {
+        method: 'GET',
+      }, 
+    ).then(response => response.json())
+    .then(data => this.setState({ recipenames: data }))
+    .catch(error => this.setState({ error }));
   }
 
   render() {
     const { recipesMaster } = this.props
+
+    if (this.state.error) {
+      return <p>{this.state.error.message}</p>;
+    }
+    console.log('this.state.recipenames', this.state.recipenames);
     return(
       <div id="container">
         <h1>All Recipes</h1>
-
+        {this.state.recipenames.map(recipe=>(<h2>{recipe.recipe_name}</h2>))}
         <div id="content-outter">
           {R.map(renderRecipe, recipesMaster)}
         </div>
