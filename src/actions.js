@@ -5,3 +5,11 @@
 //   };
 // }
 
+export function SetAllRecipes(recipes) {
+  console.log("actions allRecipes", recipes);
+  return{
+    type: 'SET_ALL_RECIPES',
+    recipes,
+  };
+}
+
