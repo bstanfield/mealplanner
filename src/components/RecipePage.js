@@ -94,7 +94,7 @@ class RecipePage extends Component {
   render() {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
-    console.log("this.props.recipePage.recipePage", this.props.recipePage.recipePage);
+    console.log("instructions", instructions);
     return(
       <div>
         <div className="recipe-header">

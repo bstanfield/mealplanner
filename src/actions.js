@@ -5,6 +5,14 @@ export function SetAllRecipes(recipes) {
   };
 }
 
+export function SetPersonas(personas) {
+  console.log('personas action', personas);
+  return{
+    type: 'SET_PERSONAS',
+    personas,
+  };
+}
+
 export function SetRecipePage(recipe) {
   return{
     type: 'SET_RECIPE_PAGE',

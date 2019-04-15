@@ -3,14 +3,14 @@ import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {} from '../actions';
+import { SetPersonas } from '../actions';
 
 const renderPersonas = (persona) => (
   <a className="link-nostyle" href="/surprise">
     <div className="persona">
-      <h2>{persona.name}</h2>
+      <h2>{persona.persona}</h2>
       <ul>
-        {R.map(x => <li>{x}</li>, persona.descriptors)}
+        {R.map(x => <li>{x}</li>, persona.chars)}
       </ul>
     </div>
   </a>
@@ -19,11 +19,30 @@ const renderPersonas = (persona) => (
 class Personas extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      error: ''
+    };
+  }
+
+  componentDidMount() {
+    fetch(
+      `http://localhost:3333/personas`,
+      {
+        method: 'GET',
+      }, 
+    ).then(response => response.json())
+    .then(personas => this.props.SetPersonas(personas))
+    .catch(error => this.setState({ error }));
+    
   }
 
   render() {
     const { personas } = this.props;
+
+    if (this.state.error) {
+      return <p>{this.state.error.message}</p>;
+    }
+
     return(
       <div className="persona-page">
         <h1>Choose a foodie type</h1>
@@ -45,7 +64,7 @@ function mapStatetoProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({ SetPersonas }, dispatch);
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Personas);
