@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3333;
+const port = 8080;
 
 const db = require('./queries');
 const bodyParser = require('body-parser');
@@ -17,19 +17,19 @@ app.use(
 app.listen(port, () => console.log(`Listening on port ${port}`));
 
 // Use this endpoint to get all persona names and characteristics
-// app.get('/personas', db.getPersonas);
+app.get('/personas', db.getPersonas);
 
-// // Use this endpoint to get all persona-specific recipes
-// app.get('/persona_recipes/:personaId', db.getPersonaSpecificRecipes);
+// Use this endpoint to get all persona-specific recipes
+app.get('/persona_recipes/:personaId', db.getPersonaSpecificRecipes);
 
 // Use this endpoint to get all recipe names
 app.get('/recipenames', db.getRecipeNames);
 
-// // This might not be useful
-// app.get('/ingredients/:id', db.getRecipeIngredients);
+// This might not be useful
+app.get('/ingredients/:id', db.getRecipeIngredients);
 
-// // Use this endpoint for primary recipe page
-// app.get('/survey_results/:cost/:cookTime/:restriction', db.getSurveyResults);
+// Use this endpoint for primary recipe page
+app.get('/survey_results/:cost/:cookTime/:restriction', db.getSurveyResults);
 
 // Use this endpoint for primary recipe page
 app.get('/master_recipes/:name', db.getMasterRecipe)
