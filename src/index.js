@@ -12,7 +12,7 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk';
 import rootReducers from './reducers';
 import Personas from './components/Personas';
-import SurpriseCustomize from './components/SurpriseCustomize';
+import Surprise from './components/Surprise';
 import Filter from './components/Filter';
 import RecipesAll from './components/RecipesAll';
 
@@ -29,7 +29,7 @@ ReactDOM.render(
         <Route exact path="/recipe-page" render={(params) => (<App content={(<RecipePage params={params} />)} />)} />
         {/* pretty redundant to use location.location */}
         <Route exact path="/recipes-all" render={() => (<App content={(<RecipesAll />)} />)} />
-        <Route exact path="/surprise-customize" render={() => (<App content={(<SurpriseCustomize />)} />)} />
+        <Route exact path="/surprise" render={() => (<App content={(<Surprise />)} />)} />
         <Route exact path="/filter" render={() => (<App content={(<Filter />)} />)} />
         <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
         <Route exact path="/personas" render={() => (<App content={(<Personas />)} />)} />

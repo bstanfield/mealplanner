@@ -42,18 +42,6 @@ class RecipesAll extends Component {
     </a>
   )
 
-  componentDidMount() {
-    fetch(
-      `http://localhost:3333/recipenames`,
-      {
-        method: 'GET',
-      }, 
-    ).then(response => response.json())
-    .then(recipes => this.props.SetAllRecipes(recipes))
-    .catch(error => this.setState({ error }));
-    // Duplicate fetch call in surprise page
-  }
-
   render() {
     const { recipesMaster } = this.props
 
