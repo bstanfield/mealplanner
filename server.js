@@ -1,8 +1,7 @@
 const express = require('express');
 const app = express();
-const port = 80;
+const port = 3333;
 
-var pgp = require('pg-promise');
 const db = require('./queries');
 const bodyParser = require('body-parser');
 
