@@ -1,10 +1,25 @@
 import React, { Component } from 'react';
+import * as R from 'ramda';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { SetAllRecipes } from '../actions';
 
 class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
+  }
+
+  componentDidMount() {
+    fetch(
+      `http://localhost:3333/recipenames`,
+      {
+        method: 'GET',
+      }, 
+    ).then(response => response.json())
+    .then(recipes => this.props.SetAllRecipes(recipes))
+    .catch(error => this.setState({ error }));
   }
 
   render() {
@@ -22,4 +37,13 @@ class Nav extends Component {
   }
 }
 
-export default Nav; // Don’t forget to use export default!
+function mapStatetoProps(state) {
+  return {
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ SetAllRecipes }, dispatch);
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Nav);

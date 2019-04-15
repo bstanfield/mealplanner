@@ -51,13 +51,13 @@ class RecipesAll extends Component {
     ).then(response => response.json())
     .then(recipes => this.props.SetAllRecipes(recipes))
     .catch(error => this.setState({ error }));
+    // Duplicate fetch call in surprise page
   }
 
   render() {
     const { recipesMaster } = this.props
 
     if (this.state.redirect === true) {
-      // can send recipe id over instead
       return (
         <Redirect to={{
           pathname: '/recipe-page',
