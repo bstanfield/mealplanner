@@ -61,7 +61,7 @@ class RecipesAll extends Component {
       return (
         <Redirect to={{
           pathname: '/recipe-page',
-          state: { recipe: this.state.selectedRecipe.recipe_name }
+          search: `?recipe=${this.state.selectedRecipe.recipe_name}&id=${this.state.selectedRecipe.id}`
         }} />
       );
     }

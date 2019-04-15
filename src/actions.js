@@ -12,4 +12,12 @@ export function SetRecipePage(recipe) {
   };
 }
 
+export function SetRecipeIngredients(ingredients) {
+  return{
+    type: 'SET_RECIPE_INGREDIENTS',
+    ingredients,
+  };
+}
+
+
 
