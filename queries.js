@@ -83,7 +83,10 @@ const getPersonas = (req, res) => {
 const getPersonas = (req, res) => {
   console.log('inside getPersonas');
   pool.query('SELECT * FROM personas WHERE chars IS NOT NULL', [])
-  .then((res) => res.status(200).json(res.rows))
+  .then((res) => {
+    console.log('res: ', res);
+    res.status(200).json(res.rows);
+  })
   .catch(err => console.error('Error executing query', err.stack))
 
   console.log('pool.query finished');
