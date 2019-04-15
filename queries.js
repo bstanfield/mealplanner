@@ -68,9 +68,39 @@ const getRecipeIngredients = (req, res) => {
   })
 }
 
+const getPersonas = (req, res) => {
+  pool.query(
+    `SELECT * FROM personas WHERE chars IS NOT NULL`,
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+
+    res.status(200).json(results.rows)
+  })
+}
+
+const getPersonaSpecificRecipes = (req, res) => {
+  const personaId = parseInt(req.params.personaId);
+  pool.query(
+    `SELECT recipe_master.id, recipe_name, image_url, restrictions FROM recipe_master 
+    LEFT JOIN restrictions ON recipe_master.restrictions_id=restrictions.id
+    WHERE persona_id=$1`,
+    [personaId],
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+
+    res.status(200).json(results.rows)
+  })
+}
+
 module.exports = {
     getRecipeNames,
     getMasterRecipe,
     getSurveyResults,
-    getRecipeIngredients
+    getRecipeIngredients,
+    getPersonas,
+    getPersonaSpecificRecipes
 }

@@ -12,7 +12,7 @@ class Nav extends Component {
   }
 
   // fetching all recipes here so there are no redundant calls throughout surprise and all recipes page
-  
+
   componentDidMount() {
     fetch(
       `http://localhost:3333/recipenames`,

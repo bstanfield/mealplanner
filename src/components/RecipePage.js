@@ -36,15 +36,15 @@ const renderRecipeIngredients = (ingredientObj) => (
   </div>
 )
 
-const renderRecipeTips = (recipeTip) => (
-  <div>
-    <h4>{recipeTip.name}:</h4>
-    <ReactMarkdown
-      source={recipeTip.tip}
-      escapeHtml={false}
-    />
-  </div>
-)
+// const renderRecipeTips = (recipeTip) => (
+//   <div>
+//     <h4>{recipeTip.name}:</h4>
+//     <ReactMarkdown
+//       source={recipeTip.tip}
+//       escapeHtml={false}
+//     />
+//   </div>
+// )
 
 class RecipePage extends Component {
   constructor(props) {
@@ -92,9 +92,9 @@ class RecipePage extends Component {
   }
 
   render() {
-    const {recipe_name, preptime, cooktime, cost, instructions, level, image_url} = this.props.recipePage.recipePage;
+    const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
-    console.log("instructions", instructions);
+    console.log("this.props.recipePage.recipePage", this.props.recipePage.recipePage);
     return(
       <div>
         <div className="recipe-header">
@@ -109,8 +109,11 @@ class RecipePage extends Component {
             <hr/>
             <p>Cost: {cost}</p>
             <p>Level: {level}</p>
+
+            {/* This section only works if they link their Google Account */}
             <div className="btn favorite">♥ Favorite</div>
             <div className="btn calendar">Calendar</div>
+            
           </div>
         </div>
         <br style={{'clear': 'both'}} />
@@ -131,11 +134,13 @@ class RecipePage extends Component {
             {R.addIndex(R.map)(renderRecipeInstructions, instructions)}
           </form>
         </div>
-        <div className="recipe tips">
-          <h2>Meal Prep Tips</h2>
-          {/* {R.map(renderRecipeTips, recipeTips)} */}
 
-        </div>
+        {/* Don't think we want this section anymore... Very few tips for the recipes in the database */}
+        {/* <div className="recipe tips">
+          <h2>Meal Prep Tips</h2>
+          {R.map(renderRecipeTips, reheat)}
+        </div> */}
+
       </div>
     )
   }

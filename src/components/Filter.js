@@ -99,7 +99,7 @@ class Filter extends Component {
                 {R.map(renderFilterLabel, this.state.filters)}
                 
                 <button>
-                    <a href="/surprise-customize">Filter</a>
+                    <a href="/surprise">Filter</a>
                 </button>
             </div>
         </div>
