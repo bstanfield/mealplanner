@@ -87,6 +87,9 @@ class Surprise extends Component {
     if (this.state.index < recipesMaster.recipes.length-1) {
       this.setState({index: this.state.index+1})
     }
+    else if (this.state.index === this.props.recipesMaster.recipes.length-1) {
+        this.setState({index: 0})
+      }
   }
 
   renderSlide = (slide) => {
