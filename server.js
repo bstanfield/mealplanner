@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 3333;
+const port = 80;
 
 var pgp = require('pg-promise');
 const db = require('./queries');

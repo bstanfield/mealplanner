@@ -3,10 +3,10 @@ const httpBuildQuery = require('http-build-query');
 
 const pool = new Pool({
   user: 'postgres',
-  host: '127.0.0.1',
+  host: '35.185.213.57',
   database: 'postgres',
   password: 'simplepassword',
-  port: 3333,
+  port: 80,
 });
 
 const getRecipeNames = (req, res) => {
@@ -78,6 +78,15 @@ const getPersonas = (req, res) => {
 
     res.status(200).json(results.rows)
   })
+}
+
+const getPersonas = (req, res) => {
+  console.log('inside getPersonas');
+  pool.query('SELECT * FROM personas WHERE chars IS NOT NULL', [])
+  .then((res) => res.status(200).json(res.rows))
+  .catch(err => console.error('Error executing query', err.stack))
+
+  console.log('pool.query finished');
 }
 
 const getPersonaSpecificRecipes = (req, res) => {
