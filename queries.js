@@ -1,5 +1,6 @@
 const { Pool, Client } = require('pg');
 const vars = require('./variables.js');
+const R = require('ramda');
 
 const pool = vars.devPool;
 
@@ -13,6 +14,11 @@ const getRecipeNames = (req, res) => {
 }
 
 const getMasterRecipe = (req, res) => {
+  if (typeof req.params.name !== 'string') {
+    res.status(401).send(`Error in request params`);
+    return;
+  }
+  
   const name = '%' + String(req.params.name) + '%';
   pool.query(
     "SELECT * FROM recipe_master INNER JOIN levels ON levels.id=recipe_master.level_id INNER JOIN personas ON personas.id=recipe_master.persona_id where recipe_master.recipe_name ILIKE $1", [name])
@@ -26,6 +32,11 @@ const getMasterRecipe = (req, res) => {
 }
 
 const getSurveyResults = (req, res) => {
+  if (isNaN(req.params.cost) === true || isNaN(req.params.cookTime) === true || isNaN(req.params.restriction) === true) {
+    res.status(401).send(`Error in request params`);
+    return;
+  }
+  
   const cost = parseInt(req.params.cost);
   const cookTime = parseInt(req.params.cookTime);
   const restriction = parseInt(req.params.restriction);
@@ -38,12 +49,17 @@ const getSurveyResults = (req, res) => {
         throw error
       }
     
-    console.log('request from: ', req.url);
+    console.log(vars.logTime, req.url);
     res.status(200).json(results.rows)
   })
 }
 
-const getRecipeIngredients = (req, res) => {
+const getRecipeIngredients = (req, res, next) => {
+  console.log(vars.logTime, req.url);
+  if (isNaN(req.params.id) === true) {
+    return next(res.status(401).send(`Error in request params`));
+  }
+
   const id = parseInt(req.params.id);
 
   pool.query(
@@ -57,13 +73,11 @@ const getRecipeIngredients = (req, res) => {
       if (error) {
         throw error
       }
-
-    console.log(vars.logTime, req.url);
     res.status(200).json(results.rows)
   })
 }
 
-const getPersonas = (req, res) => {
+const getPersonas = (req, res, next) => {
   pool.query(
     `SELECT * FROM personas WHERE chars IS NOT NULL`,
     (error, results) => {
@@ -76,8 +90,14 @@ const getPersonas = (req, res) => {
   })
 }
 
-const getPersonaSpecificRecipes = (req, res) => {
+const getPersonaSpecificRecipes = (req, res, next) => {
+  console.log(vars.logTime, req.url); 
+  if (isNaN(req.params.personaId) === true) {
+    return next(res.status(401).send(`Error in request params`));
+  }
+
   const personaId = parseInt(req.params.personaId);
+
   pool.query(
     `SELECT recipe_master.id, recipe_name, image_url, restrictions FROM recipe_master 
     LEFT JOIN restrictions ON recipe_master.restrictions_id=restrictions.id
@@ -88,7 +108,6 @@ const getPersonaSpecificRecipes = (req, res) => {
         throw error
       }
 
-    console.log(vars.logTime, req.url); 
     res.status(200).json(results.rows);
   })
 }
