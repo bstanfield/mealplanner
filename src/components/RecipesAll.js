@@ -44,6 +44,7 @@ class RecipesAll extends Component {
 
   render() {
     const { recipesMaster } = this.props
+    console.log('selected recipe', this.state.selectedRecipe);
 
     if (this.state.redirect === true) {
       return (

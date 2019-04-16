@@ -15,7 +15,7 @@ class Nav extends Component {
 
   componentDidMount() {
     fetch(
-      `http://localhost:3333/recipenames`,
+      `http://35.236.39.233/recipenames`,
       {
         method: 'GET',
       }, 

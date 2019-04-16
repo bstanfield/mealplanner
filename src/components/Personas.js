@@ -26,7 +26,7 @@ class Personas extends Component {
 
   componentDidMount() {
     fetch(
-      `http://localhost:3333/personas`,
+      `http://35.236.39.233/personas`,
       {
         method: 'GET',
       }, 

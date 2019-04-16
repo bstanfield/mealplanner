@@ -69,7 +69,7 @@ class RecipePage extends Component {
 
     // GET RECIPE META
     fetch(
-      `http://localhost:3333/master_recipes/${recipeName}`,
+      `http://35.236.39.233/master_recipes/${recipeName}`,
       {
         method: 'GET',
       }, 
@@ -81,7 +81,7 @@ class RecipePage extends Component {
     
     // GET RECIPE INSTRUCTIONS INGREDIENTS
     fetch(
-      `http://localhost:3333/ingredients/${recipeId}`,
+      `http://35.236.39.233/ingredients/${recipeId}`,
       {
         method: 'GET',
       }, 
