@@ -5,7 +5,7 @@ const db = require('./queries');
 const bodyParser = require('body-parser');
 
 // just change to prodPort for production
-const port = vars.devPort;
+const port = vars.prodPort;
 
 // bodyParser middleware to help parse JSON
 app.use(bodyParser.json())
