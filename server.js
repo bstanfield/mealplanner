@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
-const port = 80;
-
+const vars = require('./variables.js');
 const db = require('./queries');
 const bodyParser = require('body-parser');
+
+// just change to prodPort for production
+const port = vars.devPort;
 
 // bodyParser middleware to help parse JSON
 app.use(bodyParser.json())
@@ -36,5 +38,6 @@ app.get('/master_recipes/:name', db.getMasterRecipe)
 
 // Standard messages
 app.get('/', (req, res) => {
+    console.log(`${vars.logTime}`, '/')
     res.json({ info: 'Node.js, Express, and Postgres API' })
 })

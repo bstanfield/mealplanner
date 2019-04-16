@@ -1,16 +1,7 @@
-const { Pool, Client } = require('pg')
+const { Pool, Client } = require('pg');
+const vars = require('./variables.js');
 
-const pool = new Pool({
-  user: 'postgres',
-  host: '35.185.213.57',
-  database: 'postgres',
-  password: 'simplepassword',
-  port: 5432,
-});
-
-// IP FOR CLOUDSQL: 35.185.213.57
-// IP FOR LOCAL DEV: 127.0.0.1
-// IP FOR CE: 35.236.39.233
+const pool = vars.devPool;
 
 const getRecipeNames = (req, res) => {
   pool.query('SELECT id, recipe_name, image_url FROM recipe_master', (error, results) => {
@@ -26,6 +17,7 @@ const getMasterRecipe = (req, res) => {
   pool.query(
     "SELECT * FROM recipe_master INNER JOIN levels ON levels.id=recipe_master.level_id INNER JOIN personas ON personas.id=recipe_master.persona_id where recipe_master.recipe_name ILIKE $1", [name])
   .then((data) => {
+    console.log('request from: ', req.url);
     res.status(200).json(data.rows);
   })
   .catch((error) => {
@@ -45,7 +37,8 @@ const getSurveyResults = (req, res) => {
       if (error) {
         throw error
       }
-
+    
+    console.log('request from: ', req.url);
     res.status(200).json(results.rows)
   })
 }
@@ -65,6 +58,7 @@ const getRecipeIngredients = (req, res) => {
         throw error
       }
 
+    console.log(vars.logTime, req.url);
     res.status(200).json(results.rows)
   })
 }
@@ -77,6 +71,7 @@ const getPersonas = (req, res) => {
         throw error
       }
 
+    console.log(vars.logTime, req.url);
     res.status(200).json(results.rows)
   })
 }
@@ -93,7 +88,8 @@ const getPersonaSpecificRecipes = (req, res) => {
         throw error
       }
 
-    res.status(200).json(results.rows)
+    console.log(vars.logTime, req.url); 
+    res.status(200).json(results.rows);
   })
 }
 
