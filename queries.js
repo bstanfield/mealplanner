@@ -2,10 +2,10 @@ const { Pool, Client } = require('pg')
 
 const pool = new Pool({
   user: 'postgres',
-  host: '127.0.0.1',
+  host: '35.185.213.57',
   database: 'postgres',
   password: 'simplepassword',
-  port: 8080,
+  port: 5432,
 });
 
 // IP FOR CLOUDSQL: 35.185.213.57
@@ -13,7 +13,7 @@ const pool = new Pool({
 // IP FOR CE: 35.236.39.233
 
 const getRecipeNames = (req, res) => {
-  pool.query('SELECT recipe_name, image_url FROM recipe_master', (error, results) => {
+  pool.query('SELECT id, recipe_name, image_url FROM recipe_master', (error, results) => {
     if (error) {
       throw error
     }
@@ -26,7 +26,7 @@ const getMasterRecipe = (req, res) => {
   pool.query(
     "SELECT * FROM recipe_master INNER JOIN levels ON levels.id=recipe_master.level_id INNER JOIN personas ON personas.id=recipe_master.persona_id where recipe_master.recipe_name ILIKE $1", [name])
   .then((data) => {
-    res.status(200).json(data);
+    res.status(200).json(data.rows);
   })
   .catch((error) => {
     console.log('ERROR: ', error);

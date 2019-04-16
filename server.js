@@ -1,6 +1,6 @@
 const express = require('express');
 const app = express();
-const port = 8080;
+const port = 80;
 
 const db = require('./queries');
 const bodyParser = require('body-parser');
@@ -14,7 +14,7 @@ app.use(
 )
 
 // Confirms server is running in console
-app.listen(port, () => console.log(`Listening on port ${port}`));
+app.listen(port);
 
 // Use this endpoint to get all persona names and characteristics
 app.get('/personas', db.getPersonas);
