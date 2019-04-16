@@ -32,6 +32,17 @@ class RecipesAll extends Component {
     this.setState({ selectedRecipe: recipe, redirect: true });
   }
 
+  componentDidMount() {
+    fetch(
+      `http://35.236.39.233/recipenames`,
+      {
+        method: 'GET',
+      }, 
+    ).then(response => response.json())
+    .then(recipes => this.props.SetAllRecipes(recipes))
+    .catch(error => this.setState({ error }));
+  }
+
   renderRecipe = (recipe) => (
     <a className="link-nostyle">
       <div onClick={() => this.setRedirect(recipe)}>
@@ -41,7 +52,6 @@ class RecipesAll extends Component {
       </div>
     </a>
   )
-
   render() {
     const { recipesMaster } = this.props
     console.log('selected recipe', this.state.selectedRecipe);

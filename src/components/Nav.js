@@ -14,15 +14,16 @@ class Nav extends Component {
   // fetching all recipes here so there are no redundant calls throughout surprise and all recipes page
 
   componentDidMount() {
-    fetch(
-      `http://35.236.39.233/recipenames`,
-      {
-        method: 'GET',
-      }, 
-    ).then(response => response.json())
-    .then(recipes => this.props.SetAllRecipes(recipes))
-    .catch(error => this.setState({ error }));
+    // fetch(
+    //   `http://35.236.39.233/recipenames`,
+    //   {
+    //     method: 'GET',
+    //   }, 
+    // ).then(response => response.json())
+    // .then(recipes => this.props.SetAllRecipes(recipes))
+    // .catch(error => this.setState({ error }));
   }
+  
 
   render() {
     return(

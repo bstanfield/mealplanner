@@ -19,28 +19,24 @@ class Survey extends Component {
     this.state = {
       questions: [
         {
-          q: 'How many meals do you need to prep every week?',
-          desc: 'Estimate how many breakfasts, lunches, and dinners that you currently or would like to replace with prepped food.'
-        },
-        {
           q: 'How much money would you like to spend on a meal?',
-          desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.'
+          desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.',
+          answer: '', 
         },
         {
           q: 'How much time do you spend cooking a meal?',
-          desc: 'Estimate how long a simple dinner takes to cook, or how much time you have available for cooking a meal in minutes.'
-        },
-        {
-          q: 'What cuisines do you prefer?',
-          desc: 'Choose as many options as you like.'
+          desc: 'Estimate how long a simple dinner takes to cook, or how much time you have available for cooking a meal in minutes.',
+          answer: '', 
         },
         {
           q: 'Do you have any dietary preferences?',
-          desc: 'Select as many as applicable.'
+          desc: 'Vegetarian, Vegan, Gluten Free?',
+          answer: '', 
         },
       ],
       index: 0,
       isComplete: false,
+      error: '',
     };
   }
 
@@ -51,29 +47,88 @@ class Survey extends Component {
     )
   }
 
+  handleInputChange = (event) => {
+    var questionsClone = {...this.state.questions};
+    questionsClone[this.state.index].answer = event.target.value;
+    this.setState({questionsClone});
+    console.log("questionsClone", questionsClone)
+  }
+
   renderSurveyQuestion = (question) => (
     <div className="questionBox">
       <h3>{this.state.index + 1}/ {question.q}</h3>
         <p>{question.desc}</p>
         <form>
-          <input type="text" name="" className="survey-text"></input>
+          <input type="text" id={this.state.index} className="survey-text" value={this.state.questions[this.state.index].answer} onChange={ (e) => this.handleInputChange(e) }></input>
         </form>
         {
-          (this.state.index + 1) === this.state.questions.length ?
-          (<div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">Submit!</div>) :
-          (<div onClick={ this.updateIndex } className="btn fit-content">Next question</div>)
+          (this.state.index + 1) === this.state.questions.length 
+          ? ( 
+            <div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">
+              Submit!
+            </div>
+            )
+          : (
+            <div onClick={ this.updateIndex } className="btn fit-content">
+              Next question
+            </div>
+            )
         }
 
     </div>
   )
 
+  
+  // componentDidMount() {
+  //   console.log("component did mount!")
+  //   if (this.state.isComplete) {
+  //     console.log("fetching recipes!")
+  //     let cost = this.state.questions[0].answer
+  //     let cookTime = this.state.questions[1].answer
+  //     let restriction = this.state.questions[2].answer
+  //     console.log("cost", cost);
+  //     console.log("cookTime", cookTime);
+  //     console.log("restriction", restriction);
+  //     fetch(
+  //       `http://35.236.39.233/survey_results/${cost}/${cookTime}/${restriction}`,
+  //       {
+  //         method: 'GET',
+  //       }, 
+  //     ).then(response => response.json())
+  //     .then(recipes => console.log(recipes))
+  //     .catch(error => this.setState({ error }));
+  
+  //     // .then(recipes => this.props.SetAllRecipes(recipes))
+  
+  //   }
+    
+  // }
+  
+
   render() {
     const { isComplete } = this.state;
 
+    // if (isComplete) {
+    //   return (
+    //     <Redirect exact to="/surprise" />
+    //   )
+    // }
+
     if (isComplete) {
+      let cost = this.state.questions[0].answer
+      let cookTime = this.state.questions[1].answer
+      let restriction = this.state.questions[2].answer
       return (
-        <Redirect exact to="/surprise-customize" />
-      )
+        <Redirect to={{
+          pathname: '/surprise',
+          search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`
+        }} />
+      );
+    }
+
+
+    if (this.state.error) {
+      return <p>{this.state.error.message}</p>;
     }
 
     return(

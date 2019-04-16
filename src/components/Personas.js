@@ -4,23 +4,15 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetPersonas } from '../actions';
-
-const renderPersonas = (persona) => (
-  <a className="link-nostyle" href="/surprise">
-    <div className="persona">
-      <h2>{persona.persona}</h2>
-      <ul>
-        {R.map(x => <li>{x}</li>, persona.chars)}
-      </ul>
-    </div>
-  </a>
-)
+import { Redirect } from 'react-router-dom';
 
 class Personas extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      error: ''
+      redirect: false,
+      error: '',
+      selectedPersona:'',
     };
   }
 
@@ -36,12 +28,37 @@ class Personas extends Component {
     
   }
 
+  renderPersonas = (persona) => (
+    <a className="link-nostyle">
+      <div className="persona" onClick={() => this.setRedirect(persona)}>
+        <h2>{persona.persona}</h2>
+        <ul>
+          {R.map(x => <li>{x}</li>, persona.chars)}
+        </ul>
+      </div>
+    </a>
+  )
+  
+  setRedirect(persona){
+    this.setState({ selectedPersona: persona.id, redirect: true });
+  }
+
   render() {
     const { personas } = this.props;
 
     if (this.state.error) {
       return <p>{this.state.error.message}</p>;
     }
+
+    if (this.state.redirect) {
+      return (
+        <Redirect to={{
+          pathname: '/surprise',
+          search: `?source=preset&persona=${this.state.selectedPersona}`
+        }} />
+      );
+    }
+
 
     return(
       <div className="persona-page">
@@ -50,7 +67,7 @@ class Personas extends Component {
         <br/>
         <br/>
         <div className="persona-container">
-          {R.map(renderPersonas, personas)}
+          {R.map(this.renderPersonas, personas)}
         </div>
       </div>
     )

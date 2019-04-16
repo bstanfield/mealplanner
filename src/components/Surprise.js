@@ -18,6 +18,8 @@ import { SetAllRecipes } from '../actions';
 import '../surprise.scss'
 
 import ReactGA from 'react-ga';
+const queryString = require('query-string');
+ 
 export const initGA = () => {
     console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
@@ -68,10 +70,31 @@ class Surprise extends Component {
       };
     }
   
-    setRedirect(recipe){
-      this.setState({ selectedRecipe: recipe, redirect: true });
-    }
+	setRedirect(recipe){
+		this.setState({ selectedRecipe: recipe, redirect: true });
+	}
 
+	componentDidMount() {
+		let parsedQuery = queryString.parse(this.props.params.location.search);
+		let endpointToHit; 
+		if (parsedQuery.source === 'preset') {
+			endpointToHit = `persona_recipes/${parsedQuery.persona}`;
+			// need to send over persona ID
+		} else if (parsedQuery.source === 'survey') {
+			endpointToHit = `survey_results/${parsedQuery.cost}/${parsedQuery.cookTime}/${parsedQuery.restriction}`;
+		}
+		console.log('endpointToHit', endpointToHit)
+		fetch(
+      `http://35.236.39.233/${endpointToHit}`,
+      {
+        method: 'GET',
+      }, 
+    ).then(response => response.json())
+    .then(recipes => this.props.SetAllRecipes(recipes))
+		.catch(error => this.setState({ error }));
+		// There should be an option to not have restrictions
+		// .then(recipes => console.log ('recipes', recipes))
+	}
 
   goToPrevious() {
     if (this.state.index > 0) {
@@ -136,7 +159,6 @@ class Surprise extends Component {
                     <FontAwesomeIcon icon={faArrowCircleLeft} />
                 </div>
                 <div className="carousel-img">
-                  <h3>{this.state.index}</h3>
                     {this.renderSlide(recipesMaster.recipes[this.state.index])} 
                 </div>
                 <div className="nextBtn" onClick={() => this.goToNext()}>
