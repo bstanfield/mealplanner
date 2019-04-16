@@ -79,7 +79,6 @@ class Surprise extends Component {
 		let endpointToHit; 
 		if (parsedQuery.source === 'preset') {
 			endpointToHit = `persona_recipes/${parsedQuery.persona}`;
-			// need to send over persona ID
 		} else if (parsedQuery.source === 'survey') {
 			endpointToHit = `survey_results/${parsedQuery.cost}/${parsedQuery.cookTime}/${parsedQuery.restriction}`;
 		}
@@ -92,8 +91,6 @@ class Surprise extends Component {
     ).then(response => response.json())
     .then(recipes => this.props.SetAllRecipes(recipes))
 		.catch(error => this.setState({ error }));
-		// There should be an option to not have restrictions
-		// .then(recipes => console.log ('recipes', recipes))
 	}
 
   goToPrevious() {

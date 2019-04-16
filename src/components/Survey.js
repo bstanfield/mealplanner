@@ -78,41 +78,8 @@ class Survey extends Component {
     </div>
   )
 
-  
-  // componentDidMount() {
-  //   console.log("component did mount!")
-  //   if (this.state.isComplete) {
-  //     console.log("fetching recipes!")
-  //     let cost = this.state.questions[0].answer
-  //     let cookTime = this.state.questions[1].answer
-  //     let restriction = this.state.questions[2].answer
-  //     console.log("cost", cost);
-  //     console.log("cookTime", cookTime);
-  //     console.log("restriction", restriction);
-  //     fetch(
-  //       `http://35.236.39.233/survey_results/${cost}/${cookTime}/${restriction}`,
-  //       {
-  //         method: 'GET',
-  //       }, 
-  //     ).then(response => response.json())
-  //     .then(recipes => console.log(recipes))
-  //     .catch(error => this.setState({ error }));
-  
-  //     // .then(recipes => this.props.SetAllRecipes(recipes))
-  
-  //   }
-    
-  // }
-  
-
   render() {
     const { isComplete } = this.state;
-
-    // if (isComplete) {
-    //   return (
-    //     <Redirect exact to="/surprise" />
-    //   )
-    // }
 
     if (isComplete) {
       let cost = this.state.questions[0].answer
