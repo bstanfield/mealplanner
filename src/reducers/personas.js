@@ -7,8 +7,8 @@ const initialState = [
     persona: 'bougie',
     chars: ['You love to have the best ingredients and most complicated rcipes, even if it means sinking more time and money into it', 'At the end of the day, you want to truly do justice to every culinary style']
   },
-
 ];
+
 
 // const setPersonas = (state, action) => {
 //   return action.personas;

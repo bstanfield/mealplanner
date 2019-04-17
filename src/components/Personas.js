@@ -25,7 +25,6 @@ class Personas extends Component {
     ).then(response => response.json())
     .then(personas => this.props.SetPersonas(personas))
     .catch(error => this.setState({ error }));
-    
   }
 
   renderPersonas = (persona) => (
