@@ -117,6 +117,7 @@ class Survey extends Component {
               type="radio"
               name={this.state.index}
               value={option.value}
+              key={option.value}
               onChange={(e) => this.handleInputChange(e)}
             />
             {` ${option.label}`}
@@ -124,7 +125,6 @@ class Survey extends Component {
           </label>
           )
           )}
-          
         </form>
         {
           (this.state.index + 1) === this.state.questions.length 
