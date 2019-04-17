@@ -71,6 +71,7 @@ const getRecipeIngredients = (req, res, next) => {
     [id],
     (error, results) => {
       if (error) {
+        console.log('Dad is the worst');
         throw error
       }
     res.status(200).json(results.rows)
