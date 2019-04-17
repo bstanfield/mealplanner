@@ -69,7 +69,7 @@ class RecipePage extends Component {
 
     // GET RECIPE META
     fetch(
-      `http://35.236.39.233/master_recipes/${recipeName}`,
+      `http://api.stanfield.space/master_recipes/${recipeName}`,
       {
         method: 'GET',
         mode: 'cors',
@@ -82,7 +82,7 @@ class RecipePage extends Component {
     
     // GET RECIPE INSTRUCTIONS INGREDIENTS
     fetch(
-      `http://35.236.39.233/ingredients/${recipeId}`,
+      `http://api.stanfield.space/ingredients/${recipeId}`,
       {
         method: 'GET',
         mode: 'cors',

@@ -18,7 +18,7 @@ class Personas extends Component {
 
   componentDidMount() {
     fetch(
-      `http://35.236.39.233/personas`,
+      `http://api.stanfield.space/personas`,
       {
         method: 'GET',
         mode: 'cors',

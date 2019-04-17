@@ -34,7 +34,7 @@ class RecipesAll extends Component {
 
   componentDidMount() {
     fetch(
-      `http://35.236.39.233/recipenames`,
+      `http://api.stanfield.space/recipenames`,
       {
         method: 'GET',
         mode: 'cors',

@@ -84,7 +84,7 @@ class Surprise extends Component {
 		}
 		console.log('endpointToHit', endpointToHit)
 		fetch(
-      `http://35.236.39.233/${endpointToHit}`,
+      `http://api.stanfield.space/${endpointToHit}`,
       {
 				method: 'GET',
 				mode: 'cors',
