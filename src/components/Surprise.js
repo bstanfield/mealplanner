@@ -86,7 +86,9 @@ class Surprise extends Component {
 		fetch(
       `http://35.236.39.233/${endpointToHit}`,
       {
-        method: 'GET',
+				method: 'GET',
+				mode: 'cors',
+				// Not ideal to have all of our requests sent with cross origin request allowed
       }, 
     ).then(response => response.json())
     .then(recipes => this.props.SetAllRecipes(recipes))

@@ -72,6 +72,7 @@ class RecipePage extends Component {
       `http://35.236.39.233/master_recipes/${recipeName}`,
       {
         method: 'GET',
+        mode: 'cors',
       }, 
     ).then(response => response.json())
     .then(recipe => this.props.SetRecipePage(recipe))
@@ -84,6 +85,7 @@ class RecipePage extends Component {
       `http://35.236.39.233/ingredients/${recipeId}`,
       {
         method: 'GET',
+        mode: 'cors',
       }, 
     ).then(response => response.json())
     .then(ingredients => this.props.SetRecipeIngredients(ingredients))

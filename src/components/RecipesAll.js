@@ -37,6 +37,7 @@ class RecipesAll extends Component {
       `http://35.236.39.233/recipenames`,
       {
         method: 'GET',
+        mode: 'cors',
       }, 
     ).then(response => response.json())
     .then(recipes => this.props.SetAllRecipes(recipes))

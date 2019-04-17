@@ -21,6 +21,7 @@ class Personas extends Component {
       `http://35.236.39.233/personas`,
       {
         method: 'GET',
+        mode: 'cors',
       }, 
     ).then(response => response.json())
     .then(personas => this.props.SetPersonas(personas))
