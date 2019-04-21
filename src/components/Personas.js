@@ -27,7 +27,7 @@ class Personas extends Component {
     return(
       <div className="persona-page">
         <h1>Choose a foodie type</h1>
-        <h2>We will recommend a recipe based on the traits of the persona you choose!</h2>
+        <h2>We will recommend recipes based on the traits of the persona you choose!</h2>
         <br/>
         <br/>
         <div className="persona-container">

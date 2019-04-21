@@ -52,18 +52,21 @@ class Survey extends Component {
   }
 
   renderSurveyQuestion = (question) => (
-    <div className="questionBox">
-      <h3>{this.state.index + 1}/ {question.q}</h3>
+    <div className="questionrow">
+      <div className="questioncolumn qc">
+      <h3>{question.q}</h3>
         <p>{question.desc}</p>
-    
+      </div>
+      <div className="questioncolumn">
         <form>
-          <input type="text" name="" className="survey-text"></input>
+          <input type="text" name="" className="survey-text" placeholder="answer"></input>
         </form>
         {
           (this.state.index + 1) === this.state.questions.length ?
           (<div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">Submit!</div>) :
-          (<div onClick={ this.updateIndex } className="btn fit-content">Next question</div>)
+          (<div onClick={ this.updateIndex } className="btn fit-content">next question</div>)
         }
+        </div>
 
         </div>
 
@@ -85,9 +88,6 @@ class Survey extends Component {
     return(
       <div className="surveycontainer">
       <div className="survey-header">
-        
-        <br/>
-        <br/>
        { this.renderSurveyQuestion(this.state.questions[this.state.index]) } 
       </div>
 

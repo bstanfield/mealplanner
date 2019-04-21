@@ -13,8 +13,8 @@ h1, h2, h3, h4 {
 h1 {
   font-style: normal; 
   font-family: futura-pt;
-  font-size: 35px;
-  font-weight: 500;
+  font-size: 40px;
+  font-weight: 600;
   font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
@@ -110,7 +110,7 @@ h2 {
   font-style: normal; 
   font-family: futura-pt;
   font-size: 25px;
-  font-weight: 500;
+  font-weight: 600;
   font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
@@ -152,7 +152,7 @@ p, ul {
 
 .btn {
 display: inline-block;
-  border: 2px solid white;
+  border: 2px solid #8dd5d3;
   background-color: transparent;
   color: white;
   font-size: 20px;
@@ -162,12 +162,13 @@ display: inline-block;
   padding: 15px 15px 15px 15px;
   margin: 10px 0;
   text-align: center;
-  color: white;
+  color: #8dd5d3;
   cursor: pointer;
 }
 
-  .btn:hover {
-    box-shadow: $standard-shadow;
+.btn:hover {
+    background-color: #8dd5d3;
+    color: white;
     transition: $fast-transition;
   }
 
@@ -209,20 +210,15 @@ display: inline-block;
   h1, h2 {
     text-align: center;
   }
-  background: #8dd5d3 no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
-  width: 50%;
-  margin: auto;
-  position: absolute;
   
 }
 
 .surveycontainer {
   margin: 0; 
+  }
+
+.qc {
+  background: #8dd5d3;
 }
 
 .surveytitle {
@@ -253,54 +249,90 @@ font-style: normal;
   padding: 10px 60px;
   font-style: normal; 
   font-family: futura-pt;
-  font-size: 20px;
+  font-size: 45px;
   font-weight: 500;
   font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
   line-height: 1em;
-  color: black; 
+  color: #8dd5d3; 
   text-align: center;
+  border-width:0px;
+  border:none;
+  background: transparent;
 }
 
-.questionBox {
+input:focus, textarea { outline: none ! important; }
+
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.questioncolumn { 
+  text-align: center;
+  float: left;
+  width: 50%;
+  min-height: 100vh;
+}
+
+.questioncolumn h3 {
+  margin-top: 250px;
   font-style: normal; 
   font-family: futura-pt;
-  font-size: 20px;
+  font-size: 40px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.questioncolumn p {
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 25px;
   font-weight: 500;
   font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
   line-height: 1em;
   color: white;
-  text-align: center; 
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
 }
 
-.questionBox p {
-  font-style: normal; 
-  font-family: futura-pt;
-  font-size: 20px;
-  font-weight: 500;
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: -.01em;
-  line-height: 1em;
-  color: white;
-  text-align: center; 
-}
-
-.questionBox h3 {
+.questioncolumn form {
+  margin-top: 250px;
   font-style: normal; 
   font-family: futura-pt;
   font-size: 30px;
-  font-weight: 500;
+  font-weight: 700;
   font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
   line-height: 1em;
-  color: white;
-  text-align: center; 
+  color: #8dd5d3;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
 }
+
+
+.questionrow:after {
+  content: "";
+  display: table; 
+  clear: both;
+}
+
+.questionrow {
+  height: 100%;
+}
+
 
 // End Survey
 
@@ -363,6 +395,7 @@ font-style: normal;
   width: 100%;
   margin: auto;
   position: absolute;
+  opacity: .9;
 }
 
 .persona-container {
