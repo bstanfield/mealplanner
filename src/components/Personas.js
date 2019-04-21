@@ -18,7 +18,7 @@ class Personas extends Component {
 
   componentDidMount() {
     fetch(
-      `http://api.stanfield.space/personas`,
+      `https://api.foodwise.dev/personas`,
       {
         method: 'GET',
         mode: 'cors',

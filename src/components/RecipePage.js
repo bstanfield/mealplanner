@@ -69,7 +69,7 @@ class RecipePage extends Component {
 
     // GET RECIPE META
     fetch(
-      `http://api.stanfield.space/master_recipes/${recipeName}`,
+      `https://api.foodwise.dev/master_recipes/${recipeName}`,
       {
         method: 'GET',
         mode: 'cors',
@@ -82,7 +82,7 @@ class RecipePage extends Component {
     
     // GET RECIPE INSTRUCTIONS INGREDIENTS
     fetch(
-      `http://api.stanfield.space/ingredients/${recipeId}`,
+      `https://api.foodwise.dev/ingredients/${recipeId}`,
       {
         method: 'GET',
         mode: 'cors',

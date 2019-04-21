@@ -34,7 +34,7 @@ class RecipesAll extends Component {
 
   componentDidMount() {
     fetch(
-      `http://api.stanfield.space/recipenames`,
+      `https://api.foodwise.dev/recipenames`,
       {
         method: 'GET',
         mode: 'cors',
