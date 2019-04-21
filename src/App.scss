@@ -151,14 +151,19 @@ p, ul {
 // End Font styles
 
 .btn {
-  background-color: $accent;
-  padding: 5px 15px 5px 15px;
+display: inline-block;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: futura-pt;
+  padding: 15px 15px 15px 15px;
   margin: 10px 0;
-  border-radius: 2px;
   text-align: center;
   color: white;
   cursor: pointer;
-  outline: 0;
 }
 
   .btn:hover {
@@ -204,14 +209,97 @@ p, ul {
   h1, h2 {
     text-align: center;
   }
+  background: #8dd5d3 no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 50%;
+  margin: auto;
+  position: absolute;
+  
+}
+
+.surveycontainer {
+  margin: 0; 
+}
+
+.surveytitle {
+font-style: normal; 
+  font-family: futura-pt;
+  font-size: 35px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  }
+
+.surveysubtitle {
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 25px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
 }
 
 .survey-text {
   padding: 10px 60px;
-  border-radius: 2px;
-  background-color: $bg-color;
-  border: 2px solid $border-light;
-  margin-bottom: 20px;
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: black; 
+  text-align: center;
+}
+
+.questionBox {
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  text-align: center; 
+}
+
+.questionBox p {
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 20px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  text-align: center; 
+}
+
+.questionBox h3 {
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 30px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  text-align: center; 
 }
 
 // End Survey
@@ -266,6 +354,15 @@ p, ul {
   h1, h2 {
     text-align: center;
   }
+  background: url("blue.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  position: absolute;
 }
 
 .persona-container {
@@ -276,6 +373,8 @@ p, ul {
 }
 
 .persona {
+  opacity: .8; 
+  background: white;
   text-align: center;
   width: 250px;
   height: 250px;

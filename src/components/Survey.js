@@ -55,6 +55,7 @@ class Survey extends Component {
     <div className="questionBox">
       <h3>{this.state.index + 1}/ {question.q}</h3>
         <p>{question.desc}</p>
+    
         <form>
           <input type="text" name="" className="survey-text"></input>
         </form>
@@ -64,7 +65,12 @@ class Survey extends Component {
           (<div onClick={ this.updateIndex } className="btn fit-content">Next question</div>)
         }
 
-    </div>
+        </div>
+
+
+        
+
+    
   )
 
   render() {
@@ -77,12 +83,14 @@ class Survey extends Component {
     }
 
     return(
+      <div className="surveycontainer">
       <div className="survey-header">
-        <h1>Please fill out this survey as best you can</h1>
-        <h2>We will recommend a recipe based on the preferences you enter</h2>
+        
         <br/>
         <br/>
-        { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
+       { this.renderSurveyQuestion(this.state.questions[this.state.index]) } 
+      </div>
+
       </div>
     )
   }
