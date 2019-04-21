@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import * as R from 'ramda';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
+import { SetAllRecipes } from '../actions';
 
 class Nav extends Component {
   constructor(props) {
@@ -6,6 +10,20 @@ class Nav extends Component {
     this.state = {
     };
   }
+
+  // fetching all recipes here so there are no redundant calls throughout surprise and all recipes page
+
+  componentDidMount() {
+    // fetch(
+    //   `http://35.236.39.233/recipenames`,
+    //   {
+    //     method: 'GET',
+    //   }, 
+    // ).then(response => response.json())
+    // .then(recipes => this.props.SetAllRecipes(recipes))
+    // .catch(error => this.setState({ error }));
+  }
+  
 
   render() {
     return(
@@ -22,4 +40,13 @@ class Nav extends Component {
   }
 }
 
-export default Nav; // Don’t forget to use export default!
+function mapStatetoProps(state) {
+  return {
+  };
+}
+
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators({ SetAllRecipes }, dispatch);
+}
+
+export default connect(mapStatetoProps, mapDispatchToProps)(Nav);
