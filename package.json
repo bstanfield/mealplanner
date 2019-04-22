@@ -13,6 +13,7 @@
     "node-sass": "^4.11.0",
     "pg": "^7.9.0",
     "pg-promise": "^8.6.5",
+    "query-string": "^6.4.2",
     "ramda": "^0.26.1",
     "react": "^16.8.3",
     "react-dom": "^16.8.3",

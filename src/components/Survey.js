@@ -19,28 +19,74 @@ class Survey extends Component {
     this.state = {
       questions: [
         {
-          q: 'How many meals do you need to prep every week?',
-          desc: 'Estimate how many breakfasts, lunches, and dinners that you currently or would like to replace with prepped food.'
-        },
-        {
           q: 'How much money would you like to spend on a meal?',
-          desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.'
+          desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.',
+          options: [
+            {
+              value: 0,
+              label: '< $5'
+            },
+            {
+              value: 5,
+              label: '$5-10'
+            },
+            {
+              value: 10,
+              label: '$10-15'
+            },
+            {
+              value: 15,
+              label: '> $15'
+            }
+          ],
+          answer: '', 
         },
         {
           q: 'How much time do you spend cooking a meal?',
-          desc: 'Estimate how long a simple dinner takes to cook, or how much time you have available for cooking a meal in minutes.'
-        },
-        {
-          q: 'What cuisines do you prefer?',
-          desc: 'Choose as many options as you like.'
+          desc: 'Estimate how long a simple dinner takes to cook, or how much time you have available for cooking a meal in minutes.',
+          options: [
+            {
+              value: 30,
+              label: 'Less than 30 minutes'
+            },
+            {
+              value: 60,
+              label: '30 minutes to an hour'
+            },
+            {
+              value: 120,
+              label: '1 to 2 hours'
+            },
+            {
+              value: 500,
+              label: 'Greater than 2 hours'
+            }
+          ],
+          answer: '', 
         },
         {
           q: 'Do you have any dietary preferences?',
-          desc: 'Select as many as applicable.'
+          desc: 'Vegetarian, Vegan, Gluten Free?',
+          options: [
+            {
+              value: 1,
+              label: 'Vegan'
+            },
+            {
+              value: 2,
+              label: 'Vegetarian'
+            },
+            {
+              value: 0,
+              label: 'No dietary preferences'
+            }
+          ],
+          answer: '', 
         },
       ],
       index: 0,
       isComplete: false,
+      error: '',
     };
   }
 
@@ -51,6 +97,14 @@ class Survey extends Component {
     )
   }
 
+  handleInputChange = (event) => {
+    var questionsClone = {...this.state.questions};
+    questionsClone[this.state.index].answer = event.target.value;
+    this.setState({questionsClone});
+    console.log("questionsClone", questionsClone)
+  }
+
+
   renderSurveyQuestion = (question) => (
     <div className="questionrow">
       <div className="questioncolumn qc">
@@ -59,12 +113,33 @@ class Survey extends Component {
       </div>
       <div className="questioncolumn">
         <form>
-          <input type="text" name="" className="survey-text" placeholder="answer"></input>
+         {question.options.map((option) => (
+            <label>
+            <input
+              type="radio"
+              name={this.state.index}
+              value={option.value}
+              key={option.value}
+              onChange={(e) => this.handleInputChange(e)}
+            />
+            {` ${option.label}`}
+            <br /><br />
+          </label>
+          )
+          )}
         </form>
         {
-          (this.state.index + 1) === this.state.questions.length ?
-          (<div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">Submit!</div>) :
-          (<div onClick={ this.updateIndex } className="btn fit-content">next question</div>)
+          (this.state.index + 1) === this.state.questions.length 
+          ? ( 
+            <div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">
+              Submit!
+            </div>
+            )
+          : (
+            <div onClick={ this.updateIndex } className="btn fit-content">
+              Next question
+            </div>
+            )
         }
         </div>
 
@@ -80,9 +155,20 @@ class Survey extends Component {
     const { isComplete } = this.state;
 
     if (isComplete) {
+      let cost = this.state.questions[0].answer
+      let cookTime = this.state.questions[1].answer
+      let restriction = this.state.questions[2].answer
       return (
-        <Redirect exact to="/surprise-customize" />
-      )
+        <Redirect to={{
+          pathname: '/surprise',
+          search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`
+        }} />
+      );
+    }
+
+
+    if (this.state.error) {
+      return <p>{this.state.error.message}</p>;
     }
 
     return(

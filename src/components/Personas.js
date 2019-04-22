@@ -3,27 +3,63 @@ import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import {} from '../actions';
-
-const renderPersonas = (persona) => (
-  <a className="link-nostyle" href="/surprise-persona">
-    <div className="persona">
-      <h2>{persona.name}</h2>
-      <ul>
-        {R.map(x => <li>{x}</li>, persona.descriptors)}
-      </ul>
-    </div>
-  </a>
-)
+import { SetPersonas } from '../actions';
+import { Redirect } from 'react-router-dom';
 
 class Personas extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      redirect: false,
+      error: '',
+      selectedPersona:'',
+    };
+  }
+
+  componentDidMount() {
+    fetch(
+      `https://api.foodwise.dev/personas`,
+      {
+        method: 'GET',
+        mode: 'cors',
+      }, 
+    ).then(response => response.json())
+    .then(personas => this.props.SetPersonas(personas))
+    .catch(error => this.setState({ error }));
+  }
+
+  renderPersonas = (persona) => (
+    <a className="link-nostyle">
+      <div className="persona" onClick={() => this.setRedirect(persona)}>
+        <h2>{persona.persona}</h2>
+        <ul>
+          {R.map(x => <li>{x}</li>, persona.chars)}
+        </ul>
+      </div>
+    </a>
+  )
+  
+  setRedirect(persona){
+    this.setState({ selectedPersona: persona.id, redirect: true });
   }
 
   render() {
     const { personas } = this.props;
+
+    if (this.state.error) {
+      return <p>{this.state.error.message}</p>;
+    }
+
+    if (this.state.redirect) {
+      return (
+        <Redirect to={{
+          pathname: '/surprise',
+          search: `?source=preset&persona=${this.state.selectedPersona}`
+        }} />
+      );
+    }
+
+
     return(
       <div className="persona-page">
         <h1>Choose a foodie type</h1>
@@ -31,7 +67,7 @@ class Personas extends Component {
         <br/>
         <br/>
         <div className="persona-container">
-          {R.map(renderPersonas, personas)}
+          {R.map(this.renderPersonas, personas)}
         </div>
       </div>
     )
@@ -45,7 +81,7 @@ function mapStatetoProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({}, dispatch);
+  return bindActionCreators({ SetPersonas }, dispatch);
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(Personas);

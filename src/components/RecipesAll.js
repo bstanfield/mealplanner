@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
@@ -17,53 +18,63 @@ export const logPageView = () => {
     ReactGA.pageview(window.location.pathname)
 }
 
-const renderRecipe = (recipe) => (
-  <a className="link-nostyle" href="/recipe-page">
-    <div className="item" style={{ 'background-image': `url(${recipe.image_url})`}}>
-      <p>  </p>
-    </div>
-    <p className="recipe-name"> {recipe.recipe_name} </p>
-  </a>
-)
-
 class RecipesAll extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      recipenames: [],
       error: '',
+      redirect: false,
+      selectedRecipe: '',
     };
   }
 
-  // handleSetRecipes(recipes) {
-  //   console.log('handling set recipes');
-  //   SetAllRecipes(recipes);
-  // }
+  setRedirect(recipe){
+    this.setState({ selectedRecipe: recipe, redirect: true });
+  }
 
   componentDidMount() {
     fetch(
-      `http://localhost:3333/recipenames`,
+      `https://api.foodwise.dev/recipenames`,
       {
         method: 'GET',
+        mode: 'cors',
       }, 
     ).then(response => response.json())
     .then(recipes => this.props.SetAllRecipes(recipes))
     .catch(error => this.setState({ error }));
   }
 
+  renderRecipe = (recipe) => (
+    <a className="link-nostyle">
+      <div onClick={() => this.setRedirect(recipe)}>
+        <div className="item" style={{ 'background-image': `url(${recipe.image_url})`}}>
+        </div>
+        <p className="recipe-name"> {recipe.recipe_name} </p>
+      </div>
+    </a>
+  )
   render() {
     const { recipesMaster } = this.props
+    console.log('selected recipe', this.state.selectedRecipe);
+
+    if (this.state.redirect === true) {
+      return (
+        <Redirect to={{
+          pathname: '/recipe-page',
+          search: `?recipe=${this.state.selectedRecipe.recipe_name}&id=${this.state.selectedRecipe.id}`
+        }} />
+      );
+    }
 
     if (this.state.error) {
       return <p>{this.state.error.message}</p>;
     }
-    console.log('recipesMaster', recipesMaster);
+
     return(
       <div id="container">
         <h1>All Recipes</h1>
-        {/* {this.state.recipenames.map(recipe=>(<h2>{recipe.recipe_name}</h2>))} */}
         <div id="content-outter">
-          {(R.isNil(recipesMaster)) ? '' : R.map(renderRecipe, recipesMaster.recipes) }
+          {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipesMaster.recipes) }
         </div>
 
         <div id="action">
