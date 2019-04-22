@@ -1,13 +1,14 @@
 const express = require('express');
 const app = express();
 const vars = require('./variables.js');
+require('dotenv').load();
 const db = require('./queries');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const pino = require('express-pino-logger')();
 const client = require('twilio')(
-  'AC37b9cf7cdf20b6a67d96d0d684fcd9c5',
-  '6d5ea21934e6d55aa78e9c4dc651f974'
+  process.env.TWILIO_ACCOUNT_SID,
+  process.env.TWILIO_AUTH_TOKEN
 );
 
 // bodyParser middleware to help parse JSON
@@ -19,7 +20,7 @@ app.use(
 )
 
 // just change to prodPort for production
-const port = vars.prodPort;
+const port = vars.devPort;
 
 console.log(`Listening on port ${port}`);
 
@@ -33,7 +34,7 @@ app.post('/twilio/messages', (req, res) => {
   res.header('Content-Type', 'application/json');
   client.messages
   .create({
-    from: '15109747106',
+    from: process.env.TWILIO_PHONE_NUMBER,
     to: req.body.to,
     body: `Hi there! \n You requested the recipe page for ${req.body.recipeName}: ${req.body.body}`
   })

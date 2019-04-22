@@ -1,26 +1,22 @@
 const { Pool, Client } = require('pg');
 
-// IP FOR CLOUDSQL: 35.185.213.57
-// IP FOR LOCAL DEV: 127.0.0.1
-// IP FOR CE: 35.236.39.233
-
 const devPort = 1330;
 const prodPort = 3000;
 
 const prodPool = new Pool({
-    user: 'postgres',
-    host: '35.185.213.57',
+    user: process.env.POSTGRES_DB_USER,
+    host: process.env.POSTGRES_DB_IP,
     database: 'postgres',
-    password: 'simplepassword',
+    password: process.env.POSTGRES_DB_PASSWORD,
     port: 5432,
 });
 
 // Need to also run gcloud proxy
 const devPool = new Pool({
-    user: 'postgres',
+    user: process.env.POSTGRES_DB_USER,
     host: '127.0.0.1',
     database: 'postgres',
-    password: 'simplepassword',
+    password: process.env.POSTGRES_DB_PASSWORD,
     port: 8080,
 });
 
