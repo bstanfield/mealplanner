@@ -20,12 +20,18 @@ export function SetRecipePage(recipe) {
   };
 }
 
+
+export function SetUpvotes(upvotes) {
+  console.log('upvotes action', upvotes);
+  return{
+    type: 'SET_UPVOTES',
+    upvotes,
+  };
+}
+
 export function SetRecipeIngredients(ingredients) {
   return{
     type: 'SET_RECIPE_INGREDIENTS',
     ingredients,
   };
 }
-
-
-

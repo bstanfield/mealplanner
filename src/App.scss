@@ -1,8 +1,7 @@
 @import './variables.scss';
 
 body {
-  line-height: 22px;
-  font-family: 'Roboto', sans-serif;
+  font-family: futura-pt;
   background-color: $bg-color;
 }
 
@@ -12,14 +11,111 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-weight: 900;
-  color: $header;
-  line-height: 35px;
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 40px;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
 }
 
-h2 {
+#foodwise {
   margin-top: 0;
-  color: $secondary-header;
+  margin-bottom: 0;
+  margin-right: 0px;
+  margin-left: 0px;
+  text-align: center;
+  text-rendering: optimizeLegibility;
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 130px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+}
+
+#subtitle {
+  font-family: futura-pt;
+  font-weight: 500;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1.4em;
+  text-transform: none;
+  letter-spacing: .04em;
+  color: white;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-right: 0px;
+  margin-left: 0px;
+  text-align: center;
+}
+
+#buttoncontainer {
+  text-align: center; 
+}
+
+.homebtn1 {
+  display: inline-block;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: futura-pt;
+  margin-right: 10px; 
+}
+
+.homebtn1:hover {
+    background-color: white;
+    color: black;
+    transition: $fast-transition;
+  }
+
+.homebtn2 {
+  display: inline-block;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: futura-pt;
+  margin-bottom: 10px; 
+  margin-left: 10px; 
+}
+
+.homebtn2:hover {
+    background-color: white;
+    color: black;
+    transition: $fast-transition;
+  }
+
+body {
+  
+}
+
+.home-container {
+  margin-top: 140px;
+}
+
+
+h2 {
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 25px;
+  font-weight: 600;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
 }
 
 h3 {
@@ -55,18 +151,24 @@ p, ul {
 // End Font styles
 
 .btn {
-  background-color: $accent;
-  padding: 5px 15px 5px 15px;
-  margin: 10px 0;
-  border-radius: 2px;
-  text-align: center;
+display: inline-block;
+  border: 2px solid #8dd5d3;
+  background-color: transparent;
   color: white;
+  font-size: 20px;
   cursor: pointer;
-  outline: 0;
+  border-radius: 999px;
+  font-family: futura-pt;
+  padding: 15px 15px 15px 15px;
+  margin: 10px 0;
+  text-align: center;
+  color: #8dd5d3;
+  cursor: pointer;
 }
 
-  .btn:hover {
-    box-shadow: $standard-shadow;
+.btn:hover {
+    background-color: #8dd5d3;
+    color: white;
     transition: $fast-transition;
   }
 
@@ -82,9 +184,8 @@ p, ul {
 .app-content {
   margin: auto;
   text-align: left;
-  padding: 30px 150px 30px 150px;
-  width: 90%;
-  max-width: 800px;
+  width: 100%;
+  max-width: 100%;
 }
 
 .nav-container{
@@ -109,15 +210,129 @@ p, ul {
   h1, h2 {
     text-align: center;
   }
+  
+}
+
+.surveycontainer {
+  margin: 0; 
+  }
+
+.qc {
+  background: #8dd5d3;
+}
+
+.surveytitle {
+font-style: normal; 
+  font-family: futura-pt;
+  font-size: 35px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  }
+
+.surveysubtitle {
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 25px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
 }
 
 .survey-text {
   padding: 10px 60px;
-  border-radius: 2px;
-  background-color: $bg-color;
-  border: 2px solid $border-light;
-  margin-bottom: 20px;
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 45px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: #8dd5d3; 
+  text-align: center;
+  border-width:0px;
+  border:none;
+  background: transparent;
 }
+
+input:focus, textarea { outline: none ! important; }
+
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.questioncolumn { 
+  text-align: center;
+  float: left;
+  width: 50%;
+  min-height: 100vh;
+}
+
+.questioncolumn h3 {
+  margin-top: 250px;
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 40px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.questioncolumn p {
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 25px;
+  font-weight: 500;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.questioncolumn form {
+  margin-top: 250px;
+  font-style: normal; 
+  font-family: futura-pt;
+  font-size: 30px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: #8dd5d3;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+
+.questionrow:after {
+  content: "";
+  display: table; 
+  clear: both;
+}
+
+.questionrow {
+  height: 100%;
+}
+
 
 // End Survey
 
@@ -171,6 +386,16 @@ p, ul {
   h1, h2 {
     text-align: center;
   }
+  background: url("blue.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  opacity: .9;
 }
 
 .persona-container {
@@ -181,6 +406,8 @@ p, ul {
 }
 
 .persona {
+  opacity: .8; 
+  background: white;
   text-align: center;
   width: 250px;
   height: 250px;
@@ -213,7 +440,6 @@ p, ul {
 }
 
 
-
 // Fontawesome
 svg {
   padding-right: 5px;
@@ -225,7 +451,7 @@ svg {
   text-align: left;
   width: 100%;
   border: 3px solid;
-  border-bottom: 8px solid;
+  border-bottom: 8px ;
   margin: 20px;
   padding: 20px 10px;
   display: inline-block;

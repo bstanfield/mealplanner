@@ -39,7 +39,7 @@ class Survey extends Component {
               label: '> $15'
             }
           ],
-          answer: '', 
+          answer: '',
         },
         {
           q: 'How much time do you spend cooking a meal?',
@@ -62,7 +62,7 @@ class Survey extends Component {
               label: 'Greater than 2 hours'
             }
           ],
-          answer: '', 
+          answer: '',
         },
         {
           q: 'Do you have any dietary preferences?',
@@ -81,7 +81,7 @@ class Survey extends Component {
               label: 'No dietary preferences'
             }
           ],
-          answer: '', 
+          answer: '',
         },
       ],
       index: 0,
@@ -106,12 +106,14 @@ class Survey extends Component {
 
 
   renderSurveyQuestion = (question) => (
-    <div className="questionBox">
-      <h3>{this.state.index + 1}/ {question.q}</h3>
+    <div className="questionrow">
+      <div className="questioncolumn qc">
+      <h3>{question.q}</h3>
         <p>{question.desc}</p>
+      </div>
+      <div className="questioncolumn">
         <form>
-          {/* <input type="text" id={this.state.index} className="survey-text" value={this.state.questions[this.state.index].answer} onChange={ (e) => this.handleInputChange(e) }></input> */}
-          {question.options.map((option) => (
+         {question.options.map((option) => (
             <label>
             <input
               type="radio"
@@ -127,8 +129,8 @@ class Survey extends Component {
           )}
         </form>
         {
-          (this.state.index + 1) === this.state.questions.length 
-          ? ( 
+          (this.state.index + 1) === this.state.questions.length
+          ? (
             <div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">
               Submit!
             </div>
@@ -139,8 +141,14 @@ class Survey extends Component {
             </div>
             )
         }
+        </div>
 
-    </div>
+        </div>
+
+
+        
+
+    
   )
 
   render() {
@@ -164,12 +172,11 @@ class Survey extends Component {
     }
 
     return(
+      <div className="surveycontainer">
       <div className="survey-header">
-        <h1>Please fill out this survey as best you can</h1>
-        <h2>We will recommend a recipe based on the preferences you enter</h2>
-        <br/>
-        <br/>
-        { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
+       { this.renderSurveyQuestion(this.state.questions[this.state.index]) } 
+      </div>
+
       </div>
     )
   }

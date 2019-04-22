@@ -19,7 +19,7 @@ import '../surprise.scss'
 
 import ReactGA from 'react-ga';
 const queryString = require('query-string');
- 
+
 export const initGA = () => {
     console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
@@ -65,18 +65,19 @@ class Surprise extends Component {
             },
         ],
         index: 0,
-        redirect: false,
+        recipeRedirect: false,
         selectedRecipe: '',
+        editRedirect: false,
       };
     }
-  
+
 	setRedirect(recipe){
-		this.setState({ selectedRecipe: recipe, redirect: true });
+		this.setState({ selectedRecipe: recipe, recipeRedirect: true });
 	}
 
 	componentDidMount() {
 		let parsedQuery = queryString.parse(this.props.params.location.search);
-		let endpointToHit; 
+		let endpointToHit;
 		if (parsedQuery.source === 'preset') {
 			endpointToHit = `persona_recipes/${parsedQuery.persona}`;
 		} else if (parsedQuery.source === 'survey') {
@@ -89,7 +90,7 @@ class Surprise extends Component {
 				method: 'GET',
 				mode: 'cors',
 				// Not ideal to have all of our requests sent with cross origin request allowed
-      }, 
+      },
     ).then(response => response.json())
     .then(recipes => this.props.SetAllRecipes(recipes))
 		.catch(error => this.setState({ error }));
@@ -130,7 +131,7 @@ class Surprise extends Component {
   render() {
     const { recipesMaster } = this.props
 
-    if (this.state.redirect === true) {
+    if (this.state.recipeRedirect) {
       return (
         <Redirect to={{
           pathname: '/recipe-page',
@@ -139,26 +140,36 @@ class Surprise extends Component {
       );
     }
 
+    if (this.state.editRedirect) {
+        let parsedQuery = queryString.parse(this.props.params.location.search);
+        return (
+          <Redirect to={{
+            pathname: '/filter',
+            search: `?cost=${parsedQuery.cost}&cookTime=${parsedQuery.cookTime}&restriction=${parsedQuery.restriction}`
+          }} />
+        );
+      }
+
     return(
         <div>
             <h1>Recipe for Your Choices</h1>
             <div id="all-filters">
-                <div id="edit">
+                <div onClick={() => this.setState({ editRedirect: true })} className="btn fit-content" id="edit">
                     <FontAwesomeIcon icon={faEdit} />
-                    <a className="link-nostyle" href="/filter">edit</a>
+                    <a className="link-nostyle">edit</a>
                 </div>
                 <div className="filter">
                     {R.map(renderFilter, this.state.filters)}
                 </div>
             </div>
-            
+
             {/* carousel */}
             <div id="carousel-container">
                 <div className="prevBtn" onClick={() => this.goToPrevious()}>
                     <FontAwesomeIcon icon={faArrowCircleLeft} />
                 </div>
                 <div className="carousel-img">
-                    {this.renderSlide(recipesMaster.recipes[this.state.index])} 
+                    {this.renderSlide(recipesMaster.recipes[this.state.index])}
                 </div>
                 <div className="nextBtn" onClick={() => this.goToNext()}>
                     <FontAwesomeIcon icon={faArrowCircleRight} />
