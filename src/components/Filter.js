@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
+import { Redirect } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
@@ -50,8 +51,10 @@ class Filter extends Component {
     constructor(props) {
     super(props);
     this.state = {
+        searchRedirect: false,
         filters: [
           {
+            id: 0,
             name: 'cost',
             options: [
               {
@@ -74,6 +77,7 @@ class Filter extends Component {
             answer: '',
           },
           {
+            id: 1,
             name: 'cookTime',
             options: [
               {
@@ -96,6 +100,7 @@ class Filter extends Component {
             answer: '',
           },
           {
+            id: 2,
             name: 'restriction',
             options: [
               {
@@ -117,13 +122,21 @@ class Filter extends Component {
     };
   }
 
-  renderOption = (option) => (
+  handleInputChange = (event) => {
+    var filtersClone = {...this.state.filters};
+    filtersClone[event.target.name].answer = event.target.value;
+    this.setState({filtersClone});
+    console.log("filtersClone", filtersClone)
+  }
+
+  renderOption = (option, index) => (
     <label>
       <input
         type="radio"
-        name="Hey"
+        name={index}
         value={option.value}
         key={option.value}
+        onChange={(e) => this.handleInputChange(e)}
       />
       {` ${option.label}`}
       <br /><br />
@@ -133,16 +146,30 @@ class Filter extends Component {
 
   render() {
     let filterOptions;
+
+    if (this.state.searchRedirect) {
+        let cost = this.state.filters[0].answer
+        let cookTime = this.state.filters[1].answer
+        let restriction = this.state.filters[2].answer
+        return (
+          <Redirect to={{
+            pathname: '/surprise',
+            search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`
+          }} />
+        );
+      }
+
+
     return(
         <div>
             <h1>Filters</h1>
                 {
-                  this.state.filters.map((singleFilter) => {
+                  this.state.filters.map((singleFilter, index) => {
                     filterOptions = (
                     <form>
                     <p>{singleFilter.name}</p>
                     {singleFilter.options.map((option) =>
-                    this.renderOption(option))}
+                    this.renderOption(option, index))}
                     </form>
                     )
                   return filterOptions;
@@ -150,7 +177,9 @@ class Filter extends Component {
                   )
                 }
                 <button>
-                    <a href="/surprise">Filter</a>
+                    <div onClick={() => this.setState({ searchRedirect: true })}>
+                    <a>Filter</a>
+                    </div>
                 </button>
         </div>
     )
