@@ -30,7 +30,7 @@ ReactDOM.render(
         {/* pretty redundant to use location.location */}
         <Route exact path="/recipes-all" render={() => (<App content={(<RecipesAll />)} />)} />
         <Route exact path="/surprise" render={(params) => (<App content={(<Surprise params={params} />)} />)} />
-        <Route exact path="/filter" render={() => (<App content={(<Filter />)} />)} />
+        <Route exact path="/filter" render={(params) => (<App content={(<Filter params={params}/>)} />)} />
         <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
         <Route exact path="/personas" render={() => (<App content={(<Personas />)} />)} />
         <Route exact path="/" render={() => (<App content={(<Home />)} />)} />
