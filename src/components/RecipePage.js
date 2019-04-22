@@ -2,14 +2,14 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import * as R from 'ramda';
-import { SetRecipePage, SetRecipeIngredients } from '../actions';
+import { SetRecipePage, SetRecipeIngredients, SetUpvotes } from '../actions';
 import ReactGA from 'react-ga';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 const ReactMarkdown = require('react-markdown/with-html');
 const queryString = require('query-string');
- 
+
 export const initGA = () => {
     console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
@@ -29,7 +29,7 @@ const renderRecipeInstructions = (instruction, index) => (
 const renderRecipeIngredients = (ingredientObj) => (
   // TODO: Add functionality so the quantity takes into account the "number of servings input"
   <div>
-    <input type="checkbox" value={ingredientObj.ingredient} /> 
+    <input type="checkbox" value={ingredientObj.ingredient} />
     {/* Using parseFloat/toString combination to parse out trailing zeros
     and using || '' as a null coalescing operator */}
     {`${R.isNil(ingredientObj.quantity) ? '' : parseFloat(ingredientObj.quantity.toString())} ${ingredientObj.measurement} ${ingredientObj.technique || '' } ${ingredientObj.ingredient}`}
@@ -51,11 +51,12 @@ class RecipePage extends Component {
     super(props);
     this.state = {
       phoneNumber:''
+      favorited: false,
     };
   }
 
   componentDidMount() {
-    
+
     // Setting a default recipe to load if the recipe-page is accessed directly
     // Could use R.defaultTo
     let recipeName = 'Easy Indian Butter Chicken';
@@ -74,20 +75,20 @@ class RecipePage extends Component {
       {
         method: 'GET',
         mode: 'cors',
-      }, 
+      },
     ).then(response => response.json())
     .then(recipe => this.props.SetRecipePage(recipe))
     .catch(error => this.setState({ error }));
 
     // Should build out functionality where if the response array has a length of greater than 1, a different action is called to render the all-recipes page to show all the different results instead of routing to the recipe-page
-    
+
     // GET RECIPE INSTRUCTIONS INGREDIENTS
     fetch(
       `https://api.foodwise.dev/ingredients/${recipeId}`,
       {
         method: 'GET',
         mode: 'cors',
-      }, 
+      },
     ).then(response => response.json())
     .then(ingredients => this.props.SetRecipeIngredients(ingredients))
     .catch(error => this.setState({ error }));
@@ -120,8 +121,34 @@ class RecipePage extends Component {
     .catch(error => this.setState({ error }));
   }
 
+  upvoteDownvote() {
+    let recipeId;
+    let endpointToHit;
+    if (!R.isEmpty(this.props.params.location.search)) {
+      let parsedQuery = queryString.parse(this.props.params.location.search);
+      recipeId= parsedQuery.id;
+    };
+    if (!this.state.favorited) {
+      this.setState({favorited: true});
+      endpointToHit = `upvote`
+    } else {
+      this.setState({favorited: false});
+      endpointToHit = `downvote`
+    }
+
+    fetch(
+      `https://api.foodwise.dev/${endpointToHit}/${recipeId}`,
+      {
+        method: 'GET',
+        mode: 'cors',
+      },
+    ).then(response => response.json())
+    .then(recipe => this.props.SetUpvotes(recipe.upvotes))
+    .catch(error => this.setState({ error }));
+} 
+
   render() {
-    const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, reheat, storage} = this.props.recipePage.recipePage;
+    const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, upvotes, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
 
     return(
@@ -140,9 +167,9 @@ class RecipePage extends Component {
             <p>Level: {level}</p>
 
             {/* This section only works if they link their Google Account */}
-            <div className="btn favorite">♥ Favorite</div>
+            <div className="btn favorite" onClick={()=>this.upvoteDownvote()}>♥ Favorite ({upvotes})</div>
             <div className="btn calendar">Calendar</div>
-            
+
           </div>
         </div>
         <br style={{'clear': 'both'}} />
@@ -186,7 +213,7 @@ function mapStatetoProps(state) {
 }
 
 function mapDispatchToProps(dispatch) {
-  return bindActionCreators({ SetRecipePage, SetRecipeIngredients }, dispatch);
+  return bindActionCreators({ SetRecipePage, SetRecipeIngredients, SetUpvotes }, dispatch);
 }
 
 export default connect(mapStatetoProps, mapDispatchToProps)(RecipePage);
