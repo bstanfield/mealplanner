@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import './App.scss';
+import './App_Mobile.scss';
 import Nav from './components/Nav';
 import ReactGA from 'react-ga';
 

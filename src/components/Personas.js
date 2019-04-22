@@ -32,9 +32,7 @@ class Personas extends Component {
     <a className="link-nostyle">
       <div className="persona" onClick={() => this.setRedirect(persona)}>
         <h2>{persona.persona}</h2>
-        <ul>
-          {R.map(x => <li>{x}</li>, persona.chars)}
-        </ul>
+        {R.map(x => <p>{x}</p>, persona.chars)}
       </div>
     </a>
   )
