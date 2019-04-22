@@ -50,7 +50,7 @@ class RecipePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      phoneNumber:''
+      phoneNumber:'',
       favorited: false,
     };
   }
