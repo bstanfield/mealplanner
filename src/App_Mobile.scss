@@ -274,14 +274,14 @@
     text-align: center;
     float: left;
     width: 50%;
-    min-height: 100vh;
+    // min-height: 100vh;
   }
   
   .questioncolumn h3 {
-    margin-top: 250px;
+    margin-top: 55%;
     font-style: normal; 
     font-family: futura-pt;
-    font-size: 40px;
+    font-size: 35px;
     font-weight: 700;
     font-style: normal;
     text-transform: none;
@@ -309,10 +309,10 @@
   }
   
   .questioncolumn form {
-    margin-top: 250px;
+    margin-top: 75%;
     font-style: normal; 
     font-family: futura-pt;
-    font-size: 30px;
+    font-size: 20px;
     font-weight: 700;
     font-style: normal;
     text-transform: none;
@@ -332,7 +332,7 @@
   }
   
   .questionrow {
-    height: 100%;
+    height: 100vh;
   }
   
   
