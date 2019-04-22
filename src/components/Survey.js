@@ -66,8 +66,11 @@ class Survey extends Component {
         },
         {
           q: 'Do you have any dietary preferences?',
-          desc: 'Vegetarian, Vegan, Gluten Free?',
           options: [
+            {
+              value: 0,
+              label: 'No dietary preferences'
+            },
             {
               value: 1,
               label: 'Vegan'
@@ -77,8 +80,20 @@ class Survey extends Component {
               label: 'Vegetarian'
             },
             {
-              value: 0,
-              label: 'No dietary preferences'
+              value: 3,
+              label: 'Dairy Free'
+            },
+            {
+              value: 4,
+              label: 'Nut Free'
+            },
+            {
+              value: 5,
+              label: 'Gluten Free'
+            },
+            {
+              value: 6,
+              label: 'Pescatarian'
             }
           ],
           answer: '',
@@ -146,9 +161,9 @@ class Survey extends Component {
         </div>
 
 
-        
 
-    
+
+
   )
 
   render() {
@@ -174,7 +189,7 @@ class Survey extends Component {
     return(
       <div className="surveycontainer">
       <div className="survey-header">
-       { this.renderSurveyQuestion(this.state.questions[this.state.index]) } 
+       { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
       </div>
 
       </div>
