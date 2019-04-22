@@ -110,7 +110,7 @@ class RecipePage extends Component {
           mode: 'cors',
         },
       ).then(response => response.json())
-      .then(recipe => this.props.SetUpvotes(recipe[0].upvotes))
+      .then(recipe => this.props.SetUpvotes(recipe.upvotes))
   		.catch(error => this.setState({ error }));
     } else {
       return alert("you've already favorited that recipe!")
