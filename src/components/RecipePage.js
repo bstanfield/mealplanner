@@ -21,7 +21,7 @@ export const logPageView = () => {
 
 const renderRecipeInstructions = (instruction, index) => (
   <div>
-    <h4>Step {index + 1}.</h4>
+    <h4 className="steps"> Step {index + 1}.</h4>
     <p>{instruction}</p>
   </div>
 )
@@ -123,7 +123,7 @@ class RecipePage extends Component {
            
         </div>    
         </div>
-
+        
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
           <div>Makes <input className="number-input" id="servings" type="number" placeholder="1" /> servings </div>
@@ -133,14 +133,17 @@ class RecipePage extends Component {
             <a href="https://www.twilio.com">Send ingredients list to phone</a>
           </div>
 
-        </div>
-
-        <div className="recipe instructions">
+          <div className="recipe instructions">
           <h2>Instructions</h2>
           <form>
             {R.addIndex(R.map)(renderRecipeInstructions, instructions)}
           </form>
         </div>
+
+        </div>
+
+        
+
 
         {/* Don't think we want this section anymore... Very few tips for the recipes in the database */}
         {/* <div className="recipe tips">
