@@ -187,6 +187,7 @@ class RecipePage extends Component {
 
           </div>
         </div>
+        </div>
         
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
@@ -207,21 +208,7 @@ class RecipePage extends Component {
             {R.addIndex(R.map)(renderRecipeInstructions, instructions)}
           </form>
         </div>
-
-<<<<<<< HEAD
         </div>
-
-        
-
-
-        {/* Don't think we want this section anymore... Very few tips for the recipes in the database */}
-        {/* <div className="recipe tips">
-          <h2>Meal Prep Tips</h2>
-          {R.map(renderRecipeTips, reheat)}
-        </div> */}
-
-=======
->>>>>>> faa31d74657c0f021c81d7c91968c90b5368167f
       </div>
     )
   }
