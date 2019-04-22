@@ -50,6 +50,7 @@ class RecipePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      phoneNumber:''
     };
   }
 
@@ -93,10 +94,35 @@ class RecipePage extends Component {
 
   }
 
+  handlePhoneNumberChange(event) {
+    this.setState({phoneNumber: event.target.value})
+    console.log('5103236239', this.state.phoneNumber);
+  }
+
+  twilio() {
+    const {recipe_name, id} = this.props.recipePage.recipePage;
+    console.log('this.props.params.location.search', this.props.params.location.search);
+    fetch(
+      `https://api.foodwise.dev/twilio/messages`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: this.state.phoneNumber,
+          recipeName: recipe_name,
+          body: `https://stanfield.space/recipe-page/${this.props.params.location.search}`,
+        })
+      }, 
+    ).then(response => response.json())
+    .then(something => console.log("something", something))
+    .catch(error => this.setState({ error }));
+  }
+
   render() {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
-    console.log("instructions", instructions);
     return(
       <div>
         <div className="recipe-header">
@@ -125,7 +151,11 @@ class RecipePage extends Component {
           {R.map(renderRecipeIngredients, ingredients)}
           <div className="ingredients-actions">
             <FontAwesomeIcon icon={faPhone} />
-            <a href="https://www.twilio.com">Send ingredients list to phone</a>
+            
+            <input type="text" onChange={(e)=>this.handlePhoneNumberChange(e)} />
+            <div onClick={()=>this.twilio()}>
+              <button>Send ingredients list to phone</button>
+            </div>
           </div>
 
         </div>
