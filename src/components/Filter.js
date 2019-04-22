@@ -50,129 +50,114 @@ class Filter extends Component {
     constructor(props) {
     super(props);
     this.state = {
-        // filterSS: [
-        //   {
-        //     q: 'How much money would you like to spend on a meal?',
-        //     desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.',
-        //     options: [
-        //       {
-        //         value: 0,
-        //         label: '< $5'
-        //       },
-        //       {
-        //         value: 5,
-        //         label: '$5-10'
-        //       },
-        //       {
-        //         value: 10,
-        //         label: '$10-15'
-        //       },
-        //       {
-        //         value: 15,
-        //         label: '> $15'
-        //       }
-        //     ],
-        //     answer: '', 
-        //   },
-        //   {
-        //     q: 'How much time do you spend cooking a meal?',
-        //     desc: 'Estimate how long a simple dinner takes to cook, or how much time you have available for cooking a meal in minutes.',
-        //     options: [
-        //       {
-        //         value: 30,
-        //         label: 'Less than 30 minutes'
-        //       },
-        //       {
-        //         value: 60,
-        //         label: '30 minutes to an hour'
-        //       },
-        //       {
-        //         value: 120,
-        //         label: '1 to 2 hours'
-        //       },
-        //       {
-        //         value: 500,
-        //         label: 'Greater than 2 hours'
-        //       }
-        //     ],
-        //     answer: '', 
-        //   },
-        //   {
-        //     q: 'Do you have any dietary preferences?',
-        //     desc: 'Vegetarian, Vegan, Gluten Free?',
-        //     options: [
-        //       {
-        //         value: 1,
-        //         label: 'Vegan'
-        //       },
-        //       {
-        //         value: 2,
-        //         label: 'Vegetarian'
-        //       },
-        //       {
-        //         value: 0,
-        //         label: 'No dietary preferences'
-        //       }
-        //     ],
-        //     answer: '', 
-        //   },
-        // ],
         filters: [
-            {
-                label: 'Budget',
-                icon: faDollarSign,
-                value: '$10',
-            },
-            {
-                label: 'Time',
-                icon: faClock,
-                value: '2hrs',
-            },
-            {
-                label: 'Expertise',
-                icon: faStar,
-                value: '3 stars',
-            },
-            {
-                label: 'Ingredients',
-                icon: faUtensils,
-                value: 'Eggs, chicken',
-            },
-            {
-                label: 'Restrictions',
-                icon: faFlag,
-                value: 'Keto Diet',
-            }
-        ]
+          {
+            q: 'How much money would you like to spend on a meal?',
+            desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.',
+            options: [
+              {
+                value: 0,
+                label: '< $5'
+              },
+              {
+                value: 5,
+                label: '$5-10'
+              },
+              {
+                value: 10,
+                label: '$10-15'
+              },
+              {
+                value: 15,
+                label: '> $15'
+              },
+            ],
+            answer: '',
+          },
+          {
+            q: 'How much time do you spend cooking a meal?',
+            desc: 'Estimate how long a simple dinner takes to cook, or how much time you have available for cooking a meal in minutes.',
+            options: [
+              {
+                value: 30,
+                label: 'Less than 30 minutes'
+              },
+              {
+                value: 60,
+                label: '30 minutes to an hour'
+              },
+              {
+                value: 120,
+                label: '1 to 2 hours'
+              },
+              {
+                value: 500,
+                label: 'Greater than 2 hours'
+              },
+            ],
+            answer: '',
+          },
+          {
+            q: 'Do you have any dietary preferences?',
+            desc: 'Vegetarian, Vegan, Gluten Free?',
+            options: [
+              {
+                value: 1,
+                label: 'Vegan'
+              },
+              {
+                value: 2,
+                label: 'Vegetarian'
+              },
+              {
+                value: 0,
+                label: 'No dietary preferences'
+              },
+            ],
+            answer: '',
+          },
+        ],
     };
   }
-
 
   render() {
     return(
         <div>
-            <h1>Recipe for Your Choices</h1>
-            <div id="all-filters">
-                <div id="edit">
-                    <FontAwesomeIcon icon={faEdit} />
-                    <a className="link-nostyle" href="/filter">edit</a>
-                </div>
-                <div className="filter">
-                    {R.map(renderFilter, this.state.filters)}
-                </div>
-            </div>
-            
-            <div id="filter-container">
-                {R.map(renderFilterLabel, this.state.filters)}
-                
+            <h1>Filters</h1>
+              <form>
+                {
+                  this.state.filters.map((filter)=> {
+                  filter.options.map(option => (
+                    <div>
+                    WHY AM I NOT SHOWING UP ? 
+                    <label>
+                      <input
+                        type="radio"
+                        name="Hey"
+                        value={option.value}
+                        key={option.value}
+                        onChange={(e) => this.handleInputChange(e)}
+                      />
+                      {` ${option.label}`}
+                      <br /><br />
+                    </label>
+                    </div>
+                  )
+                  );
+                  }
+                )
+                }
+
+              </form>
                 <button>
                     <a href="/surprise">Filter</a>
                 </button>
-            </div>
         </div>
     )
   }
 }
+
+// <div id="filter-container">
 
 
 function mapStatetoProps(state) {
