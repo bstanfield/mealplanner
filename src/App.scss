@@ -338,9 +338,24 @@ input:focus::-webkit-input-placeholder {
 
 // RecipePage
 .recipe {
-  margin: 20px 0;
-  max-width: 550px;
-  color: $body-text;
+  width: 100%;
+  color: white;
+   background: #8dd5d3 no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  text-align: center;
+  clear: both;
+}
+
+.recipe p {
+  color: black;
+  font-size: 20px;
 }
 
   .ingredients-actions {
@@ -348,36 +363,110 @@ input:focus::-webkit-input-placeholder {
   }
 
 .recipe-header {
-  width: fit-content;
+  width:100%;
+  text-align: center;
 }
 
-.meta-sidebar {
-  margin-left: 30px;
-  float: right;
-  p {
-    margin: 5px;
-  }
-  hr {
-    margin-top: 15px;
-    margin-bottom: 15px;
-  }
+.flex {
+  display: flex;
+  flex-wrap: wrap; 
+  width: 100%;
 }
 
 .hero-img {
-  width: 600px;
-  height: 300px;
-  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
-  position: relative;
-  float: left;
+  background-size: cover;
+  width: 60%;
+  height: 600px;
+}
+
+.meta-sidebar {
+  margin-top: 50px;
+  width: 40%;
+  text-align: center;
+  
+  p {
+    margin: 5px;
+    font-size: 25px;
+  }
+}
+
+
+
+.meta-sidebar h2 {
+  color: #8dd5d3;
+  font-size: 35px;
+}
+
+.recipe-header h1 {
+  color: #8dd5d3;
 }
 
 .number-input {
   width: 35px;
   font-size: 10pt;
   padding: 5px;
+  color: white;
 }
 
+
+.favorite {
+  display: inline-block;
+  border: 2px solid #8dd5d3;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: futura-pt;
+  padding: 12px 12px 12px 12px;
+  margin: 10px 0;
+  margin-left: 5px;
+  text-align: center;
+  color: #8dd5d3;
+  cursor: pointer;
+}
+
+.favorite:hover {
+    background-color: #8dd5d3;
+    color: white;
+    transition: $fast-transition;
+  }
+
+.divider {
+  display: inline-block;
+  width: 5px;
+}
+
+.flexbutton {
+  display: flex;
+  width: 100%;
+  justify-content: center;
+}
+
+.calendar {
+  display: inline-block;
+  border: 2px solid #8dd5d3;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: futura-pt;
+  padding: 12px 12px 12px 12px;
+  margin: 10px 0;
+  margin-right: 20px;
+  text-align: center;
+  color: #8dd5d3;
+  cursor: pointer;
+}
+
+.calendar:hover {
+    background-color: #8dd5d3;
+    color: white;
+    transition: $fast-transition;
+  }
 
 // End RecipePage
 
@@ -457,4 +546,51 @@ svg {
   display: inline-block;
 }
 //
+
+.surprisecontainer {
+  background: #8dd5d3 no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+}
+
+.surprisebtn {
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: futura-pt;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.surprisebtn:hover {
+    background-color: white;
+    color: black;
+    transition: $fast-transition;
+  }
+
+  .prevBtn {
+    color: white;
+  }
+
+  .nextBtn {
+    color: white; 
+  }
+
+  .recipe-name {
+   color: white;
+   font-family: futura-pt;
+   font-size: 24px;
+   font-weight: 600;
+  }
+
 

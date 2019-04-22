@@ -162,9 +162,11 @@ class RecipePage extends Component {
     const { ingredients } = this.props.recipePage;
 
     return(
-      <div>
+      <div id="recipecontainer">
         <div className="recipe-header">
           <h1>{recipe_name}</h1>
+        </div>
+        <div className="flex">
           <div className="hero-img" style={{ 'background-image': `url(${image_url})`}}>
           </div>
           <div className="meta-sidebar">
@@ -172,17 +174,20 @@ class RecipePage extends Component {
             <p>Total: {R.add(preptime,cooktime)}</p>
             <p>Prep: {preptime}</p>
             <p>Cook: {cooktime}</p>
-            <hr/>
+            
             <p>Cost: {cost}</p>
             <p>Level: {level}</p>
 
             {/* This section only works if they link their Google Account */}
-            <div className="btn favorite" onClick={()=>this.upvoteDownvote()}>♥ Favorite ({upvotes})</div>
-            <div className="btn calendar">Calendar</div>
+
+            <div className="flexbutton">
+            <div className="favorite" onClick={()=>this.upvoteDownvote()}>♥ Favorite ({upvotes})</div>
+            <div className="divider"></div>
+            <div className="calendar">Calendar</div>
 
           </div>
         </div>
-        <br style={{'clear': 'both'}} />
+
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
           <div>Makes <input className="number-input" id="servings" type="number" value={this.state.servings} onChange={(e) => this.updateServings(e)} /> servings </div>

@@ -80,7 +80,7 @@ class RecipesAll extends Component {
         <div id="action">
           <div id="backBtn"><a className="link-nostyle" href="/surprise-customize">&lt; Back</a></div>
 
-          <button id="moreBtn"><a href="">More Recipes</a></button>
+          <a href=""><button id="moreBtn">More Recipes</button></a>
         </div>
         
       </div>
