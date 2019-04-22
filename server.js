@@ -4,9 +4,11 @@ const vars = require('./variables.js');
 const db = require('./queries');
 const bodyParser = require('body-parser');
 const cors = require('cors');
-
-// just change to prodPort for production
-const port = vars.prodPort;
+const pino = require('express-pino-logger')();
+const client = require('twilio')(
+  'AC37b9cf7cdf20b6a67d96d0d684fcd9c5',
+  '6d5ea21934e6d55aa78e9c4dc651f974'
+);
 
 // bodyParser middleware to help parse JSON
 app.use(bodyParser.json())
@@ -16,10 +18,33 @@ app.use(
   })
 )
 
+// just change to prodPort for production
+const port = vars.devPort;
+
+console.log(`Listening on port ${port}`);
+
 app.use(cors());
 
 // Confirms server is running in console
 app.listen(port);
+
+// TWILIO
+app.post('/twilio/messages', (req, res) => {  
+  res.header('Content-Type', 'application/json');
+  client.messages
+  .create({
+    from: '15109747106',
+    to: req.body.to,
+    body: `Hi there! \n You requested the recipe page for ${req.body.recipeName}: ${req.body.body}`
+  })
+  .then(() => {
+    res.send(JSON.stringify({ success: true }));
+  })
+  .catch(err => {
+    console.log(err);
+    res.send(JSON.stringify({ success: false }));
+  });
+});
 
 // Use this endpoint to get all persona names and characteristics
 app.get('/personas', db.getPersonas);
@@ -38,6 +63,10 @@ app.get('/survey_results/:cost/:cookTime/:restriction', db.getSurveyResults);
 
 // Use this endpoint for primary recipe page
 app.get('/master_recipes/:name', db.getMasterRecipe)
+
+// --- POSTS ----
+// Use this endpoint for upvoting a recipe
+app.get('/upvote/:id', db.addVote)
 
 // Standard messages
 app.get('/', (req, res) => {

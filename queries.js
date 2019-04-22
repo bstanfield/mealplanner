@@ -91,6 +91,29 @@ const getPersonas = (req, res, next) => {
   })
 }
 
+const addVote = (req, res, next) => {
+  if (isNaN(req.params.id) === true) {
+    return next(res.status(401).send(`Error in request params`));
+  }
+
+  const id = parseInt(req.params.id);
+  pool.query(
+    `UPDATE recipe_master
+    SET upvotes = upvotes + 1
+    WHERE recipe_master.id=$1
+    RETURNING id, recipe_name, upvotes
+    `,
+    [id],
+    (error, results) => {
+      if (error) {
+        throw error
+      }
+
+    console.log(vars.logTime, req.url);
+    res.status(200).json(results.rows)
+  })
+}
+
 const getPersonaSpecificRecipes = (req, res, next) => {
   console.log(vars.logTime, req.url); 
   if (isNaN(req.params.personaId) === true) {
@@ -119,5 +142,6 @@ module.exports = {
     getSurveyResults,
     getRecipeIngredients,
     getPersonas,
-    getPersonaSpecificRecipes
+    getPersonaSpecificRecipes,
+    addVote
 }
