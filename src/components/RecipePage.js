@@ -27,7 +27,6 @@ const renderRecipeInstructions = (instruction, index) => (
 )
 
 const renderRecipeIngredients = (ingredientObj) => (
-  // TODO: Add functionality so the quantity takes into account the "number of servings input"
   <div>
     <input type="checkbox" value={ingredientObj.ingredient} />
     {/* Using parseFloat/toString combination to parse out trailing zeros
@@ -36,20 +35,11 @@ const renderRecipeIngredients = (ingredientObj) => (
   </div>
 )
 
-// const renderRecipeTips = (recipeTip) => (
-//   <div>
-//     <h4>{recipeTip.name}:</h4>
-//     <ReactMarkdown
-//       source={recipeTip.tip}
-//       escapeHtml={false}
-//     />
-//   </div>
-// )
-
 class RecipePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      servings: 1,
       phoneNumber:'',
       favorited: false,
     };
@@ -93,6 +83,26 @@ class RecipePage extends Component {
     .then(ingredients => this.props.SetRecipeIngredients(ingredients))
     .catch(error => this.setState({ error }));
 
+  }
+
+  updateServings(event) {
+    this.setState({servings: event.target.value});
+  }
+
+  renderRecipeIngredients = (ingredientObj) => (
+    // TODO: Add functionality so the quantity takes into account the "number of servings input"
+    <div>
+      <input type="checkbox" value={ingredientObj.ingredient} /> 
+      {/* Using parseFloat/toString combination to parse out trailing zeros
+      and using || '' as a null coalescing operator */}
+      {
+        `${R.isNil(ingredientObj.quantity) ? '' : parseFloat(this.state.servings * ingredientObj.quantity.toString())} ${ingredientObj.measurement} ${ingredientObj.technique || '' } ${ingredientObj.ingredient}`}
+    </div>
+  )
+  
+   
+  setRedirect(persona){
+    this.setState({ selectedPersona: persona.id, redirect: true });
   }
 
   handlePhoneNumberChange(event) {
@@ -175,8 +185,8 @@ class RecipePage extends Component {
         <br style={{'clear': 'both'}} />
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
-          <div>Makes <input className="number-input" id="servings" type="number" placeholder="1" /> servings </div>
-          {R.map(renderRecipeIngredients, ingredients)}
+          <div>Makes <input className="number-input" id="servings" type="number" value={this.state.servings} onChange={(e) => this.updateServings(e)} /> servings </div>
+          {R.map(this.renderRecipeIngredients, ingredients)}
           <div className="ingredients-actions">
             <FontAwesomeIcon icon={faPhone} />
             
@@ -194,12 +204,6 @@ class RecipePage extends Component {
             {R.addIndex(R.map)(renderRecipeInstructions, instructions)}
           </form>
         </div>
-
-        {/* Don't think we want this section anymore... Very few tips for the recipes in the database */}
-        {/* <div className="recipe tips">
-          <h2>Meal Prep Tips</h2>
-          {R.map(renderRecipeTips, reheat)}
-        </div> */}
 
       </div>
     )
