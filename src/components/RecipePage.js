@@ -26,16 +26,6 @@ const renderRecipeInstructions = (instruction, index) => (
   </div>
 )
 
-const renderRecipeIngredients = (ingredientObj) => (
-  // TODO: Add functionality so the quantity takes into account the "number of servings input"
-  <div>
-    <input type="checkbox" value={ingredientObj.ingredient} /> 
-    {/* Using parseFloat/toString combination to parse out trailing zeros
-    and using || '' as a null coalescing operator */}
-    {`${R.isNil(ingredientObj.quantity) ? '' : parseFloat(ingredientObj.quantity.toString())} ${ingredientObj.measurement} ${ingredientObj.technique || '' } ${ingredientObj.ingredient}`}
-  </div>
-)
-
 // const renderRecipeTips = (recipeTip) => (
 //   <div>
 //     <h4>{recipeTip.name}:</h4>
@@ -49,7 +39,9 @@ const renderRecipeIngredients = (ingredientObj) => (
 class RecipePage extends Component {
   constructor(props) {
     super(props);
+    // this.state.servings
     this.state = {
+      servings: 1,
     };
   }
 
@@ -93,6 +85,27 @@ class RecipePage extends Component {
 
   }
 
+  updateServings(event) {
+    this.setState({servings: event.target.value});
+  }
+
+  renderRecipeIngredients = (ingredientObj) => (
+    // TODO: Add functionality so the quantity takes into account the "number of servings input"
+    <div>
+      <input type="checkbox" value={ingredientObj.ingredient} /> 
+      {/* Using parseFloat/toString combination to parse out trailing zeros
+      and using || '' as a null coalescing operator */}
+      {
+        `${R.isNil(ingredientObj.quantity) ? '' : parseFloat(this.state.servings * ingredientObj.quantity.toString())} ${ingredientObj.measurement} ${ingredientObj.technique || '' } ${ingredientObj.ingredient}`}
+    </div>
+  )
+  
+   
+  setRedirect(persona){
+    this.setState({ selectedPersona: persona.id, redirect: true });
+  }
+
+
   render() {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
@@ -121,8 +134,8 @@ class RecipePage extends Component {
         <br style={{'clear': 'both'}} />
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
-          <div>Makes <input className="number-input" id="servings" type="number" placeholder="1" /> servings </div>
-          {R.map(renderRecipeIngredients, ingredients)}
+          <div>Makes <input className="number-input" id="servings" type="number" value={this.state.servings} onChange={(e) => this.updateServings(e)} /> servings </div>
+          {R.map(this.renderRecipeIngredients, ingredients)}
           <div className="ingredients-actions">
             <FontAwesomeIcon icon={faPhone} />
             <a href="https://www.twilio.com">Send ingredients list to phone</a>
