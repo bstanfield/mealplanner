@@ -18,8 +18,9 @@ import {} from '../actions';
 import '../surprise.scss'
 import '../filter.scss'
 
-
 import ReactGA from 'react-ga';
+const queryString = require('query-string');
+
 export const initGA = () => {
     console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
@@ -126,23 +127,46 @@ class Filter extends Component {
     var filtersClone = {...this.state.filters};
     filtersClone[event.target.name].answer = event.target.value;
     this.setState({filtersClone});
-    console.log("filtersClone", filtersClone)
   }
 
-  renderOption = (option, index) => (
+
+  shouldIBeChecked(value, index, index2) {
+  console.log("radio button value", this.state.filters[index].options[index2].value);
+  console.log("this.state.filters[index].answer", parseFloat(this.state.filters[index].answer));
+    if (this.state.filters[index].options[index2].value === parseFloat(this.state.filters[index].answer)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+
+  renderOption = (option, index, index2) => (
     <label>
       <input
         type="radio"
         name={index}
         value={option.value}
-        key={option.value}
+        key={index2}
         onChange={(e) => this.handleInputChange(e)}
+        checked={this.shouldIBeChecked(option.value, index, index2)}
       />
       {` ${option.label}`}
       <br /><br />
     </label>
   )
-
+  componentDidMount() {
+    if (!R.isEmpty(this.props.params.location.search)) {
+    let parsedQuery = queryString.parse(this.props.params.location.search);
+    var filtersClone = {...this.state.filters};
+    filtersClone[0].answer = parsedQuery.cost;
+    filtersClone[1].answer = parsedQuery.cookTime;
+    filtersClone[2].answer = parsedQuery.restriction;
+    this.setState({filtersClone});
+    console.log('filtersClone', filtersClone);
+    // Not exactly the most scalable way to do this...
+  }
+  }
 
   render() {
     let filterOptions;
@@ -168,8 +192,8 @@ class Filter extends Component {
                     filterOptions = (
                     <form>
                     <p>{singleFilter.name}</p>
-                    {singleFilter.options.map((option) =>
-                    this.renderOption(option, index))}
+                    {singleFilter.options.map((option, index2) =>
+                    this.renderOption(option, index, index2))}
                     </form>
                     )
                   return filterOptions;
