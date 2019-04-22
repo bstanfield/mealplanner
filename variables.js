@@ -1,10 +1,11 @@
 const { Pool, Client } = require('pg');
+require('dotenv').load();
 
 const devPort = 1330;
 const prodPort = 3000;
 
 const prodPool = new Pool({
-    user: process.env.POSTGRES_DB_USER,
+    user: 'postgres',
     host: process.env.POSTGRES_DB_IP,
     database: 'postgres',
     password: process.env.POSTGRES_DB_PASSWORD,
@@ -13,7 +14,7 @@ const prodPool = new Pool({
 
 // Need to also run gcloud proxy
 const devPool = new Pool({
-    user: process.env.POSTGRES_DB_USER,
+    user: 'postgres',
     host: '127.0.0.1',
     database: 'postgres',
     password: process.env.POSTGRES_DB_PASSWORD,

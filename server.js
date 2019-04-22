@@ -20,7 +20,7 @@ app.use(
 )
 
 // just change to prodPort for production
-const port = vars.devPort;
+const port = vars.prodPort;
 
 console.log(`Listening on port ${port}`);
 

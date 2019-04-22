@@ -2,7 +2,7 @@ const { Pool, Client } = require('pg');
 const vars = require('./variables.js');
 const R = require('ramda');
 
-const pool = vars.devPool;
+const pool = vars.prodPool;
 
 const getRecipeNames = (req, res) => {
   pool.query('SELECT id, recipe_name, image_url FROM recipe_master', (error, results) => {
