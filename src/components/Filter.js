@@ -52,8 +52,7 @@ class Filter extends Component {
     this.state = {
         filters: [
           {
-            q: 'How much money would you like to spend on a meal?',
-            desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.',
+            name: 'cost',
             options: [
               {
                 value: 0,
@@ -75,8 +74,7 @@ class Filter extends Component {
             answer: '',
           },
           {
-            q: 'How much time do you spend cooking a meal?',
-            desc: 'Estimate how long a simple dinner takes to cook, or how much time you have available for cooking a meal in minutes.',
+            name: 'cookTime',
             options: [
               {
                 value: 30,
@@ -98,8 +96,7 @@ class Filter extends Component {
             answer: '',
           },
           {
-            q: 'Do you have any dietary preferences?',
-            desc: 'Vegetarian, Vegan, Gluten Free?',
+            name: 'restriction',
             options: [
               {
                 value: 1,
@@ -120,35 +117,38 @@ class Filter extends Component {
     };
   }
 
+  renderOption = (option) => (
+    <label>
+      <input
+        type="radio"
+        name="Hey"
+        value={option.value}
+        key={option.value}
+      />
+      {` ${option.label}`}
+      <br /><br />
+    </label>
+  )
+
+
   render() {
+    let filterOptions;
     return(
         <div>
             <h1>Filters</h1>
-              <form>
                 {
-                  this.state.filters.map((filter)=> {
-                  filter.options.map(option => (
-                    <div>
-                    WHY AM I NOT SHOWING UP ? 
-                    <label>
-                      <input
-                        type="radio"
-                        name="Hey"
-                        value={option.value}
-                        key={option.value}
-                        onChange={(e) => this.handleInputChange(e)}
-                      />
-                      {` ${option.label}`}
-                      <br /><br />
-                    </label>
-                    </div>
-                  )
-                  );
+                  this.state.filters.map((singleFilter) => {
+                    filterOptions = (
+                    <form>
+                    <p>{singleFilter.name}</p>
+                    {singleFilter.options.map((option) =>
+                    this.renderOption(option))}
+                    </form>
+                    )
+                  return filterOptions;
                   }
-                )
+                  )
                 }
-
-              </form>
                 <button>
                     <a href="/surprise">Filter</a>
                 </button>
