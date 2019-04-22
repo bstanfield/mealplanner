@@ -68,6 +68,8 @@ app.get('/master_recipes/:name', db.getMasterRecipe)
 // Use this endpoint for upvoting a recipe
 app.get('/upvote/:id', db.addVote)
 
+app.get('/downvote/:id', db.removeVote)
+
 // Standard messages
 app.get('/', (req, res) => {
     console.log(`${vars.logTime}`, '/')
