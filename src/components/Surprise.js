@@ -65,13 +65,14 @@ class Surprise extends Component {
             },
         ],
         index: 0,
-        redirect: false,
+        recipeRedirect: false,
         selectedRecipe: '',
+        editRedirect: false,
       };
     }
   
 	setRedirect(recipe){
-		this.setState({ selectedRecipe: recipe, redirect: true });
+		this.setState({ selectedRecipe: recipe, recipeRedirect: true });
 	}
 
 	componentDidMount() {
@@ -130,7 +131,7 @@ class Surprise extends Component {
   render() {
     const { recipesMaster } = this.props
 
-    if (this.state.redirect === true) {
+    if (this.state.recipeRedirect) {
       return (
         <Redirect to={{
           pathname: '/recipe-page',
@@ -139,11 +140,23 @@ class Surprise extends Component {
       );
     }
 
+    if (this.state.editRedirect) {
+        let cost = this.state.questions[0].answer
+        let cookTime = this.state.questions[1].answer
+        let restriction = this.state.questions[2].answer
+        return (
+          <Redirect to={{
+            pathname: '/filter',
+            search: `?cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`
+          }} />
+        );
+      }
+
     return(
         <div>
             <h1>Recipe for Your Choices</h1>
             <div id="all-filters">
-                <div id="edit">
+                <div onClick={() => this.setState({ isComplete: true })} className="btn fit-content" id="edit">
                     <FontAwesomeIcon icon={faEdit} />
                     <a className="link-nostyle" href="/filter">edit</a>
                 </div>

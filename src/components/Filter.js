@@ -50,6 +50,73 @@ class Filter extends Component {
     constructor(props) {
     super(props);
     this.state = {
+        // filterSS: [
+        //   {
+        //     q: 'How much money would you like to spend on a meal?',
+        //     desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.',
+        //     options: [
+        //       {
+        //         value: 0,
+        //         label: '< $5'
+        //       },
+        //       {
+        //         value: 5,
+        //         label: '$5-10'
+        //       },
+        //       {
+        //         value: 10,
+        //         label: '$10-15'
+        //       },
+        //       {
+        //         value: 15,
+        //         label: '> $15'
+        //       }
+        //     ],
+        //     answer: '', 
+        //   },
+        //   {
+        //     q: 'How much time do you spend cooking a meal?',
+        //     desc: 'Estimate how long a simple dinner takes to cook, or how much time you have available for cooking a meal in minutes.',
+        //     options: [
+        //       {
+        //         value: 30,
+        //         label: 'Less than 30 minutes'
+        //       },
+        //       {
+        //         value: 60,
+        //         label: '30 minutes to an hour'
+        //       },
+        //       {
+        //         value: 120,
+        //         label: '1 to 2 hours'
+        //       },
+        //       {
+        //         value: 500,
+        //         label: 'Greater than 2 hours'
+        //       }
+        //     ],
+        //     answer: '', 
+        //   },
+        //   {
+        //     q: 'Do you have any dietary preferences?',
+        //     desc: 'Vegetarian, Vegan, Gluten Free?',
+        //     options: [
+        //       {
+        //         value: 1,
+        //         label: 'Vegan'
+        //       },
+        //       {
+        //         value: 2,
+        //         label: 'Vegetarian'
+        //       },
+        //       {
+        //         value: 0,
+        //         label: 'No dietary preferences'
+        //       }
+        //     ],
+        //     answer: '', 
+        //   },
+        // ],
         filters: [
             {
                 label: 'Budget',
