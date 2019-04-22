@@ -5,7 +5,7 @@ const { Pool, Client } = require('pg');
 // IP FOR CE: 35.236.39.233
 
 const devPort = 8080;
-const prodPort = 80;
+const prodPort = 3000;
 
 const prodPool = new Pool({
     user: 'postgres',

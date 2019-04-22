@@ -3,6 +3,7 @@ const app = express();
 const vars = require('./variables.js');
 const db = require('./queries');
 const bodyParser = require('body-parser');
+const cors = require('cors');
 
 // just change to prodPort for production
 const port = vars.prodPort;
@@ -14,6 +15,8 @@ app.use(
     extended: true,
   })
 )
+
+app.use(cors());
 
 // Confirms server is running in console
 app.listen(port);
