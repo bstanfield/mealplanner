@@ -11,6 +11,7 @@ const initialState = {
     recipe_name: "One-pan Lemon Garlic Shrimp and Brussels Sprouts",
     reheat: ["Microwave for 1 minute in microwave-safe container and serve with fresh lemon slices"],
     storage: ["Refrigerate in airtight container up to 3-4 days."],
+    upvotes:1,
     },
   ingredients:[],
 };
@@ -21,6 +22,12 @@ const setRecipePage = (state, action) => {
   // Only pulls first item from array when the fetch request returns just one recipe
   return stateClone;
 };
+
+const setUpvotes = (state, action) => {
+  const stateClone = Object.assign({}, state);
+  stateClone.recipePage.upvotes = action.upvotes;
+  return stateClone;
+}
 
 const setRecipeIngredients = (state, action) => {
   const stateClone = Object.assign({}, state);
@@ -34,6 +41,7 @@ export default function (state, action) {
   }
   switch (action.type) {
     case 'SET_RECIPE_PAGE' : return setRecipePage(state, action);
+    case 'SET_UPVOTES' : return setUpvotes(state, action);
     case 'SET_RECIPE_INGREDIENTS' : return setRecipeIngredients(state, action);
     default:
       return state;
