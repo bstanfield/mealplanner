@@ -39,7 +39,7 @@ class Survey extends Component {
               label: '> $15'
             }
           ],
-          answer: '', 
+          answer: '',
         },
         {
           q: 'How much time do you spend cooking a meal?',
@@ -62,7 +62,7 @@ class Survey extends Component {
               label: 'Greater than 2 hours'
             }
           ],
-          answer: '', 
+          answer: '',
         },
         {
           q: 'Do you have any dietary preferences?',
@@ -81,7 +81,7 @@ class Survey extends Component {
               label: 'No dietary preferences'
             }
           ],
-          answer: '', 
+          answer: '',
         },
       ],
       index: 0,
@@ -129,8 +129,8 @@ class Survey extends Component {
           )}
         </form>
         {
-          (this.state.index + 1) === this.state.questions.length 
-          ? ( 
+          (this.state.index + 1) === this.state.questions.length
+          ? (
             <div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">
               Submit!
             </div>
