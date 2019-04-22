@@ -338,9 +338,8 @@ input:focus::-webkit-input-placeholder {
 
 // RecipePage
 .recipe {
-  margin: 20px 0;
   width: 100%;
-  color: $body-text;
+  color: white;
    background: #8dd5d3 no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
@@ -361,39 +360,43 @@ input:focus::-webkit-input-placeholder {
 .recipe-header {
   width:100%;
   text-align: center;
-  background: blue;
 }
 
-#rfirstouter {
-  background: pink;
-}
-
-.meta-sidebar {
-  margin-left: 30px;
-  float: right;
-  p {
-    margin: 5px;
-  }
-  hr {
-    margin-top: 15px;
-    margin-bottom: 0px;
-  }
+.flex {
+  display: flex;
+  flex-wrap: wrap; 
+  width: 100%;
 }
 
 .hero-img {
-  width: 600px;
-  height: 300px;
-  background-size: cover;
+  background-repeat: no-repeat;
   background-position: center;
-  position: relative;
-  float: left;
+  background-size: cover;
+  width: 60%;
+  height: 600px;
+}
+
+.meta-sidebar {
+  margin-top: 50px;
+  width: 40%;
+  text-align: center;
+  
+  p {
+    margin: 5px;
+  }
+}
+
+.recipe-header h1 {
+  color: #8dd5d3;
 }
 
 .number-input {
   width: 35px;
   font-size: 10pt;
   padding: 5px;
+  color: white;
 }
+
 
 
 // End RecipePage

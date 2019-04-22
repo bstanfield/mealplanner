@@ -102,7 +102,7 @@ class RecipePage extends Component {
         <div className="recipe-header">
           <h1>{recipe_name}</h1>
         </div>
-        <div id="rfirstouter">
+        <div className="flex">
           <div className="hero-img" style={{ 'background-image': `url(${image_url})`}}>
           </div>
           <div className="meta-sidebar">
@@ -110,18 +110,16 @@ class RecipePage extends Component {
             <p>Total: {R.add(preptime,cooktime)}</p>
             <p>Prep: {preptime}</p>
             <p>Cook: {cooktime}</p>
-            <hr/>
+            
             <p>Cost: {cost}</p>
             <p>Level: {level}</p>
 
             {/* This section only works if they link their Google Account */}
             <div className="btn favorite">♥ Favorite</div>
             <div className="btn calendar">Calendar</div>
+        </div>    
         </div>
-            
-          
-        </div>
-        <br style={{'clear': 'both'}} />
+
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
           <div>Makes <input className="number-input" id="servings" type="number" placeholder="1" /> servings </div>
