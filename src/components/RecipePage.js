@@ -115,8 +115,12 @@ class RecipePage extends Component {
             <p>Level: {level}</p>
 
             {/* This section only works if they link their Google Account */}
-            <div className="btn favorite">♥ Favorite</div>
-            <div className="btn calendar">Calendar</div>
+            <div className="flexbutton">
+            <div className="favorite">Favorite</div>
+            <div className="divider"></div>
+            <div className="calendar">Calendar</div>
+            </div>
+           
         </div>    
         </div>
 
