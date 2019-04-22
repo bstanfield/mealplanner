@@ -50,6 +50,7 @@ class RecipePage extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      phoneNumber:''
       favorited: false,
     };
   }
@@ -94,7 +95,33 @@ class RecipePage extends Component {
 
   }
 
-  addUpvote() {
+  handlePhoneNumberChange(event) {
+    this.setState({phoneNumber: event.target.value})
+    console.log('5103236239', this.state.phoneNumber);
+  }
+
+  twilio() {
+    const {recipe_name, id} = this.props.recipePage.recipePage;
+    console.log('this.props.params.location.search', this.props.params.location.search);
+    fetch(
+      `https://api.foodwise.dev/twilio/messages`,
+      {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          to: this.state.phoneNumber,
+          recipeName: recipe_name,
+          body: `https://stanfield.space/recipe-page/${this.props.params.location.search}`,
+        })
+      }, 
+    ).then(response => response.json())
+    .then(something => console.log("something", something))
+    .catch(error => this.setState({ error }));
+  }
+
+  upvoteDownvote() {
     let recipeId;
     let endpointToHit;
     if (!R.isEmpty(this.props.params.location.search)) {
@@ -120,7 +147,6 @@ class RecipePage extends Component {
     .catch(error => this.setState({ error }));
 } 
 
-
   render() {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, upvotes, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
@@ -141,7 +167,7 @@ class RecipePage extends Component {
             <p>Level: {level}</p>
 
             {/* This section only works if they link their Google Account */}
-            <div className="btn favorite" onClick={()=>this.addUpvote()}>♥ Favorite ({upvotes})</div>
+            <div className="btn favorite" onClick={()=>this.upvoteDownvote()}>♥ Favorite ({upvotes})</div>
             <div className="btn calendar">Calendar</div>
 
           </div>
@@ -153,7 +179,11 @@ class RecipePage extends Component {
           {R.map(renderRecipeIngredients, ingredients)}
           <div className="ingredients-actions">
             <FontAwesomeIcon icon={faPhone} />
-            <a href="https://www.twilio.com">Send ingredients list to phone</a>
+            
+            <input type="text" onChange={(e)=>this.handlePhoneNumberChange(e)} />
+            <div onClick={()=>this.twilio()}>
+              <button>Send ingredients list to phone</button>
+            </div>
           </div>
 
         </div>
