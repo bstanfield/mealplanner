@@ -95,27 +95,31 @@ class RecipePage extends Component {
   }
 
   addUpvote() {
-    this.setState({favorited: true});
-
+    let recipeId;
+    let endpointToHit;
+    if (!R.isEmpty(this.props.params.location.search)) {
+      let parsedQuery = queryString.parse(this.props.params.location.search);
+      recipeId= parsedQuery.id;
+    };
     if (!this.state.favorited) {
-      let recipeId = 1;
-      if (!R.isEmpty(this.props.params.location.search)) {
-        let parsedQuery = queryString.parse(this.props.params.location.search);
-        recipeId= parsedQuery.id;
-      };
-      fetch(
-        `https://api.foodwise.dev/upvote/${recipeId}`,
-        {
-          method: 'GET',
-          mode: 'cors',
-        },
-      ).then(response => response.json())
-      .then(recipe => this.props.SetUpvotes(recipe.upvotes))
-  		.catch(error => this.setState({ error }));
+      this.setState({favorited: true});
+      endpointToHit = `upvote`
     } else {
-      return alert("you've already favorited that recipe!")
+      this.setState({favorited: false});
+      endpointToHit = `downvote`
     }
-  }
+
+    fetch(
+      `https://api.foodwise.dev/${endpointToHit}/${recipeId}`,
+      {
+        method: 'GET',
+        mode: 'cors',
+      },
+    ).then(response => response.json())
+    .then(recipe => this.props.SetUpvotes(recipe.upvotes))
+    .catch(error => this.setState({ error }));
+} 
+
 
   render() {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, upvotes, reheat, storage} = this.props.recipePage.recipePage;
