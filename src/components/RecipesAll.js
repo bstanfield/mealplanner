@@ -86,6 +86,7 @@ class RecipesAll extends Component {
           <div id="backBtn"><a className="link-nostyle" href="/surprise-customize">&lt; Back</a></div>
 
           <button id="moreBtn" onClick={() => this.setState({page: this.state.page + 9})}><a href="">More Recipes</a></button>
+
         </div>
 
       </div>
