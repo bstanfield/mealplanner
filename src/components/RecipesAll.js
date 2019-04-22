@@ -25,6 +25,7 @@ class RecipesAll extends Component {
       error: '',
       redirect: false,
       selectedRecipe: '',
+      page: 9
     };
   }
 
@@ -38,7 +39,7 @@ class RecipesAll extends Component {
       {
         method: 'GET',
         mode: 'cors',
-      }, 
+      },
     ).then(response => response.json())
     .then(recipes => this.props.SetAllRecipes(recipes))
     .catch(error => this.setState({ error }));
@@ -53,9 +54,12 @@ class RecipesAll extends Component {
       </div>
     </a>
   )
+
   render() {
     const { recipesMaster } = this.props
     console.log('selected recipe', this.state.selectedRecipe);
+
+    const recipeArr = R.slice(0, this.state.page, recipesMaster.recipes);
 
     if (this.state.redirect === true) {
       return (
@@ -70,19 +74,20 @@ class RecipesAll extends Component {
       return <p>{this.state.error.message}</p>;
     }
 
+
     return(
       <div id="container">
         <h1>All Recipes</h1>
         <div id="content-outter">
-          {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipesMaster.recipes) }
+          {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipeArr) }
         </div>
 
         <div id="action">
           <div id="backBtn"><a className="link-nostyle" href="/surprise-customize">&lt; Back</a></div>
 
-          <button id="moreBtn"><a href="">More Recipes</a></button>
+          <button id="moreBtn" onClick={() => this.setState({page: this.state.page + 9})}><a href="">More Recipes</a></button>
         </div>
-        
+
       </div>
     )
   }
