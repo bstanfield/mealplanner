@@ -6,8 +6,18 @@ body {
 
 #container {
     max-width: 100%;
+    background: #8dd5d3 no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 100%;
+  width: 100%;
+  margin: auto;
+  position: absolute;
 
     #content-outter {
+    background: white no-repeat center center fixed;
         display: flex;
         flex-direction: row;
         flex-wrap: wrap;
@@ -22,7 +32,7 @@ body {
             .item {
                 background-size: cover;
                 width: 100%;
-                height: 140px;
+                height: 380px;
                 margin: 4%;
             }
             .item:hover {
@@ -30,11 +40,12 @@ body {
                 box-shadow: $standard-shadow;
             }
             .recipe-name {
-                color: $secondary-header;
-                font-weight: normal;
+                color: #8dd5d3;
+                font-weight: 500;
+                font-family: futura-pt;
             }
             .recipe-name:hover {
-                color: $tertiary-header;
+                color: #8dd5d3;
                 cursor: pointer;
                 text-decoration: underline;
             }
@@ -45,37 +56,38 @@ body {
     #action{
         position: relative;
         #backBtn {
-            color: $tertiary-header;
+            color: #8dd5d3;
+            font-family: futura-pt;
             position: absolute;
             top: 10%;
             left: 3%;    
             padding: 1% 2%;
+            margin-bottom: 50px;
         }
         #backBtn:hover {
             text-decoration: underline;
             cursor: pointer;
         }
         #moreBtn {
-            background-color: $header;
+            border: 2px solid #8dd5d3;
+            background-color: transparent;
             color: white;
-            box-shadow: $standard-shadow;
-            width: 150px;
-            height: 40px;
-            font-size: 12pt;
-            margin-left: auto;
-            margin-right: auto;
-            margin-top: 30px;
-            display: block;
-            a {
-                color: white;
-            }
-            a:hover {
-                color: $secondary-header;
-            }
-        }
-        #moreBtn:hover {
+            font-size: 20px;
             cursor: pointer;
+            border-radius: 999px;
+            font-family: futura-pt;
+            text-align: center;
+            color: #8dd5d3;
+            cursor: pointer;
+            margin-bottom: 50px;
+            }
+         #moreBtn:hover {
+            cursor: pointer;
+            background-color: #8dd5d3;
+            color: white;
+            transition: $fast-transition;
         }
+       
     }
 }
 

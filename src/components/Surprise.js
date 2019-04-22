@@ -140,7 +140,7 @@ class Surprise extends Component {
     }
 
     return(
-        <div>
+        <div className="surprisecontainer">
             <h1>Recipe for Your Choices</h1>
             <div id="all-filters">
                 <div id="edit">
@@ -165,7 +165,7 @@ class Surprise extends Component {
                 </div>
             </div>
 
-            <button>
+            <button className="surprisebtn">
                 <a href="/recipes-all">View All Recipes</a>
             </button>
         </div>

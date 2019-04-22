@@ -98,9 +98,11 @@ class RecipePage extends Component {
     const { ingredients } = this.props.recipePage;
     console.log("instructions", instructions);
     return(
-      <div>
+      <div id="recipecontainer">
         <div className="recipe-header">
           <h1>{recipe_name}</h1>
+        </div>
+        <div id="rfirstouter">
           <div className="hero-img" style={{ 'background-image': `url(${image_url})`}}>
           </div>
           <div className="meta-sidebar">
@@ -115,8 +117,9 @@ class RecipePage extends Component {
             {/* This section only works if they link their Google Account */}
             <div className="btn favorite">♥ Favorite</div>
             <div className="btn calendar">Calendar</div>
+        </div>
             
-          </div>
+          
         </div>
         <br style={{'clear': 'both'}} />
         <div className="recipe ingredients">
