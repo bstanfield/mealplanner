@@ -110,7 +110,7 @@ const addVote = (req, res, next) => {
       }
 
     console.log(vars.logTime, req.url);
-    res.status(200).json(results.rows)
+    res.status(200).json(results.rows[0])
   })
 }
 
