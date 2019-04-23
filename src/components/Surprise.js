@@ -71,6 +71,8 @@ class Surprise extends Component {
       };
     }
 
+
+
 	setRedirect(recipe){
 		this.setState({ selectedRecipe: recipe, recipeRedirect: true });
 	}
@@ -157,7 +159,7 @@ class Surprise extends Component {
                 <div onClick={() => this.setState({ editRedirect: true })} className="btn fit-content" id="edit">
                     <FontAwesomeIcon icon={faEdit} />
                     <a className="link-nostyle">edit</a>
-                </div>
+              </div>
                 <div className="filter">
                     {R.map(renderFilter, this.state.filters)}
                 </div>
