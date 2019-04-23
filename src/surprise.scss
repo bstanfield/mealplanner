@@ -10,63 +10,74 @@ body {
 }
 
 .surprisecontainer {
-    h1 {
-        color: $teal;
-        text-align: center;
-    }
-    #all-filters {
+    #header {
         background-color: $teal;
-        max-width: 100%;
-        margin-left: auto;
-        margin-right: auto;
-        padding: 20px 0px;
-        text-align: center;
-        position: relative;
-        #edit {
-            color: $header;
-            position: absolute;
-            left: 8%;
-            top: 32%;
+        padding: 40px 0px 30px 0px;
+        h1 {
+            background-color: $teal;
+            color: white;
+            text-align: center;
+            margin: 0px;
         }
-        #edit:hover{
-            color: $secondary-header;
-            text-decoration: underline;
-            cursor: pointer;
-        }
-        .filter {
+        #all-filters {
             max-width: 100%;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            justify-content: center;
-            align-items: center;
-            .filterCombo {
-                margin: 0%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 40px;
+            text-align: center;
+            position: relative;
+            #edit {
+                color: $header;
+                position: absolute;
+                left: 8%;
+                top: 32%;
             }
-            .circle {
-                background-color: white;
-                width: 65px;
-                height: 65px;
-                border-radius: 50%;
-                border-color: $secondary-header;
-                box-shadow: $standard-shadow;
-                margin-bottom: 10px;
-                margin-left: auto;
-                margin-right: auto;
-                svg {
+            #edit:hover{
+                color: $secondary-header;
+                text-decoration: underline;
+                cursor: pointer;
+            }
+            .filter {
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                .filterCombo {
+                    margin: 0%;
+                }
+                .box {
+                    background-color: white;
+                    width: 55px;
+                    height: 55px;
+                    box-shadow: $standard-shadow;
+                    margin-bottom: 3px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    svg {
+                        color: $teal;
+                        font-size: 18pt;
+                        padding-top: 15px;
+                        padding-left: 5px;
+                    }
+                }
+                .filter-label {
+                    color: white;
+                    font-size: 10pt;
+                }
+                .filter-label:hover {
+                    text-decoration: underline;
+                }
+                .box:hover, .filter-label:hover {
+                    cursor: pointer;
+                }
+                .box:hover svg{
                     color: $secondary-header;
-                    font-size: 22pt;
-                    padding-top: 17px;
-                    padding-left: 5px;
                 }
             }
-            .filter-label {
-                color: $tertiary-header;
-                font-size: 11pt;
-            }
         }
     }
-
     #carousel-container {
         color: $secondary-header;
         max-width: 700px;
