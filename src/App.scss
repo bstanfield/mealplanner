@@ -214,8 +214,6 @@ display: inline-block;
 }
 
 .surveycontainer {
-  // max-height: 100%;
-  // overflow: hidden;
   margin: 0; 
 }
 
@@ -309,10 +307,11 @@ input:focus::-webkit-input-placeholder {
 }
 
 .questioncolumn form {
-  margin-top: 250px;
+  margin-top: 180px;
+  height: 100%;
   font-style: normal; 
   font-family: futura-pt;
-  font-size: 30px;
+  font-size: 28px;
   font-weight: 700;
   font-style: normal;
   text-transform: none;
