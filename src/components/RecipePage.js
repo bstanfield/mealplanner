@@ -27,7 +27,7 @@ const renderRecipeInstructions = (instruction, index) => (
 )
 
 const renderRecipeIngredients = (ingredientObj) => (
-  <div>
+  <div className="checkbox">
     <input type="checkbox" value={ingredientObj.ingredient} />
     {/* Using parseFloat/toString combination to parse out trailing zeros
     and using || '' as a null coalescing operator */}
