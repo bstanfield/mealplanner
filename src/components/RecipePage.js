@@ -91,7 +91,7 @@ class RecipePage extends Component {
 
   renderRecipeIngredients = (ingredientObj) => (
     // TODO: Add functionality so the quantity takes into account the "number of servings input"
-    <div>
+    <div className="ingredientservings">
       <input type="checkbox" value={ingredientObj.ingredient} /> 
       {/* Using parseFloat/toString combination to parse out trailing zeros
       and using || '' as a null coalescing operator */}
@@ -191,14 +191,14 @@ class RecipePage extends Component {
         
         <div className="recipe ingredients">
           <h2>Ingredients</h2>
-          <div>Makes <input className="number-input" id="servings" type="number" value={this.state.servings} onChange={(e) => this.updateServings(e)} /> servings </div>
+          <div className="makesservings">Makes <input className="number-input" id="servings" type="number" value={this.state.servings} onChange={(e) => this.updateServings(e)} /> servings </div>
           {R.map(this.renderRecipeIngredients, ingredients)}
           <div className="ingredients-actions">
             <FontAwesomeIcon icon={faPhone} />
             
-            <input type="text" onChange={(e)=>this.handlePhoneNumberChange(e)} />
+            <input type="text" className="phonetext" onChange={(e)=>this.handlePhoneNumberChange(e)} />
             <div onClick={()=>this.twilio()}>
-              <button>Send ingredients list to phone</button>
+              <button className="phonebutton">Send to phone</button>
             </div>
           </div>
 
