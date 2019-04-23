@@ -6,7 +6,7 @@ body {
 
 #container {
     max-width: 100%;
-    background: #8dd5d3 no-repeat center center fixed;
+    background: $teal no-repeat center center fixed;
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
@@ -29,6 +29,9 @@ body {
             flex-basis: auto;
             padding: 1%;
             padding-top: 20px;
+            .item-container {
+                height: 480px;
+            }
             .item {
                 background-size: cover;
                 width: 100%;
@@ -40,23 +43,22 @@ body {
                 box-shadow: $standard-shadow;
             }
             .recipe-name {
-                color: #8dd5d3;
+                color: $teal;
                 font-weight: 500;
                 font-family: futura-pt;
             }
             .recipe-name:hover {
-                color: #8dd5d3;
+                color: $teal;
                 cursor: pointer;
                 text-decoration: underline;
             }
         }
     }
-    
-    
+
     #action{
         position: relative;
         #backBtn {
-            color: #8dd5d3;
+            color: $teal;
             font-family: futura-pt;
             position: absolute;
             top: 10%;
@@ -69,26 +71,72 @@ body {
             cursor: pointer;
         }
         #moreBtn {
-            border: 2px solid #8dd5d3;
-            background-color: transparent;
+            // border: 2px solid #8dd5d3;
+            background-color: $teal;
             color: white;
-            font-size: 20px;
-            cursor: pointer;
-            border-radius: 999px;
             font-family: futura-pt;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 999px;
             text-align: center;
-            color: #8dd5d3;
-            cursor: pointer;
             margin-bottom: 50px;
             }
          #moreBtn:hover {
             cursor: pointer;
-            background-color: #8dd5d3;
-            color: white;
+            background-color: white;
+            color: $teal;
             transition: $fast-transition;
         }
        
     }
 }
 
+// Tablet
+@media(max-width: 992px) {
+    #container {
+        padding: 0px;
+        margin: 0px;
+        #content-outter {
+            margin-left: auto;
+            margin-right: auto;
+            a {
+                width: 40%;
+                padding: 0px 20px;
+                .item-container {
+                    height: 400px;
+                }
+                .item {
+                    height: 300px;
+                    padding: 0px;
+                    margin: 15px 0px;
+                }
+                .recipe-name {
+                    font-size: 18pt;
+                }
+            }
+        }
+    }
+}
 
+
+// Mobile
+@media(max-width: 767px) {
+    #container {
+        #content-outter {
+            a {
+                width: 75%;
+                .item-container {
+                    height: 400px;
+                }
+                .item {
+                    height: 350px;
+                    padding: 0px;
+                    margin: 30px 0px;
+                }
+                .recipe-name {
+                    margin-top: -15px;
+                }
+            }
+        }
+    }
+}
