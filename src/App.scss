@@ -485,9 +485,12 @@ input:focus::-webkit-input-placeholder {
 
 
 // Personas
+
+
 .persona-page {
   h1, h2 {
     text-align: center;
+
   }
   background: url("blue.jpg") no-repeat center center fixed;
   -webkit-background-size: cover;
@@ -508,18 +511,68 @@ input:focus::-webkit-input-placeholder {
   margin: auto;
 }
 
+.foodietype {
+  margin-top: 150px;
+  font-size: 50px;
+  color: white;
+}
+
+
+.po {
+  position: relative;
+  width: 50%;
+}
+
+.po2 {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-top: 54px;
+}
+
+
+.overlay {
+  position: absolute;
+  font-size: 12px;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 100%;
+  width: 100%;
+  opacity: 0;
+  transition: .5s ease;
+  background-color: green;
+}
+
+.po:hover .overlay {
+  opacity: 1;
+}
+
+.foodpoint {
+  color: white;
+  font-size: 18px;
+  position: absolute;
+  width: 200px;
+  top: 40%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  text-align: center;
+  cursor: pointer; 
+}
+
+
 .persona {
   opacity: .8; 
   background: white;
   text-align: center;
-  width: 250px;
-  height: 250px;
-  border: 0.5px solid $border-light;
+  width: 270px;
+  height: 140px;
   margin: 20px;
   padding: 20px 10px;
-  &:hover {
-    box-shadow: $standard-shadow;
-  }
+  
 }
 
   .persona h2 {
@@ -527,10 +580,7 @@ input:focus::-webkit-input-placeholder {
     color: $tertiary-header;
   }
 
-  .persona ul {
-    text-align: left;
-    color: $body-text;
-  }
+ 
 
 // End Personas
 
