@@ -47,7 +47,7 @@ class RecipesAll extends Component {
 
   renderRecipe = (recipe) => (
     <a className="link-nostyle">
-      <div onClick={() => this.setRedirect(recipe)}>
+      <div className="item-container" onClick={() => this.setRedirect(recipe)}>
         <div className="item" style={{ 'background-image': `url(${recipe.image_url})`}}>
         </div>
         <p className="recipe-name"> {recipe.recipe_name} </p>
