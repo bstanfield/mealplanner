@@ -163,51 +163,55 @@ class RecipePage extends Component {
 
     return(
       <div id="recipecontainer">
-        <div className="recipe-header">
+        {/* <div className="recipe-header">
           <h1>{recipe_name}</h1>
-        </div>
+        </div> */}
         <div className="flex">
           <div className="hero-img" style={{ 'background-image': `url(${image_url})`}}>
           </div>
           <div className="meta-sidebar">
-            <h2>Meta</h2>
-            <p>Total: {R.add(preptime,cooktime)}</p>
-            <p>Prep: {preptime}</p>
-            <p>Cook: {cooktime}</p>
+            <h1>{recipe_name}</h1>
+            {/* <h2>Meta</h2> */}
+            <p>Total: {R.add(preptime,cooktime)}min</p>
+            <p>Prep: {preptime}min</p>
+            <p>Cook: {cooktime}min</p>
             
-            <p>Cost: {cost}</p>
+            <p>Cost: ${cost}</p>
             <p>Level: {level}</p>
 
             {/* This section only works if they link their Google Account */}
 
             <div className="flexbutton">
-            <div className="favorite" onClick={()=>this.upvoteDownvote()}>♥ Favorite ({upvotes})</div>
-            <div className="divider"></div>
-            <div className="calendar">Calendar</div>
-
-          </div>
-        </div>
-        </div>
-        
-        <div className="recipe ingredients">
-          <h2>Ingredients</h2>
-          <div className="makesservings">Makes <input className="number-input" id="servings" type="number" value={this.state.servings} onChange={(e) => this.updateServings(e)} /> servings </div>
-          {R.map(this.renderRecipeIngredients, ingredients)}
-          <div className="ingredients-actions">
-            <FontAwesomeIcon icon={faPhone} />
-            
-            <input type="text" className="phonetext" onChange={(e)=>this.handlePhoneNumberChange(e)} />
-            <div onClick={()=>this.twilio()}>
-              <button className="phonebutton">Send to phone</button>
+              <div className="favorite" onClick={()=>this.upvoteDownvote()}>♥ Favorite ({upvotes})</div>
             </div>
           </div>
+        </div>
+        
+        <div id="ingredients">
+          <h2>Ingredients</h2>
+          <div id="ingredients-content">
+            <div id="ingredients-list">
+              <div id="servings">Makes <input className="number-input" id="servings" type="number" value={this.state.servings} onChange={(e) => this.updateServings(e)} /> servings </div>
+              {R.map(this.renderRecipeIngredients, ingredients)}
+            </div>
+            <div className="ingredients-actions">
+              <p id="send-ingredients">Send ingredients list to your phone!</p>
+              <div id="phone-input">
+                <FontAwesomeIcon icon={faPhone} />
+                <input type="text" placeholder="eg (123) 456 789" onChange={(e)=>this.handlePhoneNumberChange(e)} />
+                <div onClick={()=>this.twilio()}>
+                </div>
+              </div>
+              <button>Send</button>
+            </div>
+          </div>
+        </div>
 
-          <div className="recipe instructions">
+        <div className="recipe">
           <h2>Instructions</h2>
           <form>
             {R.addIndex(R.map)(renderRecipeInstructions, instructions)}
           </form>
-        </div>
         </div>
       </div>
     )
