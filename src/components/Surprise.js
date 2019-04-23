@@ -176,7 +176,7 @@ class Surprise extends Component {
                 </div>
             </div>
 
-            <button className="surprisebtn">
+            <button>
                 <a href="/recipes-all">View All Recipes</a>
             </button>
         </div>

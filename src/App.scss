@@ -129,7 +129,6 @@ p, ul {
 display: inline-block;
   border: 2px solid #8dd5d3;
   background-color: transparent;
-  // color: white;
   font-size: 20px;
   cursor: pointer;
   border-radius: 999px;
@@ -138,7 +137,6 @@ display: inline-block;
   margin: 10px 0;
   text-align: center;
   color: #8dd5d3;
-  cursor: pointer;
 }
 
 .btn:hover {
@@ -559,52 +557,4 @@ svg {
   padding: 20px 10px;
   display: inline-block;
 }
-//
-
-.surprisecontainer {
-  background: #8dd5d3 no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-  margin: auto;
-  position: absolute;
-}
-
-.surprisebtn {
-  border: 2px solid white;
-  background-color: transparent;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 999px;
-  font-family: futura-pt;
-  text-align: center;
-  color: white;
-  cursor: pointer;
-}
-
-.surprisebtn:hover {
-    background-color: white;
-    color: black;
-    transition: $fast-transition;
-  }
-
-  .prevBtn {
-    color: white;
-  }
-
-  .nextBtn {
-    color: white; 
-  }
-
-  .recipe-name {
-   color: white;
-   font-family: futura-pt;
-   font-size: 24px;
-   font-weight: 600;
-  }
-
 
