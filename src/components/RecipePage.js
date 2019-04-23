@@ -91,7 +91,7 @@ class RecipePage extends Component {
 
   renderRecipeIngredients = (ingredientObj) => (
     // TODO: Add functionality so the quantity takes into account the "number of servings input"
-    <div>
+    <div className="ingredientservings">
       <input type="checkbox" value={ingredientObj.ingredient} /> 
       {/* Using parseFloat/toString combination to parse out trailing zeros
       and using || '' as a null coalescing operator */}
