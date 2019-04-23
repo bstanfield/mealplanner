@@ -355,6 +355,25 @@ input:focus::-webkit-input-placeholder {
   clear: both;
 }
 
+#servings {
+  color: #8dd5d3;
+  font-family: futura-pt;
+  font-size: 15px;
+}
+
+.ingredientservings {
+  color: white;
+  font-family: futura-pt;
+  font-size: 25px;
+}
+
+.makesservings {
+  font-size: 25px;
+  display: flex;
+  justify-content: center;
+}
+
+
 .recipe h2 {
   font-size: 40px;
 }
@@ -367,9 +386,35 @@ input:focus::-webkit-input-placeholder {
   font-size: 40px;
 }
 
+.phonebutton {
+  display: inline-block;
+  height: 60px;
+  width: 140px;
+  border: 2px solid white;
+  background-color: transparent;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: futura-pt;
+  padding: -20px 20px 20px -20px;
+  text-align: center;
+  color: white;
+  cursor: pointer;
+}
+
+.phonebutton:hover {
+    background-color: white;
+    color: #8dd5d3;
+    transition: $fast-transition;
+  }
+
 .recipe p {
   color: black;
   font-size: 22px;
+  margin-left: 120px;
+  margin-right: 120px;
+  text-align: center;
 }
 
   .ingredients-actions {
@@ -419,9 +464,13 @@ input:focus::-webkit-input-placeholder {
 
 .number-input {
   width: 35px;
-  font-size: 10pt;
+  font-size: 15pt;
   padding: 5px;
-  color: white;
+  color: #8dd5d3;
+}
+
+.phonetext {
+  color: #8dd5d3;
 }
 
 
