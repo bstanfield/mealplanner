@@ -214,8 +214,10 @@ display: inline-block;
 }
 
 .surveycontainer {
+  // max-height: 100%;
+  // overflow: hidden;
   margin: 0; 
-  }
+}
 
 .qc {
   background: #8dd5d3;
