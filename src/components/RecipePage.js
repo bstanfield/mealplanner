@@ -111,7 +111,6 @@ class RecipePage extends Component {
 
   handlePhoneNumberChange(event) {
     this.setState({phoneNumber: event.target.value})
-    console.log('5103236239', this.state.phoneNumber);
   }
 
   twilio() {
@@ -124,13 +123,12 @@ class RecipePage extends Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: this.state.phoneNumber,
+          to: this.state,phoneNumber,
           recipeName: recipe_name,
-          body: `https://stanfield.space/recipe-page/${this.props.location.search}`,
+          body: `https://stanfield.space/recipe-page/${this.state.location.search}`,
         })
       }, 
     ).then(response => response.json())
-    .then(something => console.log("something", something))
     .catch(error => this.setState({ error }));
   }
 
@@ -202,8 +200,8 @@ class RecipePage extends Component {
                 <FontAwesomeIcon icon={faPhone} />
                 <input type="text" placeholder="eg (123) 456 789" onChange={(e)=>this.handlePhoneNumberChange(e)} />
                 <div onClick={()=>this.twilio()}>
+                  <button>Send</button>
                 </div>
-              <button>Send</button>
               </div>
             </div>
           </div>
