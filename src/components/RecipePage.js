@@ -4,6 +4,8 @@ import { bindActionCreators } from 'redux';
 import * as R from 'ramda';
 import { SetRecipePage, SetRecipeIngredients, SetUpvotes } from '../actions';
 import ReactGA from 'react-ga';
+import { withRouter } from 'react-router-dom';
+import BackButton from './BackButton';
 import Nav from './Nav';
 import '../recipepage.scss'
 
@@ -55,8 +57,8 @@ class RecipePage extends Component {
     let recipeId = 1;
 
     // Parsing URL to find recipe details for fetch request if search parameters exist
-    if (!R.isEmpty(this.props.params.location.search)) {
-      let parsedQuery = queryString.parse(this.props.params.location.search);
+    if (!R.isEmpty(this.props.location.search)) {
+      let parsedQuery = queryString.parse(this.props.location.search);
       recipeName = parsedQuery.recipe;
       recipeId= parsedQuery.id;
     };
@@ -114,7 +116,6 @@ class RecipePage extends Component {
 
   twilio() {
     const {recipe_name, id} = this.props.recipePage.recipePage;
-    console.log('this.props.params.location.search', this.props.params.location.search);
     fetch(
       `https://api.foodwise.dev/twilio/messages`,
       {
@@ -125,7 +126,7 @@ class RecipePage extends Component {
         body: JSON.stringify({
           to: this.state.phoneNumber,
           recipeName: recipe_name,
-          body: `https://stanfield.space/recipe-page/${this.props.params.location.search}`,
+          body: `https://stanfield.space/recipe-page/${this.props.location.search}`,
         })
       }, 
     ).then(response => response.json())
@@ -136,8 +137,8 @@ class RecipePage extends Component {
   upvoteDownvote() {
     let recipeId;
     let endpointToHit;
-    if (!R.isEmpty(this.props.params.location.search)) {
-      let parsedQuery = queryString.parse(this.props.params.location.search);
+    if (!R.isEmpty(this.props.location.search)) {
+      let parsedQuery = queryString.parse(this.props.location.search);
       recipeId= parsedQuery.id;
     };
     if (!this.state.favorited) {
@@ -162,14 +163,11 @@ class RecipePage extends Component {
   render() {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, upvotes, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
-
     return(
       <div>
       <Nav />
       <div id="recipecontainer">
-        {/* <div className="recipe-header">
-          <h1>{recipe_name}</h1>
-        </div> */}
+      <BackButton backTo={this.props.location.state.backTo} />
         <div className="flex">
           <div className="hero-img" style={{ 'background-image': `url(${image_url})`}}>
           </div>
@@ -233,4 +231,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ SetRecipePage, SetRecipeIngredients, SetUpvotes }, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(RecipePage);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(RecipePage));

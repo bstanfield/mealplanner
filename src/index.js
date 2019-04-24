@@ -14,6 +14,7 @@ import Personas from './components/Personas';
 import Surprise from './components/Surprise';
 import Filter from './components/Filter';
 import RecipesAll from './components/RecipesAll';
+import { createBrowserHistory } from "history";
 
 const store = createStore(
   rootReducers,
@@ -25,11 +26,11 @@ ReactDOM.render(
   (<Provider store={store}>
     <Router>
       <Switch>
-        <Route exact path="/recipe-page" render={(params) => (<App content={(<RecipePage params={params} />)} />)} />
+        <Route exact path="/recipe-page" render={() => (<App content={(<RecipePage />)} />)} />
         {/* pretty redundant to use location.location */}
         <Route exact path="/recipes-all" render={() => (<App content={(<RecipesAll />)} />)} />
-        <Route exact path="/surprise" render={(params) => (<App content={(<Surprise params={params} />)} />)} />
-        <Route exact path="/filter" render={(params) => (<App content={(<Filter params={params}/>)} />)} />
+        <Route exact path="/surprise" render={() => (<App content={(<Surprise />)} />)} />
+        <Route exact path="/filter" render={() => (<App content={(<Filter />)} />)} />
         <Route exact path="/survey" render={() => (<App content={(<Survey />)} />)} />
         <Route exact path="/personas" render={() => (<App content={(<Personas />)} />)} />
         <Route exact path="/" render={() => (<App content={(<Home />)} />)} />
