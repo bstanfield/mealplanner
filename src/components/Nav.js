@@ -3,6 +3,7 @@ import * as R from 'ramda';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
+import { Link } from 'react-router-dom';
 
 class Nav extends Component {
   constructor(props) {
@@ -30,7 +31,12 @@ class Nav extends Component {
       <a className="navigationheader" href="/">
         <div className="nav-container">
           <h3 className="logo">
-            {` foodwise`} <span className="headers"><span className="headerhover">personas</span><span className="hspace"></span><span className="headerhover">customize</span><span className="hspace"></span><span className="headerhover">recipes</span></span>
+            {` foodwise`} <span className="headers">
+            <Link to="/personas">personas</Link>
+            <Link className="hspace" to="/surprise">customize</Link>
+            <Link to="/recipes-all">recipes</Link>
+            </span>
+      
           </h3>
           
 
