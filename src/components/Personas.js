@@ -5,6 +5,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetPersonas } from '../actions';
 import { Redirect } from 'react-router-dom';
+import Nav from './Nav';
+import '../persona.scss';
 
 class Personas extends Component {
   constructor(props) {
@@ -30,11 +32,11 @@ class Personas extends Component {
 
   renderPersonas = (persona) => (
     <a className="link-nostyle">
-      <div className="persona" onClick={() => this.setRedirect(persona)}>
-        <h2>{persona.persona}</h2>
-        {/* <ul> */}
-          {R.map(x => <p>{x}</p>, persona.chars)}
-        {/* </ul> */}
+      <div className="po" onClick={() => this.setRedirect(persona)}>
+        <h2 className="po2">{persona.persona}</h2>
+        <div className="overlay">
+          {R.map(x => <p className="foodpoint">{x}</p>, persona.chars)}
+        </div>
       </div>
     </a>
   )
@@ -62,14 +64,15 @@ class Personas extends Component {
 
 
     return(
+    <div>
+    <Nav />
       <div className="persona-page">
-        <h1>Choose a foodie type</h1>
+        <h1>choose a foodie type</h1>
         <h2>We will recommend recipes based on the traits of the persona you choose!</h2>
-        <br/>
-        <br/>
         <div className="persona-container">
           {R.map(this.renderPersonas, personas)}
         </div>
+      </div>
       </div>
     )
   }

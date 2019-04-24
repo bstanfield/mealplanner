@@ -1,20 +1,17 @@
 @import 'variables.scss';
 
-body {
-    padding-bottom: 40px;
-}
-
 #container {
     max-width: 100%;
     background: $teal no-repeat center center fixed;
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: cover;
-  height: 100%;
-  width: 100%;
-  margin: auto;
-  position: absolute;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    height: 100%;
+    width: 100%;
+    margin: auto;
+    padding-bottom: 40px;
+    position: absolute;
 
     #content-outter {
     background: white no-repeat center center fixed;
