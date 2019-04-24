@@ -15,7 +15,6 @@ const ReactMarkdown = require('react-markdown/with-html');
 const queryString = require('query-string');
 
 export const initGA = () => {
-    console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
 }
 export const logPageView = () => {
@@ -159,6 +158,7 @@ class RecipePage extends Component {
     .catch(error => this.setState({ error }));
 } 
 
+  
   render() {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, upvotes, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
@@ -166,7 +166,7 @@ class RecipePage extends Component {
       <div>
       <Nav />
       <div id="recipecontainer">
-      <BackButton backTo={(R.isNil(this.props.location.state.backTo))? '': this.props.location.state.backTo} />
+        {(!R.isNil(this.props.location.state))? <BackButton backTo={this.props.location.state.backTo} /> : ''}
         <div className="flex">
           <div className="hero-img" style={{ 'background-image': `url(${image_url})`}}>
           </div>

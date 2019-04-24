@@ -22,7 +22,6 @@ import ReactGA from 'react-ga';
 const queryString = require('query-string');
 
 export const initGA = () => {
-    console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
 }
 export const logPageView = () => {
@@ -45,8 +44,6 @@ class Surprise extends Component {
     super(props);
     let parsedQuery = queryString.parse(this.props.location.search);
     let pqr = parsedQuery.restriction;
-
-    console.log(parsedQuery.restriction);
 
     if (pqr == 0) {
       pqr = 'None';
@@ -101,7 +98,6 @@ class Surprise extends Component {
 		} else if (parsedQuery.source === 'survey') {
 			endpointToHit = `survey_results/${parsedQuery.cost}/${parsedQuery.cookTime}/${parsedQuery.restriction}`;
 		}
-		console.log('endpointToHit', endpointToHit)
 		fetch(
       `https://api.foodwise.dev/${endpointToHit}`,
       {

@@ -11,7 +11,6 @@ import { Route, Switch, Redirect } from 'react-router-dom';
 
 import ReactGA from 'react-ga';
 export const initGA = () => {
-    console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
 }
 export const logPageView = () => {
@@ -188,7 +187,6 @@ class Survey extends Component {
   render() {
     const { isComplete } = this.state;
 
-    console.log('this.props.location', this.props.location);
     if (isComplete) {
       let cost = this.state.questions[0].answer
       let cookTime = this.state.questions[1].answer

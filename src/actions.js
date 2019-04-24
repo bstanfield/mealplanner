@@ -6,7 +6,6 @@ export function SetAllRecipes(recipes) {
 }
 
 export function SetPersonas(personas) {
-  console.log('personas action', personas);
   return{
     type: 'SET_PERSONAS',
     personas,
@@ -22,7 +21,6 @@ export function SetRecipePage(recipe) {
 
 
 export function SetUpvotes(upvotes) {
-  console.log('upvotes action', upvotes);
   return{
     type: 'SET_UPVOTES',
     upvotes,

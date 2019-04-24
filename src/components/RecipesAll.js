@@ -12,7 +12,6 @@ import Nav from './Nav';
 
 
 export const initGA = () => {
-    console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
 }
 export const logPageView = () => {
@@ -67,8 +66,6 @@ class RecipesAll extends Component {
 
   render() {
     const { recipesMaster } = this.props
-    console.log('selected recipe', this.state.selectedRecipe);
-
     const recipeArr = R.slice(0, this.state.page, recipesMaster.recipes);
 
     if (this.state.redirect === true) {
@@ -90,7 +87,7 @@ class RecipesAll extends Component {
     <Nav />
       <div id="container">
         <h1 className="centerall">All Recipes</h1>
-        <BackButton name="Back to Carousel" backTo={this.props.location.state? this.propsToSend() : ''} />
+        {(!R.isNil(this.props.location.state))? <BackButton name="Back to Carousel" backTo={this.propsToSend()} /> : ''}
         <div id="content-outter">
           {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipeArr) }
         </div>
