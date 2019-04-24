@@ -182,8 +182,6 @@ class Surprise extends Component {
 
     return(
         <div className="surprisecontainer">
-            <button><Link to="/personas">Personas</Link></button>
-            <button><Link to="/survey">Survey</Link></button>
         <Nav />
           <div id="header"> 
             <h1>Your Recommended Recipes</h1>

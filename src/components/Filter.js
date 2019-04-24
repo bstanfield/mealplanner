@@ -204,7 +204,7 @@ class Filter extends Component {
 
     return(
         <div className="filterbox">
-        <BackButton backTo={this.props.location.state.backTo} />
+        <BackButton name="Back to Recipes" backTo={this.props.location.state.backTo} />
           <div className="filteroverlay">
             <h1 className="filtertitle">Filters</h1>
                 {
