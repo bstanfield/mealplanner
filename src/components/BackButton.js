@@ -35,7 +35,7 @@ class BackButton extends Component {
       <button
         className="button icon-left"
         onClick={() => this.setState({goBack: true})}>
-          Back
+          {this.props.name? this.props.name : "Back"} 
       </button>
     )
   }

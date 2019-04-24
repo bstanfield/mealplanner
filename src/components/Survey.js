@@ -45,7 +45,7 @@ class Survey extends Component {
               label: '> $15'
             }
           ],
-          answer: '',
+          answer: '15',
         },
         {
           q: 'How much time do you spend cooking a meal?',
@@ -68,7 +68,7 @@ class Survey extends Component {
               label: 'Greater than 2 hours'
             }
           ],
-          answer: '',
+          answer: '500',
         },
         {
           q: 'Do you have any dietary preferences?',
@@ -102,7 +102,7 @@ class Survey extends Component {
               label: 'Pescatarian'
             }
           ],
-          answer: '',
+          answer: '0',
         },
       ],
       index: 0,
@@ -113,6 +113,13 @@ class Survey extends Component {
 
   updateIndex = () => {
     const newIndex = this.state.index + 1;
+    this.setState(
+      { index: newIndex }
+    )
+  }
+
+  backIndex = () => {
+    const newIndex = this.state.index - 1;
     this.setState(
       { index: newIndex }
     )
@@ -151,6 +158,12 @@ class Survey extends Component {
           )}
         </form>
         {
+          (this.state.index >= 1)
+          ? (<div onClick={ this.backIndex } className="btn fit-content">
+                Previous question
+              </div>) : ''
+        }
+        {
           (this.state.index + 1) === this.state.questions.length
           ? (
             <div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">
@@ -163,6 +176,7 @@ class Survey extends Component {
             </div>
             )
         }
+
       </div>
     </div>
 
@@ -196,7 +210,7 @@ class Survey extends Component {
     return(
       <div>
       <Nav />
-      <BackButton />
+      <BackButton name="Go Home" />
       <div className="surveycontainer">
        { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
       </div>
