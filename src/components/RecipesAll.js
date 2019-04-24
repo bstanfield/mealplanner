@@ -7,6 +7,7 @@ import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
 import '../recipesAll.scss'
 import ReactGA from 'react-ga';
+import Nav from './Nav';
 
 
 export const initGA = () => {
@@ -76,6 +77,8 @@ class RecipesAll extends Component {
 
 
     return(
+    <div>
+    <Nav />
       <div id="container">
         <h1>All Recipes</h1>
         <div id="content-outter">
@@ -88,6 +91,7 @@ class RecipesAll extends Component {
           <button id="moreBtn" onClick={() => this.setState({page: this.state.page + 9})}><a href="">More Recipes</a></button>
 
         </div>
+    </div>
 
       </div>
     )
