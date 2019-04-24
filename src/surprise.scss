@@ -1,0 +1,182 @@
+@import 'variables.scss';
+
+body {
+    background-color: white;
+    font-family: futura-pt;
+    max-width: 100%;
+    padding: 0;
+    margin: 0;
+}
+.surprisecontainer {
+    padding-bottom: 40px;
+    #header {
+        background-color: $teal;
+        padding: 25px 0px;
+        h1 {
+            background-color: $teal;
+            color: white;
+            text-align: center;
+            margin: 0px;
+        }
+        #all-filters {
+            max-width: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            padding-top: 30px;
+            text-align: center;
+            position: relative;
+            .filter {
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                .filterCombo {
+                    margin: 0%;
+                }
+                .box {
+                    background-color: white;
+                    width: 60px;
+                    height: 60px;
+                    box-shadow: $standard-shadow;
+                    margin-bottom: 15px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    svg {
+                        color: $teal;
+                        font-size: 20pt;
+                        padding-top: 16px;
+                        padding-left: 4px;
+                    }
+                    p {
+                        color: white;
+                        font-size: 12pt;
+                        padding-top: 5px;
+                    }
+                }
+                .filter-label {
+                    color: white;
+                    font-size: 10pt;
+                }
+                .filter-label:hover {
+                    text-decoration: underline;
+                }
+                .box:hover, .filter-label:hover {
+                    cursor: pointer;
+                }
+                .box:hover svg{
+                    color: $secondary-header;
+                }
+            }
+        }
+    }
+    #carousel-container {
+        color: $secondary-header;
+        max-width: 700px;
+        min-height: 300px;
+        margin-top: 25px;
+        margin-left: auto;
+        margin-right: auto;
+        position: relative;
+        cursor: pointer;
+        .prevBtn {
+            color: $teal;
+            font-size: 20pt;
+            padding: 10px;
+            position: absolute;
+            top: 40%;
+            left: 0;
+        }
+        .nextBtn {
+            color: $teal;
+            font-size: 20pt;
+            padding: 10px;
+            position: absolute;
+            top: 40%;
+            right: 0;
+        }
+        .prevBtn:hover, .nextBtn:hover {
+            color: $secondary-header;
+            cursor: pointer;
+            transition: $fast-transition;
+        }
+        .carousel-img {
+            max-width: 600px;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            .img {
+                background-position: center;
+                background-size: cover;
+                p {
+                    min-height: 300px; 
+                }
+            }
+            .recipe-name { 
+                color: $teal;
+                font-size: 16pt;
+                text-align: center; 
+            }
+            .recipe-name:hover {
+                text-decoration: underline;
+                transition: $fast-transition;
+                cursor: pointer;
+            }
+        }
+        .img:hover {
+            box-shadow: $standard-shadow;
+            transition: $fast-transition;
+        }
+    }
+    button {
+        background-color: white;
+        color: $teal;
+        width: 150px;
+        height: 40px;
+        font-size: 12pt;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 999px;
+        border: 2px solid $teal;
+        a {
+            color: $teal;
+        }
+        a:hover {
+            color: white;
+            cursor: pointer;
+        }
+    }
+    button:hover {
+        background-color: $teal;
+        cursor: pointer;
+    }
+    button:hover a {
+        color: white;
+    }
+}
+
+
+@media(max-width: 767px) {
+   .surprisecontainer {
+       #header {
+            h1 {
+                font-size: 22pt;
+            }
+            #all-filters {
+                padding-top: 20px;
+            }
+       }
+       
+       #carousel-container {
+        width: 95%;
+         .carousel-img {
+             width: 78%;
+             height: 90%;
+         }   
+     
+    } 
+   }
+    
+}

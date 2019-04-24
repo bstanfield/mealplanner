@@ -1,0 +1,128 @@
+@import './variables.scss';
+
+.surveycontainer {
+  margin: 0;
+  h1, h2 {
+    text-align: center;
+  }
+}
+
+.qc {
+  background: #8dd5d3;
+}
+
+.surveytitle {
+  font-style: normal;
+  font-family: $font-family;
+  font-size: 35px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  }
+
+.surveysubtitle {
+  font-style: normal;
+  font-family: $font-family;
+  font-size: 25px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+}
+
+.survey-text {
+  padding: 10px 60px;
+  font-style: normal;
+  font-family: $font-family;
+  font-size: 45px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: #8dd5d3;
+  text-align: center;
+  border-width:0px;
+  border:none;
+  background: transparent;
+}
+
+input:focus, textarea { outline: none ! important; }
+
+input:focus::-webkit-input-placeholder {
+    color: transparent;
+}
+
+.questioncolumn {
+  text-align: center;
+  float: left;
+  width: 50%;
+  min-height: 100vh;
+}
+
+.questioncolumn h3 {
+  margin-top: 40%;
+  font-style: normal;
+  font-family: $font-family;
+  font-size: 40px;
+  font-weight: 700;
+  font-style: normal;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.questioncolumn p {
+  font-style: normal;
+  font-family: $font-family;
+  font-size: 25px;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: white;
+  text-align: center;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.questioncolumn form {
+  margin-top: 30%;
+  font-style: normal;
+  font-family: $font-family;
+  font-size: 30px;
+  font-weight: 700;
+  text-transform: none;
+  letter-spacing: -.01em;
+  line-height: 1em;
+  color: #8dd5d3;
+  text-align: center;
+  margin-left: 40px;
+  margin-right: 40px;
+}
+
+.questionrow {
+  max-height: 100vh;
+}
+
+@media(max-width: 992px) {
+  .questioncolumn form {
+    margin-top: 40%;
+  }
+}
+
+@media(max-width: 767px) {
+  .questioncolumn {
+    width: 100%;
+    min-height: 50%;
+    h3, form {
+      margin-top: 10%;
+    }
+  }
+}

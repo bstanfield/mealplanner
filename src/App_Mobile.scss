@@ -1,0 +1,15 @@
+@import './variables.scss';
+
+@media(max-width: 767px) {
+  // Survey
+  .questioncolumn h3 {
+    margin-top: 55%;
+    font-size: 32px;
+  }
+  .questioncolumn form {
+    margin-top: 75%;
+    font-size: 20px;
+  }
+  // End Survey
+  
+}
