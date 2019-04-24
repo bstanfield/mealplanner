@@ -203,8 +203,8 @@ class RecipePage extends Component {
                 <input type="text" placeholder="eg (123) 456 789" onChange={(e)=>this.handlePhoneNumberChange(e)} />
                 <div onClick={()=>this.twilio()}>
                 </div>
-              </div>
               <button>Send</button>
+              </div>
             </div>
           </div>
         </div>
