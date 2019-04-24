@@ -167,7 +167,7 @@ class RecipePage extends Component {
       <div>
       <Nav />
       <div id="recipecontainer">
-      <BackButton backTo={this.props.location.state.backTo} />
+      <BackButton backTo={(R.isNil(this.props.location.state.backTo))? '': this.props.location.state.backTo} />
         <div className="flex">
           <div className="hero-img" style={{ 'background-image': `url(${image_url})`}}>
           </div>

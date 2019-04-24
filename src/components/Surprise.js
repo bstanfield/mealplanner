@@ -43,7 +43,7 @@ const renderFilter = (filter) => (
 class Surprise extends Component {
     constructor(props) {
     super(props);
-    let parsedQuery = queryString.parse(this.props.params.location.search);
+    let parsedQuery = queryString.parse(this.props.location.search);
     let pqr = parsedQuery.restriction;
 
     console.log(parsedQuery.restriction);
@@ -89,16 +89,12 @@ class Surprise extends Component {
       };
     }
     
-
-
-
 	setRedirect(recipe){
 		this.setState({ selectedRecipe: recipe, recipeRedirect: true });
 	}
 
 	componentDidMount() {
         let parsedQuery = queryString.parse(this.props.location.search);
-        console.log("parsedQuery", parsedQuery);
 		let endpointToHit;
 		if (parsedQuery.source === 'preset') {
 			endpointToHit = `persona_recipes/${parsedQuery.persona}`;
@@ -111,7 +107,6 @@ class Surprise extends Component {
       {
 				method: 'GET',
 				mode: 'cors',
-				// Not ideal to have all of our requests sent with cross origin request allowed
       },
     ).then(response => response.json())
     .then(recipes => this.props.SetAllRecipes(recipes))

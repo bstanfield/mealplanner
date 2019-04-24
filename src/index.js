@@ -27,7 +27,6 @@ ReactDOM.render(
     <Router>
       <Switch>
         <Route exact path="/recipe-page" render={() => (<App content={(<RecipePage />)} />)} />
-        {/* pretty redundant to use location.location */}
         <Route exact path="/recipes-all" render={() => (<App content={(<RecipesAll />)} />)} />
         <Route exact path="/surprise" render={() => (<App content={(<Surprise />)} />)} />
         <Route exact path="/filter" render={() => (<App content={(<Filter />)} />)} />

@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../survey.scss';
 import Nav from './Nav';
 import BackButton from './BackButton';
-// figure out how to do back on survey
+import {withRouter} from 'react-router-dom';
 
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -129,7 +129,6 @@ class Survey extends Component {
     var questionsClone = {...this.state.questions};
     questionsClone[this.state.index].answer = event.target.value;
     this.setState({questionsClone});
-    console.log("questionsClone", questionsClone)
   }
 
 
@@ -189,6 +188,7 @@ class Survey extends Component {
   render() {
     const { isComplete } = this.state;
 
+    console.log('this.props.location', this.props.location);
     if (isComplete) {
       let cost = this.state.questions[0].answer
       let cookTime = this.state.questions[1].answer
@@ -201,7 +201,6 @@ class Survey extends Component {
         }} />
       );
     }
-
 
     if (this.state.error) {
       return <p>{this.state.error.message}</p>;
@@ -219,4 +218,4 @@ class Survey extends Component {
   }
 }
 
-export default Survey;
+export default withRouter(Survey);
