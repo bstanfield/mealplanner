@@ -4,14 +4,16 @@
   color: #8dd5d3;
   font-size: 45px;
   font-weight: 600;
+  padding-left: 5%;
 }
 
 .headers {
   color: #8dd5d3;
   font-size: 20px;
-  padding-left: 700px;
   font-size: 25px;
   font-weight: 500;
+  float: right;
+  padding-right: 10%;
 }
 
 .logo link {
@@ -134,7 +136,7 @@ p, ul {
 .nav-container{
   background-color: white;
   height: fit-content;
-  padding: 35px 150px 25px 150px;
+  padding: 35px 25px;
   width: 100%;
   box-shadow: $standard-shadow;
 }
