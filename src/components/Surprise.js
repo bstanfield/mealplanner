@@ -170,7 +170,8 @@ class Surprise extends Component {
 
     return(
         <div className="surprisecontainer">
-            <BackButton backTo={this.props.location.state.backTo} />
+            <button><Link to="/personas">Personas</Link></button>
+            <button><Link to="/survey">Survey</Link></button>
           <div id="header"> 
             <h1>Your Recommended Recipes</h1>
             <div id="all-filters" onClick={() => this.setState({ editRedirect: true })}>

@@ -56,6 +56,14 @@ class RecipesAll extends Component {
     </a>
   )
 
+  propsToSend() {
+    if (this.props.location.state.backTo.pathname === '/recipe-page'){
+      return this.props.location.state.backTo.state.backTo.state.backTo
+    } else {
+      return this.props.location.state.backTo
+    }
+  }
+
   render() {
     const { recipesMaster } = this.props
     console.log('selected recipe', this.state.selectedRecipe);
@@ -76,10 +84,9 @@ class RecipesAll extends Component {
       return <p>{this.state.error.message}</p>;
     }
 
-    console.log('this.props.location', this.props.location);
     return(
       <div id="container">
-        <BackButton backTo={this.props.location.state.backTo} />
+        <BackButton backTo={this.propsToSend()} />
         <h1>All Recipes</h1>
         <div id="content-outter">
           {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipeArr) }

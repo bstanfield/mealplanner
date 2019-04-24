@@ -163,7 +163,6 @@ class RecipePage extends Component {
   render() {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, upvotes, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
-
     return(
       <div id="recipecontainer">
       <BackButton backTo={this.props.location.state.backTo} />
