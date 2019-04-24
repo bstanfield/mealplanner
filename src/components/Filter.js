@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign } from '@fortawesome/free-solid-svg-icons';
@@ -11,6 +11,7 @@ import { faFlag } from '@fortawesome/free-solid-svg-icons';
 import { faEdit } from '@fortawesome/free-solid-svg-icons';
 import { faArrowCircleLeft } from '@fortawesome/free-solid-svg-icons';
 import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
+import BackButton from './BackButton';
 
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
@@ -173,8 +174,8 @@ class Filter extends Component {
     </label>
   )
   componentDidMount() {
-    if (!R.isEmpty(this.props.params.location.search)) {
-    let parsedQuery = queryString.parse(this.props.params.location.search);
+    if (!R.isEmpty(this.props.location.search)) {
+    let parsedQuery = queryString.parse(this.props.location.search);
     var filtersClone = {...this.state.filters};
     filtersClone[0].answer = parsedQuery.cost;
     filtersClone[1].answer = parsedQuery.cookTime;
@@ -194,7 +195,8 @@ class Filter extends Component {
         return (
           <Redirect to={{
             pathname: '/surprise',
-            search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`
+            search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`,
+            state: {backTo: this.props.location},
           }} />
         );
       }
@@ -202,6 +204,7 @@ class Filter extends Component {
 
     return(
         <div className="filterbox">
+        <BackButton backTo={this.props.location.state.backTo} />
           <div className="filteroverlay">
             <h1 className="filtertitle">Filters</h1>
                 {
@@ -241,4 +244,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({}, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Filter);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Filter));

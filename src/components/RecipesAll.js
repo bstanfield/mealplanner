@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
 import '../recipesAll.scss'
 import ReactGA from 'react-ga';
+import BackButton from './BackButton';
 import Nav from './Nav';
 
 
@@ -56,6 +57,14 @@ class RecipesAll extends Component {
     </a>
   )
 
+  propsToSend() {
+    if (this.props.location.state.backTo.pathname === '/recipe-page'){
+      return this.props.location.state.backTo.state.backTo.state.backTo
+    } else {
+      return this.props.location.state.backTo
+    }
+  }
+
   render() {
     const { recipesMaster } = this.props
     console.log('selected recipe', this.state.selectedRecipe);
@@ -66,7 +75,8 @@ class RecipesAll extends Component {
       return (
         <Redirect to={{
           pathname: '/recipe-page',
-          search: `?recipe=${this.state.selectedRecipe.recipe_name}&id=${this.state.selectedRecipe.id}`
+          search: `?recipe=${this.state.selectedRecipe.recipe_name}&id=${this.state.selectedRecipe.id}`,
+          state: {backTo: this.props.location},
         }} />
       );
     }
@@ -75,20 +85,21 @@ class RecipesAll extends Component {
       return <p>{this.state.error.message}</p>;
     }
 
-
     return(
     <div>
     <Nav />
       <div id="container">
-        <h1>All Recipes</h1>
+        <BackButton backTo={this.propsToSend()} />
+        <h1 className="centerall">All Recipes</h1>
         <div id="content-outter">
           {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipeArr) }
         </div>
 
         <div id="action">
-          <div id="backBtn"><a className="link-nostyle" href="/surprise-customize">&lt; Back</a></div>
+          <div id="backBtn"><a className="backBtn" href="/surprise-customize">&lt; Back</a></div>
 
-          <button id="moreBtn" onClick={() => this.setState({page: this.state.page + 9})}><a href="">More Recipes</a></button>
+          <a href="">
+          <button id="moreBtn" onClick={() => this.setState({page: this.state.page + 9})}>More Recipes</button></a>
 
         </div>
     </div>
@@ -108,4 +119,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ SetAllRecipes }, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(RecipesAll);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(RecipesAll));

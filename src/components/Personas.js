@@ -4,7 +4,8 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetPersonas } from '../actions';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
+import BackButton from './BackButton';
 import Nav from './Nav';
 import '../persona.scss';
 
@@ -57,17 +58,20 @@ class Personas extends Component {
       return (
         <Redirect to={{
           pathname: '/surprise',
-          search: `?source=preset&persona=${selectedPersona.id}&cost=${selectedPersona.cost}&cookTime=${selectedPersona.cookTime}&restriction=${selectedPersona.restriction}`
+          search: `?source=preset&persona=${selectedPersona.id}&cost=${selectedPersona.cost}&cookTime=${selectedPersona.cookTime}&restriction=${selectedPersona.restriction}`,
+          state: {backTo: this.props.location}
         }} />
       );
     }
 
+    console.log('current location', this.props.location);
 
     return(
     <div>
     <Nav />
       <div className="persona-page">
-        <h1>choose a foodie type</h1>
+        <BackButton />
+        <h1 className="foodietype">choose a foodie type</h1>
         <h2>We will recommend recipes based on the traits of the persona you choose!</h2>
         <div className="persona-container">
           {R.map(this.renderPersonas, personas)}
@@ -88,4 +92,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ SetPersonas }, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Personas);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Personas));
