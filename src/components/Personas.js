@@ -68,7 +68,6 @@ class Personas extends Component {
     <div>
     <Nav />
       <div className="persona-page">
-        <BackButton />
         <h1 className="foodietype">choose a foodie type</h1>
         <h2>We will recommend recipes based on the traits of the persona you choose!</h2>
         <div className="persona-container">

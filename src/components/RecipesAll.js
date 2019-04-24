@@ -89,8 +89,8 @@ class RecipesAll extends Component {
     <div>
     <Nav />
       <div id="container">
-        <BackButton backTo={this.propsToSend()} />
         <h1 className="centerall">All Recipes</h1>
+        <BackButton name="Back to Carousel" backTo={this.props.location.state? this.propsToSend() : ''} />
         <div id="content-outter">
           {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipeArr) }
         </div>

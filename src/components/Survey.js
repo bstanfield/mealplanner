@@ -209,7 +209,6 @@ class Survey extends Component {
     return(
       <div>
       <Nav />
-      <BackButton name="Go Home" />
       <div className="surveycontainer">
        { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
       </div>
