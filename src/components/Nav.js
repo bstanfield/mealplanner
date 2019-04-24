@@ -19,12 +19,12 @@ class Nav extends Component {
     //   `http://35.236.39.233/recipenames`,
     //   {
     //     method: 'GET',
-    //   }, 
+    //   },
     // ).then(response => response.json())
     // .then(recipes => this.props.SetAllRecipes(recipes))
     // .catch(error => this.setState({ error }));
   }
-  
+
 
   render() {
     return(
@@ -36,11 +36,7 @@ class Nav extends Component {
             <Link className="hspace" to="/surprise">customize</Link>
             <Link to="/recipes-all">recipes</Link>
             </span>
-      
           </h3>
-          
-
-
         </div>
       </a>
     )

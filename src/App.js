@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import './App.scss';
-import './App_Tablet.scss';
-import './App_Mobile.scss';
 import Nav from './components/Nav';
 import ReactGA from 'react-ga';
 
@@ -15,7 +13,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
+
         <div className="app-content">
           {this.props.content}
         </div>
