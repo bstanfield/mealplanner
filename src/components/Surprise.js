@@ -69,17 +69,14 @@ class Surprise extends Component {
     this.state = {
         filters: [
             {
-                label: 'Budget',
                 icon: faDollarSign,
                 val: `$${parsedQuery.cost}`
             },
             {
-                label: 'Time',
                 icon: faClock,
-                val: `${parsedQuery.cookTime} min.`
+                val: `${parsedQuery.cookTime} min`
             },
             {
-                label: 'Restriction',
                 icon: faFlag,
                 val: pqr
             },
