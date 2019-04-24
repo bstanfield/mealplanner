@@ -2,135 +2,168 @@
 
 body {
     background-color: white;
+    font-family: futura-pt;
     max-width: 100%;
-    overflow-x: hidden;
+    // overflow: hidden;
     padding: 0;
     margin: 0;
 }
-h1 {
-    text-align: center;
-}
-#all-filters {
-    max-width: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    position: relative;
-    color: white;
-    #edit {
-        color: white;
-        position: absolute;
-        left: 8%;
-        top: 32%;
-    }
-    #edit:hover{
-        color: white;
-        text-decoration: underline;
-        cursor: pointer;
-    }
-    .filter {
-        max-width: 100%;
-        color: purple;
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        .filterCombo {
-            margin: 0%;
+.surprisecontainer {
+    #header {
+        background-color: $teal;
+        padding: 40px 0px 30px 0px;
+        h1 {
+            background-color: $teal;
+            color: white;
+            text-align: center;
+            margin: 0px;
         }
-        .circle {
-            background-color: white;
-            width: 65px;
-            height: 65px;
-            border-radius: 50%;
-            border-color: $secondary-header;
-            box-shadow: $standard-shadow;
-            margin-bottom: 10px;
+        #all-filters {
+            max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            svg {
-                color: black;
-                font-size: 22pt;
-                padding-top: 17px;
-                padding-left: 5px;
+            padding-top: 40px;
+            text-align: center;
+            position: relative;
+            .filter {
+                max-width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: center;
+                align-items: center;
+                .filterCombo {
+                    margin: 0%;
+                }
+                .box {
+                    background-color: white;
+                    width: 60px;
+                    height: 60px;
+                    box-shadow: $standard-shadow;
+                    margin-bottom: 3px;
+                    margin-left: auto;
+                    margin-right: auto;
+                    svg {
+                        color: $teal;
+                        font-size: 20pt;
+                        padding-top: 16px;
+                        padding-left: 4px;
+                    }
+                }
+                .filter-label {
+                    color: white;
+                    font-size: 10pt;
+                }
+                .filter-label:hover {
+                    text-decoration: underline;
+                }
+                .box:hover, .filter-label:hover {
+                    cursor: pointer;
+                }
+                .box:hover svg{
+                    color: $secondary-header;
+                }
             }
         }
-        .filter-label {
-            color: black;
-            font-size: 11pt;
-        }
     }
-}
-
-#carousel-container {
-    color: $secondary-header;
-    max-width: 700px;
-    min-height: 300px;
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    .prevBtn {
-        font-size: 20pt;
-        padding: 10px;
-        position: absolute;
-        top: 40%;
-        left: 0;
-    }
-    .nextBtn {
-        font-size: 20pt;
-        padding: 10px;
-        position: absolute;
-        top: 40%;
-        right: 0;
-    }
-    .prevBtn:hover, .nextBtn:hover {
-        color: grey;
-        cursor: pointer;
-    }
-    .carousel-img {
-        max-width: 600px;
-        height: 100%;
+    #carousel-container {
+        color: $secondary-header;
+        max-width: 700px;
+        min-height: 300px;
+        margin-top: 25px;
         margin-left: auto;
         margin-right: auto;
-        .img {
-            background-position: center;
-            background-size: cover;
-            p {
-                min-height: 300px; 
+        position: relative;
+        cursor: pointer;
+        .prevBtn {
+            color: $teal;
+            font-size: 20pt;
+            padding: 10px;
+            position: absolute;
+            top: 40%;
+            left: 0;
+        }
+        .nextBtn {
+            color: $teal;
+            font-size: 20pt;
+            padding: 10px;
+            position: absolute;
+            top: 40%;
+            right: 0;
+        }
+        .prevBtn:hover, .nextBtn:hover {
+            color: $secondary-header;
+            cursor: pointer;
+            transition: $fast-transition;
+        }
+        .carousel-img {
+            max-width: 600px;
+            height: 100%;
+            margin-left: auto;
+            margin-right: auto;
+            .img {
+                background-position: center;
+                background-size: cover;
+                p {
+                    min-height: 300px; 
+                }
+            }
+            .recipe-name { 
+                color: $teal;
+                font-size: 16pt;
+                text-align: center; 
+            }
+            .recipe-name:hover {
+                text-decoration: underline;
+                transition: $fast-transition;
+                cursor: pointer;
             }
         }
-        .recipe-name { 
-            text-align: center; 
-        }
-        .recipe-name:hover {
-            text-decoration: underline;
+        .img:hover {
+            box-shadow: $standard-shadow;
+            transition: $fast-transition;
         }
     }
-    .img:hover {
-        box-shadow: $standard-shadow;
+    button {
+        background-color: white;
+        color: $teal;
+        width: 150px;
+        height: 40px;
+        font-size: 12pt;
+        margin-left: auto;
+        margin-right: auto;
+        display: block;
+        border-radius: 999px;
+        border: 2px solid $teal;
+        a {
+            color: $teal;
+        }
+        a:hover {
+            color: white;
+        }
     }
-}
-
-
-
-button {
-    background-color: $header;
-    color: white;
-    width: 150px;
-    height: 40px;
-    font-size: 12pt;
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 30px;
-    display: block;
-    a {
+    button:hover {
+        background-color: $teal;
+    }
+    button:hover a {
         color: white;
     }
-    a:hover {
-        color: #8dd5d3;
-    }
 }
 
 
+@media(max-width: 767px) {
+   .surprisecontainer {
+       h1 {
+           font-size: 26pt;
+       }
+       #carousel-container {
+        width: 95%;
+         .carousel-img {
+             width: 78%;
+             height: 90%;
+         }   
+     
+    } 
+   }
+    
+}
