@@ -27,21 +27,21 @@ class Survey extends Component {
           desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.',
           options: [
             {
-              value: 0,
-              label: '< $5'
+              value: 4,
+              label: '$4 or less'
             },
             {
-              value: 5,
-              label: '$5-10'
+              value: 7,
+              label: '$7 or less'
             },
             {
               value: 10,
-              label: '$10-15'
+              label: '$10 or less'
             },
             {
               value: 15,
-              label: '> $15'
-            }
+              label: '$15 or less'
+            },
           ],
           answer: '',
         },
