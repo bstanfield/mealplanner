@@ -8,6 +8,7 @@ import { SetAllRecipes } from '../actions';
 import '../recipesAll.scss'
 import ReactGA from 'react-ga';
 import BackButton from './BackButton';
+import Nav from './Nav';
 
 
 export const initGA = () => {
@@ -85,19 +86,23 @@ class RecipesAll extends Component {
     }
 
     return(
+    <div>
+    <Nav />
       <div id="container">
         <BackButton backTo={this.propsToSend()} />
-        <h1>All Recipes</h1>
+        <h1 className="centerall">All Recipes</h1>
         <div id="content-outter">
           {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipeArr) }
         </div>
 
         <div id="action">
-          <div id="backBtn"><a className="link-nostyle" href="/surprise-customize">&lt; Back</a></div>
+          <div id="backBtn"><a className="backBtn" href="/surprise-customize">&lt; Back</a></div>
 
-          <button id="moreBtn" onClick={() => this.setState({page: this.state.page + 9})}><a href="">More Recipes</a></button>
+          <a href="">
+          <button id="moreBtn" onClick={() => this.setState({page: this.state.page + 9})}>More Recipes</button></a>
 
         </div>
+    </div>
 
       </div>
     )

@@ -1,7 +1,7 @@
 @import 'variables.scss';
 
-body {
-    padding-bottom: 40px;
+.centerall {
+    text-align: center;
 }
 
 #container {
@@ -15,6 +15,8 @@ body {
   width: 100%;
   margin: auto;
   position: absolute;
+
+
 
     #content-outter {
     background: white no-repeat center center fixed;
@@ -57,6 +59,7 @@ body {
 
     #action{
         position: relative;
+        text-align: center;
         #backBtn {
             color: $teal;
             font-family: futura-pt;
@@ -67,24 +70,27 @@ body {
             margin-bottom: 50px;
         }
         #backBtn:hover {
-            text-decoration: underline;
+            color: white;
+            transition: $fast-transition;
             cursor: pointer;
         }
         #moreBtn {
-            // border: 2px solid #8dd5d3;
-            background-color: $teal;
-            color: white;
+            border: 2px solid $teal;
+            background-color: transparent;
+            color: $teal;
             font-family: futura-pt;
             font-size: 20px;
-            font-weight: bold;
+            font-weight: 500;
+            padding: 10px 10px 10px 10px;
             border-radius: 999px;
             text-align: center;
             margin-bottom: 50px;
+            margin-top: 20px;
             }
          #moreBtn:hover {
             cursor: pointer;
-            background-color: white;
-            color: $teal;
+            background-color: $teal;
+            color: white;
             transition: $fast-transition;
         }
        

@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
 import { Redirect, withRouter, Link } from 'react-router-dom';
-
+import Nav from './Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faSurprise } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
@@ -34,6 +34,7 @@ const renderFilter = (filter) => (
     <div className="filterCombo">
         <div className="box">
             <FontAwesomeIcon icon={filter.icon} />
+            <p>{filter.val}</p>
         </div>
         <span className="filter-label">{filter.label}</span>
     </div>
@@ -42,27 +43,45 @@ const renderFilter = (filter) => (
 class Surprise extends Component {
     constructor(props) {
     super(props);
+    let parsedQuery = queryString.parse(this.props.params.location.search);
+    let pqr = parsedQuery.restriction;
+
+    console.log(parsedQuery.restriction);
+
+    if (pqr == 0) {
+      pqr = 'None';
+    } else if (pqr == 1) {
+      pqr = 'Vegan';
+    } else if (pqr == 2) {
+      pqr = 'Vegetarian';
+    } else if (pqr == 3) {
+      pqr = 'Dairy free';
+    } else if (pqr == 4) {
+      pqr = 'Nut free';
+    } else if (pqr == 5) {
+      pqr = 'Gluten free';
+    } else if (pqr == 6) {
+      pqr = 'Pescatarian';
+    } else {
+      pqr = 'N/A'
+    }
+
     this.state = {
         filters: [
             {
                 label: 'Budget',
                 icon: faDollarSign,
+                val: `$${parsedQuery.cost}`
             },
             {
                 label: 'Time',
                 icon: faClock,
-            },
-            {
-                label: 'Expertise',
-                icon: faStar,
-            },
-            {
-                label: 'Ingredients',
-                icon: faUtensils,
+                val: `${parsedQuery.cookTime} min.`
             },
             {
                 label: 'Restriction',
                 icon: faFlag,
+                val: pqr
             },
         ],
         index: 0,
@@ -72,6 +91,7 @@ class Surprise extends Component {
         goToAll: false,
       };
     }
+    
 
 
 
@@ -172,6 +192,7 @@ class Surprise extends Component {
         <div className="surprisecontainer">
             <button><Link to="/personas">Personas</Link></button>
             <button><Link to="/survey">Survey</Link></button>
+        <Nav />
           <div id="header"> 
             <h1>Your Recommended Recipes</h1>
             <div id="all-filters" onClick={() => this.setState({ editRedirect: true })}>

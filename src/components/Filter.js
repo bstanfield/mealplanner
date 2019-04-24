@@ -58,30 +58,30 @@ class Filter extends Component {
         filters: [
           {
             id: 0,
-            name: 'cost',
+            name: 'Cost',
             options: [
               {
-                value: 0,
-                label: '< $5'
+                value: 4,
+                label: '$4 or less'
               },
               {
-                value: 5,
-                label: '$5-10'
+                value: 7,
+                label: '$7 or less'
               },
               {
                 value: 10,
-                label: '$10-15'
+                label: '$10 or less'
               },
               {
                 value: 15,
-                label: '> $15'
+                label: '$15 or less'
               },
             ],
             answer: '',
           },
           {
             id: 1,
-            name: 'cookTime',
+            name: 'Cook Time',
             options: [
               {
                 value: 30,
@@ -104,8 +104,12 @@ class Filter extends Component {
           },
           {
             id: 2,
-            name: 'restriction',
+            name: 'Dietary Restrictions',
             options: [
+              {
+                value: 0,
+                label: 'No dietary preferences'
+              },
               {
                 value: 1,
                 label: 'Vegan'
@@ -115,8 +119,20 @@ class Filter extends Component {
                 label: 'Vegetarian'
               },
               {
-                value: 0,
-                label: 'No dietary preferences'
+                value: 3,
+                label: 'Dairy Free'
+              },
+              {
+                value: 4,
+                label: 'Nut free'
+              },
+              {
+                value: 5,
+                label: 'Gluten Free'
+              },
+              {
+                value: 6,
+                label: 'Pescatarian'
               },
             ],
             answer: '',
@@ -166,7 +182,6 @@ class Filter extends Component {
     filtersClone[2].answer = parsedQuery.restriction;
     this.setState({filtersClone});
     console.log('filtersClone', filtersClone);
-    // Not exactly the most scalable way to do this...
   }
   }
 
@@ -190,6 +205,7 @@ class Filter extends Component {
     return(
         <div className="filterbox">
         <BackButton backTo={this.props.location.state.backTo} />
+          <div className="filteroverlay">
             <h1 className="filtertitle">Filters</h1>
                 {
                   this.state.filters.map((singleFilter, index) => {
@@ -209,6 +225,7 @@ class Filter extends Component {
                     Filter
                     </div>
                 </button>
+          </div>
         </div>
     )
   }

@@ -6,8 +6,8 @@ import { SetRecipePage, SetRecipeIngredients, SetUpvotes } from '../actions';
 import ReactGA from 'react-ga';
 import { withRouter } from 'react-router-dom';
 import BackButton from './BackButton';
-
-import '../recipepage.scss';
+import Nav from './Nav';
+import '../recipepage.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
@@ -164,6 +164,8 @@ class RecipePage extends Component {
     const {recipe_name, preptime, cooktime, cost, instructions, level, image_url, upvotes, reheat, storage} = this.props.recipePage.recipePage;
     const { ingredients } = this.props.recipePage;
     return(
+      <div>
+      <Nav />
       <div id="recipecontainer">
       <BackButton backTo={this.props.location.state.backTo} />
         <div className="flex">
@@ -213,6 +215,7 @@ class RecipePage extends Component {
             {R.addIndex(R.map)(renderRecipeInstructions, instructions)}
           </form>
         </div>
+      </div>
       </div>
     )
   }
