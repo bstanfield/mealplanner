@@ -1,3 +1,5 @@
+import * as R from 'ramda';
+
 const initialState = {
   recipes: [
   {
@@ -28,7 +30,9 @@ const initialState = {
 
 const setAllRecipes = (state, action) => {
   const stateClone = Object.assign({}, state);
-  stateClone.recipes = action.recipes;
+  if (!R.isNil(action.recipes)){
+    stateClone.recipes = action.recipes;
+  }
   return stateClone;
 };
 
