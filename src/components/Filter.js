@@ -30,7 +30,6 @@ export const logPageView = () => {
     ReactGA.pageview(window.location.pathname)
 }
 
-
 const renderFilter = (filter) => (
     <div className="filterCombo">
         <div className="circle">
@@ -46,6 +45,8 @@ const renderFilterLabel = (filter) => (
         <input type="text" placeholder={filter.value}/>
     </div>
 )
+
+
 
 
 class Filter extends Component {
@@ -142,7 +143,7 @@ class Filter extends Component {
 
 
   renderOption = (option, index, index2) => (
-    <label>
+    <label className="labelfilter">
       <input
         type="radio"
         name={index}
@@ -185,8 +186,8 @@ class Filter extends Component {
 
 
     return(
-        <div>
-            <h1>Filters</h1>
+        <div className="filterbox">
+            <h1 className="filtertitle">Filters</h1>
                 {
                   this.state.filters.map((singleFilter, index) => {
                     filterOptions = (
@@ -200,9 +201,9 @@ class Filter extends Component {
                   }
                   )
                 }
-                <button>
+                <button className="filterbutton">
                     <div onClick={() => this.setState({ searchRedirect: true })}>
-                    <a>Filter</a>
+                    Filter
                     </div>
                 </button>
         </div>

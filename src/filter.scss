@@ -2,11 +2,10 @@
 
 #filter-container {
     background-color: white;
-    color: $tertiary-header;
+    color: black;
     max-width: 380px;
     height: 350px; 
-    border: 1px solid $secondary-header;
-    box-shadow: $standard-shadow;
+    border: 1px solid black;
     margin-left: auto;
     margin-right: auto;
     margin-top: 20px;
@@ -15,7 +14,7 @@
         padding-top: 25px;
         position: relative;
         input {
-            color: $tertiary-header;
+            color: black;
             width: 180px;
             padding: 1%;
             position: absolute;
@@ -23,3 +22,57 @@
         }
     }
 }
+
+.filtertitle {
+    color: black;
+  }
+
+.filterbutton {
+  border: 2px solid black;
+  background-color: transparent;
+  color: black;
+  font-size: 20px;
+  cursor: pointer;
+  border-radius: 999px;
+  font-family: futura-pt;
+  text-align: center;
+  cursor: pointer;
+}
+
+.filterbutton:hover {
+    background-color: black;
+    color: white;
+    transition: $fast-transition;
+  }
+
+
+  .labelfilter {
+    display: flex;
+    justify-content: center;
+   color: black;
+   font-size: 20px;
+   font-weight: 600;
+  }
+
+  .filter-label {
+    color: black;
+  }
+
+  p {
+   text-align: center;
+   font-size: 30px;
+   font-weight: 600;
+   color: black;
+  }
+
+  .filterbox {
+    background: url("food50.jpg") no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  height: 200vh;
+  width: 100%;
+  margin: auto;
+  position: absolute;
+  }

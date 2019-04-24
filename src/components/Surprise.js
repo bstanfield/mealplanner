@@ -71,6 +71,8 @@ class Surprise extends Component {
       };
     }
 
+
+
 	setRedirect(recipe){
 		this.setState({ selectedRecipe: recipe, recipeRedirect: true });
 	}
