@@ -33,35 +33,79 @@ const renderFilter = (filter) => (
     <div className="filterCombo">
         <div className="box">
             <FontAwesomeIcon icon={filter.icon} />
+            <p>{filter.val}</p>
         </div>
         <span className="filter-label">{filter.label}</span>
     </div>
 )
 
+
+
 class Surprise extends Component {
     constructor(props) {
     super(props);
+    let parsedQuery = queryString.parse(this.props.params.location.search);
+    let pqr = parsedQuery.restriction;
+
+    console.log(parsedQuery.restriction);
+
+    // switch (1) {
+    //   case '0':
+    //     pqr = "None";
+    //     break;
+    //   case '1':
+    //     pqr = "Vegetarian";
+    //     break;
+    //   case '2':
+    //     pqr = "Vegan";
+    //     break;
+    //   case '3':
+    //     pqr = "Dairy Free";
+    //     break;
+    //   case '4':
+    //     pqr = "Nut Free";
+    //     break;
+    //   case '5':
+    //     pqr = "Gluten Free";
+    //     break;
+    //   case '6':
+    //     pqr = "Pescatarian";
+    // }
+
+    if (pqr == 0) {
+      pqr = 'None';
+    } else if (pqr == 1) {
+      pqr = 'Vegan';
+    } else if (pqr == 2) {
+      pqr = 'Vegetarian';
+    } else if (pqr == 3) {
+      pqr = 'Dairy free';
+    } else if (pqr == 4) {
+      pqr = 'Nut free';
+    } else if (pqr == 5) {
+      pqr = 'Gluten free';
+    } else if (pqr == 6) {
+      pqr = 'Pescatarian';
+    } else {
+      pqr = 'N/A'
+    }
+
     this.state = {
         filters: [
             {
                 label: 'Budget',
                 icon: faDollarSign,
+                val: `$${parsedQuery.cost}`
             },
             {
                 label: 'Time',
                 icon: faClock,
-            },
-            {
-                label: 'Expertise',
-                icon: faStar,
-            },
-            {
-                label: 'Ingredients',
-                icon: faUtensils,
+                val: `${parsedQuery.cookTime} min.`
             },
             {
                 label: 'Restriction',
                 icon: faFlag,
+                val: pqr
             },
         ],
         index: 0,
@@ -78,7 +122,7 @@ class Surprise extends Component {
 	}
 
 	componentDidMount() {
-		let parsedQuery = queryString.parse(this.props.params.location.search);
+    let parsedQuery = queryString.parse(this.props.params.location.search);
 		let endpointToHit;
 		if (parsedQuery.source === 'preset') {
 			endpointToHit = `persona_recipes/${parsedQuery.persona}`;

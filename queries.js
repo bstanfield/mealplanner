@@ -38,7 +38,7 @@ const getSurveyResults = (req, res) => {
   const restriction = parseInt(req.params.restriction);
 
   pool.query(
-    "SELECT recipe_name, image_url FROM recipe_master WHERE recipe_master.cost >= $1 AND recipe_master.cooktime <= $2 AND restrictions_id = $3",
+    "SELECT recipe_name, image_url FROM recipe_master WHERE recipe_master.cost <= $1 AND recipe_master.cooktime <= $2 AND restrictions_id = $3",
     [cost, cookTime, restriction],
     (error, results) => {
       if (error) {
