@@ -12,6 +12,7 @@ body {
     #header {
         background-color: $teal;
         padding: 25px 0px;
+        height: 170px;
         h1 {
             background-color: $teal;
             color: white;
@@ -53,6 +54,8 @@ body {
                         color: white;
                         font-size: 12pt;
                         padding-top: 5px;
+                        margin-left: 5px;
+                        margin-right: 5px;
                     }
                 }
                 .filter-label {
@@ -110,13 +113,13 @@ body {
                 background-position: center;
                 background-size: cover;
                 p {
-                    min-height: 300px; 
+                    min-height: 300px;
                 }
             }
-            .recipe-name { 
+            .recipe-name {
                 color: $teal;
                 font-size: 16pt;
-                text-align: center; 
+                text-align: center;
             }
             .recipe-name:hover {
                 text-decoration: underline;
@@ -168,15 +171,15 @@ body {
                 padding-top: 20px;
             }
        }
-       
+
        #carousel-container {
         width: 95%;
          .carousel-img {
              width: 78%;
              height: 90%;
-         }   
-     
-    } 
+         }
+
+    }
    }
-    
+
 }
