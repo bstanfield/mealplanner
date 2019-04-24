@@ -115,6 +115,7 @@ class RecipePage extends Component {
 
   twilio() {
     const {recipe_name, id} = this.props.recipePage.recipePage;
+    let recipeURL = `https://stanfield.space/recipe-page/${this.props.location.search}`;
     fetch(
       `https://api.foodwise.dev/twilio/messages`,
       {
@@ -125,7 +126,7 @@ class RecipePage extends Component {
         body: JSON.stringify({
           to: this.state.phoneNumber,
           recipeName: recipe_name,
-          body: `https://stanfield.space/recipe-page/${this.props.location.search}`,
+          body: recipeURL,
         })
       }, 
     ).then(response => response.json())
