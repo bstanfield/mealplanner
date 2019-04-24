@@ -1,18 +1,15 @@
 @import './variables.scss';
 
-// Survey
 body {
   overflow: hidden;
-}
-.survey-header {
-  h1, h2 {
-    text-align: center;
-  }
 }
 
 .surveycontainer {
   margin: 0;
+  h1, h2 {
+    text-align: center;
   }
+}
 
 .qc {
   background: #8dd5d3;
@@ -34,7 +31,6 @@ body {
   font-family: $font-family;
   font-size: 25px;
   font-weight: 500;
-  font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
   line-height: 1em;
@@ -47,7 +43,6 @@ body {
   font-family: $font-family;
   font-size: 45px;
   font-weight: 500;
-  font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
   line-height: 1em;
@@ -72,7 +67,10 @@ input:focus::-webkit-input-placeholder {
 }
 
 .questioncolumn h3 {
-  margin-top: 250px;
+  //FIXME:
+  // margin-top: 250px;
+  margin-top: 40%;
+
   font-style: normal;
   font-family: futura-pt;
   font-size: 40px;
@@ -104,7 +102,7 @@ input:focus::-webkit-input-placeholder {
 
 .questioncolumn form {
   //FIXME:
-  //margin-top: 250px;
+  margin-top: 30%;
 
   font-style: normal;
   font-family: futura-pt;
@@ -118,16 +116,25 @@ input:focus::-webkit-input-placeholder {
   text-align: center;
   margin-left: 40px;
   margin-right: 40px;
-}
 
-.questionrow:after {
-  content: "";
-  display: table;
-  clear: both;
 }
 
 .questionrow {
   min-height: 100vh;
-  display: flex;
-  align-items: center;
+}
+//
+// .btn {
+//   margin-bottom: 50%;
+// }
+// // .questionrow:after {
+// //   content: "";
+// //   display: table;
+// //   clear: both;
+// // }
+
+@media(max-width: 992px) {
+  .questioncolumn form {
+    //FIXME:
+    margin-top: 40%;
+  }
 }
