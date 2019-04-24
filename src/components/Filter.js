@@ -23,7 +23,6 @@ import ReactGA from 'react-ga';
 const queryString = require('query-string');
 
 export const initGA = () => {
-    console.log('GA init');
     ReactGA.initialize('UA-137386963-1');
 }
 export const logPageView = () => {
@@ -149,8 +148,6 @@ class Filter extends Component {
 
 
   shouldIBeChecked(value, index, index2) {
-  console.log("radio button value", this.state.filters[index].options[index2].value);
-  console.log("this.state.filters[index].answer", parseFloat(this.state.filters[index].answer));
     if (this.state.filters[index].options[index2].value === parseFloat(this.state.filters[index].answer)) {
       return true
     } else {
@@ -181,7 +178,6 @@ class Filter extends Component {
     filtersClone[1].answer = parsedQuery.cookTime;
     filtersClone[2].answer = parsedQuery.restriction;
     this.setState({filtersClone});
-    console.log('filtersClone', filtersClone);
   }
   }
 
@@ -204,7 +200,7 @@ class Filter extends Component {
 
     return(
         <div className="filterbox">
-        <BackButton name="Back to Recipes" backTo={this.props.location.state.backTo} />
+        {(!R.isNil(this.props.location.state))? <BackButton name="Back To Recipes" backTo={this.props.location.state.backTo} /> : ''}
           <div className="filteroverlay">
             <h1 className="filtertitle">Filters</h1>
                 {
