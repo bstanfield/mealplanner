@@ -67,10 +67,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 .questioncolumn h3 {
-  //FIXME:
-  // margin-top: 250px;
   margin-top: 40%;
-
   font-style: normal;
   font-family: $font-family;
   font-size: 40px;
@@ -90,7 +87,6 @@ input:focus::-webkit-input-placeholder {
   font-family: $font-family;
   font-size: 25px;
   font-weight: 500;
-  font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
   line-height: 1em;
@@ -101,14 +97,11 @@ input:focus::-webkit-input-placeholder {
 }
 
 .questioncolumn form {
-  //FIXME:
   margin-top: 30%;
-
   font-style: normal;
   font-family: $font-family;
   font-size: 30px;
   font-weight: 700;
-  font-style: normal;
   text-transform: none;
   letter-spacing: -.01em;
   line-height: 1em;
@@ -116,7 +109,6 @@ input:focus::-webkit-input-placeholder {
   text-align: center;
   margin-left: 40px;
   margin-right: 40px;
-
 }
 
 .questionrow {
