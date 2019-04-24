@@ -123,9 +123,9 @@ class RecipePage extends Component {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
-          to: this.state,phoneNumber,
+          to: this.state.phoneNumber,
           recipeName: recipe_name,
-          body: `https://stanfield.space/recipe-page/${this.state.location.search}`,
+          body: `https://stanfield.space/recipe-page/${this.props.location.search}`,
         })
       }, 
     ).then(response => response.json())
