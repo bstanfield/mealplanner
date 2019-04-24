@@ -63,9 +63,7 @@ class Personas extends Component {
         }} />
       );
     }
-
-    console.log('current location', this.props.location);
-
+    
     return(
     <div>
     <Nav />
