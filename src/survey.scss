@@ -1,9 +1,5 @@
 @import './variables.scss';
 
-body {
-  overflow: hidden;
-}
-
 .surveycontainer {
   margin: 0;
   h1, h2 {
@@ -112,7 +108,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 .questionrow {
-  min-height: 100vh;
+  max-height: 100vh;
 }
 
 @media(max-width: 992px) {

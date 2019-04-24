@@ -25,16 +25,14 @@
         margin-left: 5%;
         margin-top: 20px;
         h1 {
-          color: $teal;
-          padding: 30px 0px 10px 0px;
-        }
-        h2 {
-          color: #8dd5d3;
-          font-size: 28px;
+            color: $teal;
+            padding: 30px 0px 10px 0px;
         }
         p {
-          margin: 5px;
-          font-size: 20px;
+            color: $secondary-header;
+            font-weight: normal;
+            font-size: 20px;
+            margin: 5px;
         }
       }
       .flexbutton {
@@ -157,21 +155,22 @@
       }
       form {
         div {
-          display: flex;
-          flex-direction: row;
-          align-items: flex-start;
-          margin: 0% 20%;
-          .steps {
-            width: 20%;
-            font-size: 25px;
-            padding: 0;
-          }
-          p {
-            width: 80%;
-            color: $secondary-header;
-            font-size: 20px;
-            padding-top: 15px;
-          }
+            display: flex;
+            flex-direction: row;
+            font-weight: normal;
+            margin: 0% 20%;
+            .steps {
+                width: 20%;
+                font-size: 25px;
+                padding: 0;
+            }
+            p {
+                width: 80%;
+                color: $secondary-header;
+                font-weight: normal;
+                font-size: 20px;
+                padding-top: 15px;
+            }
         }
       }
       
