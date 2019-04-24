@@ -160,7 +160,7 @@ class Survey extends Component {
         {
           (this.state.index >= 1)
           ? (<div onClick={ this.backIndex } className="btn fit-content">
-                Previous question
+                Previous
               </div>) : ''
         }
         {
