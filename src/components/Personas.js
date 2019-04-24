@@ -5,6 +5,7 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetPersonas } from '../actions';
 import { Redirect } from 'react-router-dom';
+import Nav from './Nav';
 
 class Personas extends Component {
   constructor(props) {
@@ -62,6 +63,8 @@ class Personas extends Component {
 
 
     return(
+    <div>
+    <Nav />
       <div className="persona-page">
         <h1 className="foodietype">choose a foodie type</h1>
         <h2>We will recommend recipes based on the traits of the persona you choose!</h2>
@@ -70,6 +73,7 @@ class Personas extends Component {
         <div className="persona-container">
           {R.map(this.renderPersonas, personas)}
         </div>
+      </div>
       </div>
     )
   }

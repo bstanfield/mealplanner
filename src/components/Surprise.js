@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
 import { Redirect } from 'react-router-dom';
-
+import Nav from './Nav';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faSurprise } from '@fortawesome/free-solid-svg-icons';
 import { faClock } from '@fortawesome/free-solid-svg-icons';
@@ -154,6 +154,7 @@ class Surprise extends Component {
 
     return(
         <div className="surprisecontainer">
+        <Nav />
           <div id="header"> 
             <h1>Your Recommended Recipes</h1>
             <div id="all-filters" onClick={() => this.setState({ editRedirect: true })}>

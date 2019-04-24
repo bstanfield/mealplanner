@@ -4,7 +4,7 @@ import { bindActionCreators } from 'redux';
 import * as R from 'ramda';
 import { SetRecipePage, SetRecipeIngredients, SetUpvotes } from '../actions';
 import ReactGA from 'react-ga';
-
+import Nav from './Nav';
 import '../recipepage.scss'
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -164,6 +164,8 @@ class RecipePage extends Component {
     const { ingredients } = this.props.recipePage;
 
     return(
+      <div>
+      <Nav />
       <div id="recipecontainer">
         {/* <div className="recipe-header">
           <h1>{recipe_name}</h1>
@@ -215,6 +217,7 @@ class RecipePage extends Component {
             {R.addIndex(R.map)(renderRecipeInstructions, instructions)}
           </form>
         </div>
+      </div>
       </div>
     )
   }
