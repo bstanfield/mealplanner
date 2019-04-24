@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import '../survey.scss';
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Route, Switch, Redirect } from 'react-router-dom';
+
 
 import ReactGA from 'react-ga';
 export const initGA = () => {
@@ -123,9 +125,10 @@ class Survey extends Component {
   renderSurveyQuestion = (question) => (
     <div className="questionrow">
       <div className="questioncolumn qc">
-      <h3>{question.q}</h3>
+        <h3>{question.q}</h3>
         <p>{question.desc}</p>
       </div>
+
       <div className="questioncolumn">
         <form>
          {question.options.map((option) => (
@@ -139,8 +142,8 @@ class Survey extends Component {
             />
             {` ${option.label}`}
             <br /><br />
-          </label>
-          )
+            </label>
+            )
           )}
         </form>
         {
@@ -156,9 +159,8 @@ class Survey extends Component {
             </div>
             )
         }
-        </div>
-
-        </div>
+      </div>
+    </div>
 
 
 
@@ -188,10 +190,7 @@ class Survey extends Component {
 
     return(
       <div className="surveycontainer">
-      <div className="survey-header">
        { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
-      </div>
-
       </div>
     )
   }

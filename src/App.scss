@@ -11,7 +11,7 @@ h1, h2, h3, h4 {
 }
 
 h1 {
-  font-style: normal; 
+  font-style: normal;
   font-family: futura-pt;
   font-size: 40px;
   font-weight: 600;
@@ -21,9 +21,8 @@ h1 {
   line-height: 1em;
   color: white;
 }
-
 h2 {
-  font-style: normal; 
+  font-style: normal;
   font-family: futura-pt;
   font-size: 25px;
   font-weight: 600;
@@ -119,136 +118,135 @@ p, ul {
   font-size: 25px;
 }
 
-// Survey
-.survey-header {
-  h1, h2 {
-    text-align: center;
-  }
-  
-}
-
-.surveycontainer {
-  margin: 0; 
-}
-
-.qc {
-  background: #8dd5d3;
-}
-
-.surveytitle {
-font-style: normal; 
-  font-family: futura-pt;
-  font-size: 35px;
-  font-weight: 500;
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: -.01em;
-  line-height: 1em;
-  color: white;
-  }
-
-.surveysubtitle {
-  font-style: normal; 
-  font-family: futura-pt;
-  font-size: 25px;
-  font-weight: 500;
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: -.01em;
-  line-height: 1em;
-  color: white;
-}
-
-.survey-text {
-  padding: 10px 60px;
-  font-style: normal; 
-  font-family: futura-pt;
-  font-size: 45px;
-  font-weight: 500;
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: -.01em;
-  line-height: 1em;
-  color: #8dd5d3; 
-  text-align: center;
-  border-width:0px;
-  border:none;
-  background: transparent;
-}
-
-input:focus, textarea { outline: none ! important; }
-
-input:focus::-webkit-input-placeholder {
-    color: transparent;
-}
-
-.questioncolumn { 
-  text-align: center;
-  float: left;
-  width: 50%;
-  min-height: 100vh;
-}
-
-.questioncolumn h3 {
-  margin-top: 250px;
-  font-style: normal; 
-  font-family: futura-pt;
-  font-size: 40px;
-  font-weight: 700;
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: -.01em;
-  line-height: 1em;
-  color: white;
-  text-align: center;
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-.questioncolumn p {
-  font-style: normal; 
-  font-family: futura-pt;
-  font-size: 25px;
-  font-weight: 500;
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: -.01em;
-  line-height: 1em;
-  color: white;
-  text-align: center;
-  margin-left: 50px;
-  margin-right: 50px;
-}
-
-.questioncolumn form {
-  margin-top: 180px;
-  height: 100%;
-  font-style: normal; 
-  font-family: futura-pt;
-  font-size: 28px;
-  font-weight: 700;
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: -.01em;
-  line-height: 1em;
-  color: #8dd5d3;
-  text-align: center;
-  margin-left: 40px;
-  margin-right: 40px;
-}
-
-
-.questionrow:after {
-  content: "";
-  display: table; 
-  clear: both;
-}
-
-.questionrow {
-  height: 100%;
-}
-// End Survey
-
+// // Survey
+// .survey-header {
+//   h1, h2 {
+//     text-align: center;
+//   }
+//
+// }
+//
+// .surveycontainer {
+//   margin: 0;
+// }
+//
+// .qc {
+//   background: #8dd5d3;
+// }
+//
+// .surveytitle {
+// font-style: normal;
+//   font-family: futura-pt;
+//   font-size: 35px;
+//   font-weight: 500;
+//   font-style: normal;
+//   text-transform: none;
+//   letter-spacing: -.01em;
+//   line-height: 1em;
+//   color: white;
+//   }
+//
+// .surveysubtitle {
+//   font-style: normal;
+//   font-family: futura-pt;
+//   font-size: 25px;
+//   font-weight: 500;
+//   font-style: normal;
+//   text-transform: none;
+//   letter-spacing: -.01em;
+//   line-height: 1em;
+//   color: white;
+// }
+//
+// .survey-text {
+//   padding: 10px 60px;
+//   font-style: normal;
+//   font-family: futura-pt;
+//   font-size: 45px;
+//   font-weight: 500;
+//   font-style: normal;
+//   text-transform: none;
+//   letter-spacing: -.01em;
+//   line-height: 1em;
+//   color: #8dd5d3;
+//   text-align: center;
+//   border-width:0px;
+//   border:none;
+//   background: transparent;
+// }
+//
+// input:focus, textarea { outline: none ! important; }
+//
+// input:focus::-webkit-input-placeholder {
+//     color: transparent;
+// }
+//
+// .questioncolumn {
+//   text-align: center;
+//   float: left;
+//   width: 50%;
+//   min-height: 100vh;
+// }
+//
+// .questioncolumn h3 {
+//   margin-top: 250px;
+//   font-style: normal;
+//   font-family: futura-pt;
+//   font-size: 40px;
+//   font-weight: 700;
+//   font-style: normal;
+//   text-transform: none;
+//   letter-spacing: -.01em;
+//   line-height: 1em;
+//   color: white;
+//   text-align: center;
+//   margin-left: 40px;
+//   margin-right: 40px;
+// }
+//
+// .questioncolumn p {
+//   font-style: normal;
+//   font-family: futura-pt;
+//   font-size: 25px;
+//   font-weight: 500;
+//   font-style: normal;
+//   text-transform: none;
+//   letter-spacing: -.01em;
+//   line-height: 1em;
+//   color: white;
+//   text-align: center;
+//   margin-left: 50px;
+//   margin-right: 50px;
+// }
+//
+// .questioncolumn form {
+//   margin-top: 180px;
+//   height: 100%;
+//   font-style: normal;
+//   font-family: futura-pt;
+//   font-size: 28px;
+//   font-weight: 700;
+//   font-style: normal;
+//   text-transform: none;
+//   letter-spacing: -.01em;
+//   line-height: 1em;
+//   color: #8dd5d3;
+//   text-align: center;
+//   margin-left: 40px;
+//   margin-right: 40px;
+// }
+//
+//
+// .questionrow:after {
+//   content: "";
+//   display: table;
+//   clear: both;
+// }
+//
+// .questionrow {
+//   height: 100%;
+// }
+// // End Survey
 
 // Personas
 .persona-page {
@@ -275,7 +273,7 @@ input:focus::-webkit-input-placeholder {
 }
 
 .persona {
-  opacity: .8; 
+  opacity: .8;
   background: white;
   text-align: center;
   width: 250px;
@@ -313,18 +311,4 @@ input:focus::-webkit-input-placeholder {
 svg {
   padding-right: 5px;
 }
-//
-
-// Homepage
-// .plans {
-//   text-align: left;
-//   width: 100%;
-//   border: 3px solid;
-//   border-bottom: 8px ;
-//   margin: 20px;
-//   padding: 20px 10px;
-//   display: inline-block;
-// }
-
-
 
