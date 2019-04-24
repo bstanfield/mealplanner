@@ -30,7 +30,7 @@ class Nav extends Component {
             <Link to={{
               pathname: '/recipes-all',
               state: {backTo: this.props.location}}
-            }>Recipes</Link>
+            }>recipes</Link>
             </span>
           </h3>
         </div>
