@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import '../survey.scss';
+import Nav from './Nav';
+
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Route, Switch, Redirect } from 'react-router-dom';
@@ -189,8 +191,11 @@ class Survey extends Component {
     }
 
     return(
+      <div>
+      <Nav />
       <div className="surveycontainer">
        { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
+      </div>
       </div>
     )
   }

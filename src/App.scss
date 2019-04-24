@@ -1,5 +1,30 @@
 @import './variables.scss';
 
+.logo {
+  color: #8dd5d3;
+  font-size: 45px;
+  font-weight: 600;
+}
+
+.headers {
+  color: #8dd5d3;
+  font-size: 20px;
+  padding-left: 700px;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+
+.headerhover:hover {
+  color: grey;
+}
+
+.hspace {
+  margin-left: .5em;
+  margin-right: .5em;
+}
+
+
 body {
   font-family: futura-pt;
   color: $secondary-header;
@@ -103,10 +128,10 @@ p, ul {
 
 .nav-container{
   background-color: white;
-  box-shadow: $standard-shadow;
   height: fit-content;
-  padding: 20px 150px 15px 150px;
+  padding: 35px 150px 25px 150px;
   width: 100%;
+  box-shadow: $standard-shadow;
 }
 
 .link-nostyle {
@@ -261,7 +286,7 @@ p, ul {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  height: 100%;
+  height: 100vh;
   width: 100%;
   margin: auto;
   position: absolute;

@@ -27,12 +27,14 @@ class Nav extends Component {
 
   render() {
     return(
-      <a className="link-nostyle" href="/">
+      <a className="navigationheader" href="/">
         <div className="nav-container">
-          <h3>
-            <span className="emoji" role="img" aria-label="broccoli emoji"> 🥗 </span>
-            {` Mealplanner`}
+          <h3 className="logo">
+            {` foodwise`} <span className="headers"><span className="headerhover">personas</span><span className="hspace"></span><span className="headerhover">customize</span><span className="hspace"></span><span className="headerhover">recipes</span></span>
           </h3>
+          
+
+
         </div>
       </a>
     )
