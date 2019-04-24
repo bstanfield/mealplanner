@@ -12,6 +12,7 @@ class Nav extends Component {
     };
   }
 
+
   render() {
     return(
       <a className="navigationheader" href="/">
@@ -31,11 +32,7 @@ class Nav extends Component {
               state: {backTo: this.props.location}}
             }>recipes</Link>
             </span>
-      
           </h3>
-          
-
-
         </div>
       </a>
     )
