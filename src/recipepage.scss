@@ -1,0 +1,179 @@
+@import './variables.scss';
+
+#recipecontainer {
+    .flex {
+      display: flex;
+      flex-wrap: wrap; 
+      flex-direction: row;
+      align-content: flex-start;
+      width: 100%;
+      margin: 60px 5%;
+      .hero-img {
+        background-repeat: no-repeat;
+        background-position: center;
+        background-size: cover;
+        width: 45%;
+        height: 500px;
+        margin: 30px 0px;
+      }
+      .meta-sidebar {
+        width: 40%;
+        height: 250px;
+        color: $secondary-header;
+        text-align: center;
+        flex-basis: auto;
+        margin-left: 5%;
+        margin-top: 20px;
+        h1 {
+          color: $teal;
+          padding: 30px 0px 10px 0px;
+        }
+        h2 {
+          color: #8dd5d3;
+          font-size: 28px;
+        }
+        p {
+          margin: 5px;
+          font-size: 20px;
+        }
+      }
+      .flexbutton {
+        display: flex;
+        flex-direction: column;
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        .favorite {
+          width: 150px;
+          background-color: transparent;
+          color: $teal;
+          border: 2px solid $teal;
+          border-radius: 999px;
+          font-size: 20px;
+          font-family: futura-pt;
+          text-align: center;
+          padding: 12px;
+          margin-bottom: 15px;
+          margin-left: auto;
+          margin-right: auto
+        }
+        .favorite:hover {
+            background-color: $teal;
+            color: white;
+            transition: $fast-transition;
+            cursor: pointer;
+          }
+      }
+    }
+    #ingredients {
+      width: 100%;
+      background-color: $teal;
+      color: white;
+      padding-bottom: 50px;
+      h2 {
+        font-size: 40px;
+        text-align: center;
+        padding-top: 30px;
+      }
+      #ingredients-content {
+        width: 100%;
+        font-size: 15pt;
+        display: flex;
+        flex-direction: row;
+        margin-left: auto;
+        margin-right: auto;
+        #ingredients-list {
+          width: 38%;
+          margin-left: 20%;
+          #servings {
+            color: white;
+            font-weight: bold;
+            margin-bottom: 8px;
+            .number-input {
+              width: 20px;
+              color: $secondary-header;
+              font-size: 10pt;
+              padding: 5px;
+            }
+          }
+        }
+        .ingredients-actions {
+          width: 30%;
+          color: white;
+          #send-ingredients {
+            color: white;
+            font-weight: bold;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+          }
+          #phone-input {
+            height: 50px;
+            margin-left: 10%;
+            margin-top: 20px;
+            input {
+              width: 60%;
+              font-size: 10pt;
+              margin-left: 20px;
+              padding: 5px;
+              cursor: pointer;
+            }
+          }
+          button {
+            background-color: $teal;
+            color: white;
+            font-weight: bold;
+            font-size: 10pt;
+            border: 1px solid white;
+            border-radius: 999px;
+            margin-top: 10px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 8px 20px;
+            display: block;
+            &:hover {
+                background-color: white;
+                color: $teal;
+                cursor: pointer;
+                transition: $fast-transition;
+            }
+          }
+        }
+      }
+    }
+    .recipe {
+      width: 100%;
+      height: 100%;
+      color: $teal;
+      background: white no-repeat center center fixed;
+      -webkit-background-size: cover;
+      -moz-background-size: cover;
+      -o-background-size: cover;
+      background-size: cover;
+      h2 {
+        color: $teal;
+        font-size: 32pt;
+        text-align: center;
+      }
+      form {
+        div {
+          display: flex;
+          flex-direction: row;
+          align-items: flex-start;
+          margin: 0% 20%;
+          .steps {
+            width: 20%;
+            font-size: 25px;
+            padding: 0;
+          }
+          p {
+            width: 80%;
+            color: $secondary-header;
+            font-size: 20px;
+            padding-top: 15px;
+          }
+        }
+      }
+      
+    }
+  }

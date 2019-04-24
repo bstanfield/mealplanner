@@ -22,65 +22,6 @@ h1 {
   color: white;
 }
 
-#foodwise {
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: 0px;
-  margin-left: 0px;
-  text-align: center;
-  text-rendering: optimizeLegibility;
-  font-style: normal; 
-  font-family: futura-pt;
-  font-size: 130px;
-  font-weight: 500;
-  font-style: normal;
-  text-transform: none;
-  letter-spacing: -.01em;
-  line-height: 1em;
-  color: white;
-}
-
-#subtitle {
-  font-family: futura-pt;
-  font-weight: 500;
-  font-style: normal;
-  font-size: 24px;
-  line-height: 1.4em;
-  text-transform: none;
-  letter-spacing: .04em;
-  color: white;
-  margin-top: 0;
-  margin-bottom: 0;
-  margin-right: 0px;
-  margin-left: 0px;
-  text-align: center;
-}
-
-#buttoncontainer {
-  text-align: center; 
-}
-
-.homebtn1, .homebtn2 {
-  display: inline-block;
-  border: 2px solid white;
-  background-color: transparent;
-  color: white;
-  font-size: 20px;
-  cursor: pointer;
-  border-radius: 999px;
-  font-family: futura-pt;
-  margin-right: 10px; 
-}
-.homebtn1:hover, .homebtn2:hover {
-  background-color: white;
-  color: $secondary-header;
-  transition: $fast-transition;
-}
-
-.home-container {
-  margin-top: 140px;
-}
-
 h2 {
   font-style: normal; 
   font-family: futura-pt;
@@ -126,7 +67,7 @@ p, ul {
 // End Font styles
 
 .btn {
-display: inline-block;
+  display: inline-block;
   border: 2px solid #8dd5d3;
   background-color: transparent;
   font-size: 20px;
@@ -308,179 +249,6 @@ input:focus::-webkit-input-placeholder {
 }
 // End Survey
 
-// RecipePage
-#recipecontainer {
-  .flex {
-    display: flex;
-    flex-wrap: wrap; 
-    flex-direction: row;
-    align-content: flex-start;
-    width: 100%;
-    margin: 60px 5%;
-    .hero-img {
-      background-repeat: no-repeat;
-      background-position: center;
-      background-size: cover;
-      width: 45%;
-      height: 500px;
-      margin: 30px 0px;
-    }
-    .meta-sidebar {
-      width: 40%;
-      height: 250px;
-      color: $secondary-header;
-      text-align: center;
-      flex-basis: auto;
-      margin-left: 5%;
-      margin-top: 20px;
-      h1 {
-        color: $teal;
-        padding: 30px 0px 10px 0px;
-      }
-      h2 {
-        color: #8dd5d3;
-        font-size: 28px;
-      }
-      p {
-        margin: 5px;
-        font-size: 20px;
-      }
-    }
-    .flexbutton {
-      display: flex;
-      flex-direction: column;
-      margin-top: 30px;
-      margin-left: auto;
-      margin-right: auto;
-      .favorite {
-        width: 150px;
-        background-color: transparent;
-        color: $teal;
-        border: 2px solid $teal;
-        border-radius: 999px;
-        font-size: 20px;
-        font-family: futura-pt;
-        text-align: center;
-        padding: 12px;
-        margin-bottom: 15px;
-        margin-left: auto;
-        margin-right: auto
-      }
-      .favorite:hover {
-          background-color: $teal;
-          color: white;
-          transition: $fast-transition;
-          cursor: pointer;
-        }
-    }
-  }
-  #ingredients {
-    width: 100%;
-    background-color: $teal;
-    color: white;
-    padding-bottom: 50px;
-    h2 {
-      font-size: 40px;
-      text-align: center;
-      padding-top: 30px;
-    }
-    #ingredients-content {
-      width: 100%;
-      font-size: 15pt;
-      display: flex;
-      flex-direction: row;
-      margin-left: auto;
-      margin-right: auto;
-      #ingredients-list {
-        width: 38%;
-        margin-left: 20%;
-        #servings {
-          color: white;
-          font-weight: bold;
-          margin-bottom: 8px;
-          .number-input {
-            width: 20px;
-            color: $secondary-header;
-            font-size: 10pt;
-            padding: 5px;
-          }
-        }
-      }
-      .ingredients-actions {
-        width: 30%;
-        color: white;
-        #send-ingredients {
-          color: white;
-          font-weight: bold;
-          text-align: center;
-          margin: 0;
-          padding: 0;
-        }
-        #phone-input {
-          height: 50px;
-          margin-left: 10%;
-          margin-top: 20px;
-          input {
-            width: 60%;
-            font-size: 10pt;
-            margin-left: 20px;
-            padding: 5px;
-          }
-        }
-        button {
-          background-color: white;
-          color: $teal;
-          font-weight: bold;
-          border-radius: 999px;
-          margin-top: 10px;
-        }
-        button:hover {
-          border: 1px solid $secondary-header;
-          box-shadow: $standard-shadow;
-          cursor: pointer;
-          transition: $fast-transition;
-        }
-      }
-    }
-  }
-  .recipe {
-    width: 100%;
-    height: 100%;
-    color: $teal;
-    background: white no-repeat center center fixed;
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-    h2 {
-      color: $teal;
-      font-size: 32pt;
-      text-align: center;
-    }
-    form {
-      div {
-        display: flex;
-        flex-direction: row;
-        align-items: flex-start;
-        margin: 0% 20%;
-        .steps {
-          width: 20%;
-          font-size: 25px;
-          padding: 0;
-        }
-        p {
-          width: 80%;
-          color: $secondary-header;
-          font-size: 20px;
-          padding-top: 18px;
-        }
-      }
-    }
-    
-  }
-}
-// End RecipePage
-
 
 // Personas
 .persona-page {
@@ -548,13 +316,13 @@ svg {
 //
 
 // Homepage
-.plans {
-  text-align: left;
-  width: 100%;
-  border: 3px solid;
-  border-bottom: 8px ;
-  margin: 20px;
-  padding: 20px 10px;
-  display: inline-block;
-}
+// .plans {
+//   text-align: left;
+//   width: 100%;
+//   border: 3px solid;
+//   border-bottom: 8px ;
+//   margin: 20px;
+//   padding: 20px 10px;
+//   display: inline-block;
+// }
 

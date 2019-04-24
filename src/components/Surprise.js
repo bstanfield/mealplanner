@@ -153,12 +153,8 @@ class Surprise extends Component {
     return(
         <div className="surprisecontainer">
           <div id="header"> 
-            <h1>Recipe for Your Choices</h1>
-            <div id="all-filters">
-                <div onClick={() => this.setState({ editRedirect: true })} className="btn fit-content" id="edit">
-                    <FontAwesomeIcon icon={faEdit} />
-                    <a className="link-nostyle">edit</a>
-                </div>
+            <h1>Your Recommended Recipes</h1>
+            <div id="all-filters" onClick={() => this.setState({ editRedirect: true })}>
                 <div className="filter">
                     {R.map(renderFilter, this.state.filters)}
                 </div>

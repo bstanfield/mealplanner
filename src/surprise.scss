@@ -4,7 +4,7 @@ body {
     background-color: white;
     font-family: futura-pt;
     max-width: 100%;
-    overflow-x: hidden;
+    // overflow: hidden;
     padding: 0;
     margin: 0;
 }
@@ -26,17 +26,6 @@ body {
             padding-top: 40px;
             text-align: center;
             position: relative;
-            #edit {
-                color: $header;
-                position: absolute;
-                left: 8%;
-                top: 32%;
-            }
-            #edit:hover{
-                color: $secondary-header;
-                text-decoration: underline;
-                cursor: pointer;
-            }
             .filter {
                 max-width: 100%;
                 display: flex;
@@ -49,17 +38,17 @@ body {
                 }
                 .box {
                     background-color: white;
-                    width: 55px;
-                    height: 55px;
+                    width: 60px;
+                    height: 60px;
                     box-shadow: $standard-shadow;
                     margin-bottom: 3px;
                     margin-left: auto;
                     margin-right: auto;
                     svg {
                         color: $teal;
-                        font-size: 18pt;
-                        padding-top: 15px;
-                        padding-left: 5px;
+                        font-size: 20pt;
+                        padding-top: 16px;
+                        padding-left: 4px;
                     }
                 }
                 .filter-label {
@@ -86,6 +75,7 @@ body {
         margin-left: auto;
         margin-right: auto;
         position: relative;
+        cursor: pointer;
         .prevBtn {
             color: $teal;
             font-size: 20pt;
@@ -143,7 +133,6 @@ body {
         font-size: 12pt;
         margin-left: auto;
         margin-right: auto;
-        margin-top: 30px;
         display: block;
         border-radius: 999px;
         border: 2px solid $teal;
@@ -151,15 +140,31 @@ body {
             color: $teal;
         }
         a:hover {
-            // background-color: $teal;
             color: white;
         }
-        // a:hover > button {
-        //     background-color: $teal;
-        // }
-        button:hover {
-            background-color: $teal;
-        }
+    }
+    button:hover {
+        background-color: $teal;
+    }
+    button:hover a {
+        color: white;
     }
 }
 
+
+@media(max-width: 767px) {
+   .surprisecontainer {
+       h1 {
+           font-size: 26pt;
+       }
+       #carousel-container {
+        width: 95%;
+         .carousel-img {
+             width: 78%;
+             height: 90%;
+         }   
+     
+    } 
+   }
+    
+}
