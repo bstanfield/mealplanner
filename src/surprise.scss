@@ -4,14 +4,14 @@ body {
     background-color: white;
     font-family: futura-pt;
     max-width: 100%;
-    // overflow: hidden;
     padding: 0;
     margin: 0;
 }
 .surprisecontainer {
+    padding-bottom: 40px;
     #header {
         background-color: $teal;
-        padding: 40px 0px 30px 0px;
+        padding: 25px 0px;
         h1 {
             background-color: $teal;
             color: white;
@@ -22,7 +22,7 @@ body {
             max-width: 100%;
             margin-left: auto;
             margin-right: auto;
-            padding-top: 40px;
+            padding-top: 30px;
             text-align: center;
             position: relative;
             .filter {
@@ -40,7 +40,7 @@ body {
                     width: 60px;
                     height: 60px;
                     box-shadow: $standard-shadow;
-                    margin-bottom: 3px;
+                    margin-bottom: 15px;
                     margin-left: auto;
                     margin-right: auto;
                     svg {
@@ -48,6 +48,11 @@ body {
                         font-size: 20pt;
                         padding-top: 16px;
                         padding-left: 4px;
+                    }
+                    p {
+                        color: white;
+                        font-size: 12pt;
+                        padding-top: 5px;
                     }
                 }
                 .filter-label {
@@ -140,10 +145,12 @@ body {
         }
         a:hover {
             color: white;
+            cursor: pointer;
         }
     }
     button:hover {
         background-color: $teal;
+        cursor: pointer;
     }
     button:hover a {
         color: white;
@@ -153,9 +160,15 @@ body {
 
 @media(max-width: 767px) {
    .surprisecontainer {
-       h1 {
-           font-size: 26pt;
+       #header {
+            h1 {
+                font-size: 22pt;
+            }
+            #all-filters {
+                padding-top: 20px;
+            }
        }
+       
        #carousel-container {
         width: 95%;
          .carousel-img {

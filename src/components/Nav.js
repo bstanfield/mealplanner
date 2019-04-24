@@ -3,26 +3,13 @@ import * as R from 'ramda';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
-import { Link } from 'react-router-dom';
+import {withRouter, Link} from 'react-router-dom';
 
 class Nav extends Component {
   constructor(props) {
     super(props);
     this.state = {
     };
-  }
-
-  // fetching all recipes here so there are no redundant calls throughout surprise and all recipes page
-
-  componentDidMount() {
-    // fetch(
-    //   `http://35.236.39.233/recipenames`,
-    //   {
-    //     method: 'GET',
-    //   },
-    // ).then(response => response.json())
-    // .then(recipes => this.props.SetAllRecipes(recipes))
-    // .catch(error => this.setState({ error }));
   }
 
 
@@ -32,9 +19,18 @@ class Nav extends Component {
         <div className="nav-container">
           <h3 className="logo">
             {` foodwise`} <span className="headers">
-            <Link to="/personas">personas</Link>
-            <Link className="hspace" to="/surprise">customize</Link>
-            <Link to="/recipes-all">recipes</Link>
+            <Link to={{
+              pathname: '/personas',
+              state: {backTo: this.props.location}
+              }}>personas</Link>
+            <Link className="hspace" to={{
+              pathname: '/survey',
+              state: {backTo: this.props.location}}
+            }>customize</Link>
+            <Link to={{
+              pathname: '/recipes-all',
+              state: {backTo: this.props.location}}
+            }>Recipes</Link>
             </span>
           </h3>
         </div>
@@ -53,4 +49,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ SetAllRecipes }, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Nav);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Nav));

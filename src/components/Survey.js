@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../survey.scss';
 import Nav from './Nav';
+import BackButton from './BackButton';
+import {withRouter} from 'react-router-dom';
 
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -27,23 +29,23 @@ class Survey extends Component {
           desc: 'Estimate from your current cooking expenses or enter a price point you want to aim for.',
           options: [
             {
-              value: 0,
-              label: '< $5'
+              value: 4,
+              label: '$4 or less'
             },
             {
-              value: 5,
-              label: '$5-10'
+              value: 7,
+              label: '$7 or less'
             },
             {
               value: 10,
-              label: '$10-15'
+              label: '$10 or less'
             },
             {
               value: 15,
-              label: '> $15'
-            }
+              label: '$15 or less'
+            },
           ],
-          answer: '',
+          answer: '15',
         },
         {
           q: 'How much time do you spend cooking a meal?',
@@ -66,7 +68,7 @@ class Survey extends Component {
               label: 'Greater than 2 hours'
             }
           ],
-          answer: '',
+          answer: '500',
         },
         {
           q: 'Do you have any dietary preferences?',
@@ -100,7 +102,7 @@ class Survey extends Component {
               label: 'Pescatarian'
             }
           ],
-          answer: '',
+          answer: '0',
         },
       ],
       index: 0,
@@ -116,11 +118,17 @@ class Survey extends Component {
     )
   }
 
+  backIndex = () => {
+    const newIndex = this.state.index - 1;
+    this.setState(
+      { index: newIndex }
+    )
+  }
+
   handleInputChange = (event) => {
     var questionsClone = {...this.state.questions};
     questionsClone[this.state.index].answer = event.target.value;
     this.setState({questionsClone});
-    console.log("questionsClone", questionsClone)
   }
 
 
@@ -149,6 +157,12 @@ class Survey extends Component {
           )}
         </form>
         {
+          (this.state.index >= 1)
+          ? (<div onClick={ this.backIndex } className="btn fit-content">
+                Previous
+              </div>) : ''
+        }
+        {
           (this.state.index + 1) === this.state.questions.length
           ? (
             <div onClick={() => this.setState({ isComplete: true })} className="btn fit-content">
@@ -161,6 +175,7 @@ class Survey extends Component {
             </div>
             )
         }
+
       </div>
     </div>
 
@@ -173,6 +188,7 @@ class Survey extends Component {
   render() {
     const { isComplete } = this.state;
 
+    console.log('this.props.location', this.props.location);
     if (isComplete) {
       let cost = this.state.questions[0].answer
       let cookTime = this.state.questions[1].answer
@@ -180,11 +196,11 @@ class Survey extends Component {
       return (
         <Redirect to={{
           pathname: '/surprise',
-          search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`
+          search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`,
+          state: {backTo: this.props.location},
         }} />
       );
     }
-
 
     if (this.state.error) {
       return <p>{this.state.error.message}</p>;
@@ -193,6 +209,7 @@ class Survey extends Component {
     return(
       <div>
       <Nav />
+      <BackButton name="Go Home" />
       <div className="surveycontainer">
        { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
       </div>
@@ -201,4 +218,4 @@ class Survey extends Component {
   }
 }
 
-export default Survey;
+export default withRouter(Survey);
