@@ -15,7 +15,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        
         <div className="app-content">
           {this.props.content}
         </div>
@@ -23,5 +22,6 @@ class App extends Component {
     );
   }
 }
+
 
 export default App;

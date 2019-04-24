@@ -3,6 +3,7 @@ import * as R from 'ramda';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
+import {withRouter} from 'react-router-dom';
 
 class Nav extends Component {
   constructor(props) {
@@ -51,4 +52,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ SetAllRecipes }, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Nav);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Nav));

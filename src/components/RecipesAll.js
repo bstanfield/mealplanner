@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
 import '../recipesAll.scss'
 import ReactGA from 'react-ga';
+import BackButton from './BackButton';
 
 
 export const initGA = () => {
@@ -65,7 +66,8 @@ class RecipesAll extends Component {
       return (
         <Redirect to={{
           pathname: '/recipe-page',
-          search: `?recipe=${this.state.selectedRecipe.recipe_name}&id=${this.state.selectedRecipe.id}`
+          search: `?recipe=${this.state.selectedRecipe.recipe_name}&id=${this.state.selectedRecipe.id}`,
+          state: {backTo: this.props.location},
         }} />
       );
     }
@@ -74,9 +76,10 @@ class RecipesAll extends Component {
       return <p>{this.state.error.message}</p>;
     }
 
-
+    console.log('this.props.location', this.props.location);
     return(
       <div id="container">
+        <BackButton backTo={this.props.location.state.backTo} />
         <h1>All Recipes</h1>
         <div id="content-outter">
           {(R.isNil(recipesMaster)) ? '' : R.map(this.renderRecipe, recipeArr) }
@@ -104,4 +107,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ SetAllRecipes }, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(RecipesAll);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(RecipesAll));

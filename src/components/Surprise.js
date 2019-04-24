@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import * as R from 'ramda';
-import { Redirect } from 'react-router-dom';
+import { Redirect, withRouter, Link } from 'react-router-dom';
 
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faDollarSign, faSurprise } from '@fortawesome/free-solid-svg-icons';
@@ -15,6 +15,7 @@ import { faArrowCircleRight } from '@fortawesome/free-solid-svg-icons';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { SetAllRecipes } from '../actions';
+import BackButton from './BackButton';
 import '../surprise.scss'
 
 import ReactGA from 'react-ga';
@@ -68,6 +69,7 @@ class Surprise extends Component {
         recipeRedirect: false,
         selectedRecipe: '',
         editRedirect: false,
+        goToAll: false,
       };
     }
 
@@ -78,7 +80,8 @@ class Surprise extends Component {
 	}
 
 	componentDidMount() {
-		let parsedQuery = queryString.parse(this.props.params.location.search);
+        let parsedQuery = queryString.parse(this.props.location.search);
+        console.log("parsedQuery", parsedQuery);
 		let endpointToHit;
 		if (parsedQuery.source === 'preset') {
 			endpointToHit = `persona_recipes/${parsedQuery.persona}`;
@@ -137,23 +140,37 @@ class Surprise extends Component {
       return (
         <Redirect to={{
           pathname: '/recipe-page',
-          search: `?recipe=${this.state.selectedRecipe.recipe_name}&id=${this.state.selectedRecipe.id}`
+          search: `?recipe=${this.state.selectedRecipe.recipe_name}&id=${this.state.selectedRecipe.id}`,
+          state: {backTo: this.props.location},
         }} />
       );
     }
 
     if (this.state.editRedirect) {
-        let parsedQuery = queryString.parse(this.props.params.location.search);
+        let parsedQuery = queryString.parse(this.props.location.search);
         return (
           <Redirect to={{
             pathname: '/filter',
-            search: `?cost=${parsedQuery.cost}&cookTime=${parsedQuery.cookTime}&restriction=${parsedQuery.restriction}`
+            search: `?cost=${parsedQuery.cost}&cookTime=${parsedQuery.cookTime}&restriction=${parsedQuery.restriction}`,
+            state: {backTo: this.props.location},
           }} />
         );
       }
 
+    if (this.state.goToAll) {
+        return (
+          <Redirect to={{
+            pathname: '/recipes-all',
+            search: '',
+            state: {backTo: this.props.location},
+          }} />
+        );
+      }
+  
+
     return(
         <div className="surprisecontainer">
+            <BackButton backTo={this.props.location.state.backTo} />
           <div id="header"> 
             <h1>Your Recommended Recipes</h1>
             <div id="all-filters" onClick={() => this.setState({ editRedirect: true })}>
@@ -177,7 +194,7 @@ class Surprise extends Component {
             </div>
 
             <button>
-                <a href="/recipes-all">View All Recipes</a>
+                <div onClick={() => this.setState({goToAll: true})}><a>View All Recipes</a></div>
             </button>
         </div>
     )
@@ -195,4 +212,4 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators({ SetAllRecipes }, dispatch);
 }
 
-export default connect(mapStatetoProps, mapDispatchToProps)(Surprise);
+export default withRouter(connect(mapStatetoProps, mapDispatchToProps)(Surprise));

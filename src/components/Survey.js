@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../survey.scss';
 import Nav from './Nav';
+import BackButton from './BackButton';
+// figure out how to do back on survey
 
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
@@ -180,7 +182,8 @@ class Survey extends Component {
       return (
         <Redirect to={{
           pathname: '/surprise',
-          search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`
+          search: `?source=survey&cost=${cost}&cookTime=${cookTime}&restriction=${restriction}`,
+          state: {backTo: this.props.location},
         }} />
       );
     }
@@ -193,6 +196,7 @@ class Survey extends Component {
     return(
       <div>
       <Nav />
+      <BackButton />
       <div className="surveycontainer">
        { this.renderSurveyQuestion(this.state.questions[this.state.index]) }
       </div>
