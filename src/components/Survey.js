@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
+import '../survey.scss';
 import * as R from 'ramda';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { Route, Switch, Redirect } from 'react-router-dom';
+
 
 import ReactGA from 'react-ga';
 export const initGA = () => {
