@@ -5,6 +5,8 @@ import * as R from 'ramda';
 import { SetRecipePage, SetRecipeIngredients, SetUpvotes } from '../actions';
 import ReactGA from 'react-ga';
 
+import '../recipepage.scss'
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPhone } from '@fortawesome/free-solid-svg-icons';
 const ReactMarkdown = require('react-markdown/with-html');

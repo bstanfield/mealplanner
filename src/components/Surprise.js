@@ -31,7 +31,7 @@ export const logPageView = () => {
 
 const renderFilter = (filter) => (
     <div className="filterCombo">
-        <div className="circle">
+        <div className="box">
             <FontAwesomeIcon icon={filter.icon} />
         </div>
         <span className="filter-label">{filter.label}</span>
@@ -60,7 +60,7 @@ class Surprise extends Component {
                 icon: faUtensils,
             },
             {
-                label: 'Restrictions',
+                label: 'Restriction',
                 icon: faFlag,
             },
         ],
@@ -154,16 +154,14 @@ class Surprise extends Component {
 
     return(
         <div className="surprisecontainer">
-            <h1>Recipe for Your Choices</h1>
-            <div id="all-filters">
-                <div onClick={() => this.setState({ editRedirect: true })} className="btn fit-content" id="edit">
-                    <FontAwesomeIcon icon={faEdit} />
-                    <a className="link-nostyle">edit</a>
-              </div>
+          <div id="header"> 
+            <h1>Your Recommended Recipes</h1>
+            <div id="all-filters" onClick={() => this.setState({ editRedirect: true })}>
                 <div className="filter">
                     {R.map(renderFilter, this.state.filters)}
                 </div>
             </div>
+          </div>
 
             {/* carousel */}
             <div id="carousel-container">
@@ -178,7 +176,7 @@ class Surprise extends Component {
                 </div>
             </div>
 
-            <button className="surprisebtn">
+            <button>
                 <a href="/recipes-all">View All Recipes</a>
             </button>
         </div>
